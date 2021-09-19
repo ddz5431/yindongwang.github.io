@@ -20,9 +20,9 @@ export default function Intro() {
                         </span>
                     </Typewriter>
                 </div>
-                <div classname="imageContainer2" href="#works">
+                <a className="imageContainer2" href="#works">
                     <img src="assets/down.png" alt=""></img>
-                </div>
+                </a>
             </div>
         </div>
     );
