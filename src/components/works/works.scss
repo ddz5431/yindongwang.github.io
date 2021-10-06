@@ -12,6 +12,11 @@
         position: absolute;
         cursor: pointer;
 
+        @include mobile{
+            bottom: 25%;
+            height: 30px;
+        }
+
         &.left{
             left: 100px;
             transform: rotateY(180deg);
@@ -92,12 +97,12 @@
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    margin-top: 0%;
-                    margin-bottom: 0%;
-                    padding-top: 10%，
+                    margin-top: 0;
+                    margin-bottom: 0;
+                    padding-top: 10%;
 
                     img{
-                        width: 400;
+                        width: 400px;
                     }
 
                 }

@@ -16,7 +16,7 @@ export default function Intro() {
                 <div className="typewritter">
                     <Typewriter typing={1}> 
                         <span>
-                        "Hi, there! I'm <inline>Yindong Wang</inline>, a <inline>Computational Linguist</inline> who has just finished the master studies at <a href="https://www.cis.uni-muenchen.de/">CIS</a> <a href="https://www.lmu.de/de/index.html">LMU</a>. I love languages and coding. Below you can check a few projects I've worked on."
+                        Hi, there!<br/>I'm <inline>Yindong Wang</inline>,<br/>a <inline>Computational Linguist</inline>.<br/>I love languages<br/>and coding!
                         </span>
                     </Typewriter>
                 </div>

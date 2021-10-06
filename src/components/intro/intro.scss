@@ -9,7 +9,6 @@
         flex-direction: column;
         align-items: center;
         font-size: 15px;
-        display: compact;
     }
 
     .left{
@@ -49,9 +48,11 @@
         .typewritter {
             width: 100%;
             height: 80%;
+            // display: inline-flex;
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
+            // overflow: scroll;
             padding-top: 0;
 
             span {
@@ -81,6 +82,8 @@
             width: 100px;
             height: 100px;
             align-items: center;
+            display: flex;
+            overflow: auto;
 
             @include mobile {
                 width: 100%;

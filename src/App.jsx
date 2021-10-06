@@ -5,7 +5,7 @@ import Works from "./components/works/Works"
 //import Portfolio from "./components/portfolio/Portfolio"
 import Contact from "./components/contact/Contact"
 import Menu from "./components/menu/Menu"
-import Cv from "./components/cv/Cv"
+import Resume from "./components/resume/Resume"
 import "./app.scss"
 import { useState } from "react";
 
@@ -19,7 +19,7 @@ function App() {
       <div className="sections">
         <Intro/>
         <Works/>
-        <Cv/>
+        <Resume/>
         <Contact/>
       </div>
     </div>
