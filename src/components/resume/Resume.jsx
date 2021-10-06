@@ -8,11 +8,9 @@ export default function Resume() {
         <div className="resume" id="resume">
             <div className="left"/>
             <div className="stuff">
-                <br><br>
                     <h1>Resume</h1>
                     <h2>Yindong Wang</h2>
                     <hr/>
-                    <br>
                         <p className="head">Education</p>
                         <ul>
                             <li>Master of Science | Computational Linguistics</li>
@@ -25,7 +23,6 @@ export default function Resume() {
                             <li>Programming</li>
                             <li>Computer Science</li>
                         </ul>
-                    </br>
             </div>
-    })
+        </div>)
 }
