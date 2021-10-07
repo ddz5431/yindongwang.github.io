@@ -1,15 +1,68 @@
 import "./resume.scss"
 import React, { Component } from "react";
+import react from 'public/assets/react.svg'
 
 
-export default function Resume() {
+const languages = [
+    {
+        icon: react,
+        name: 'Python',
+        level: ''
+    },
+    {
+        icon: react,
+        name: 'Java',
+        level: ''
+    },
+    {
+        icon: react,
+        name: 'HTML',
+        level: ''
+    },
+    {
+        icon: react,
+        name: 'Latex',
+        level: ''
+    },
+]
+
+const tools = [
+    {
+        icon: react,
+        name: 'Figma',
+        level: ''
+    },
+    {
+        icon: react,
+        name: 'PS',
+        level: ''
+    },
+    {
+        icon: react,
+        name: '',
+        level: ''
+    },
+]
+
+
+const Resume = () => {
+    return (
+        <div.container>
+
+        </div.container>
+
+    );
+
+}
+
+export default function Resume();
+/* export default function Resume() {
 
     return (
         <div className="resume" id="resume">
             <div className="left"/>
             <div className="stuff">
-                    <h1>Resume</h1>
-                    <h2>Yindong Wang</h2>
+                    <h1>About me</h1>
                     <hr/>
                         <p className="head">Education</p>
                         <ul>
@@ -26,3 +79,4 @@ export default function Resume() {
             </div>
         </div>)
 }
+*/
