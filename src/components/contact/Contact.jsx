@@ -12,10 +12,12 @@ export default function Contact() {
     return (
         <div className="contact" id="contact">
             <div className="left">
-                <img src="assets/mobile.png" alt="" />
+                <a href="https://gitlab2.cip.ifi.lmu.de/wangyind"><img src="assets/gitlab.svg" alt="" /></a>
+                <a href="https://www.linkedin.com/in/yindongwang/"><img src="assets/linkedin.svg" alt="" /></a>
+
             </div>
             <div className="right">
-                <h2>Contact.</h2>
+                <h2>Contact</h2>
                 <form onSubmit={handleSubmit}>
                     <input type="text" placeholder="Email"/>
                     <textarea placeholder="Message"></textarea>
