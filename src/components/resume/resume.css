@@ -1,0 +1,9 @@
+.cv {
+  background-color: white;
+  display: flex;
+}
+.cv .description {
+  font-size: 30px;
+}
+
+/*# sourceMappingURL=resume.css.map */

@@ -1,82 +1,79 @@
 import "./resume.scss"
-import React, { Component } from "react";
-import react from 'public/assets/react.svg'
+import React from "react";
+import {EDUCATION, heads} from "../../education-items.ts";
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
+import ListItemAvatar from '@mui/material/ListItemAvatar';
+import Avatar from '@mui/material/Avatar';
+import Divider from '@mui/material/Divider';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableHead from '@mui/material/TableHead';
+import TableContainer from '@mui/material/TableContainer';
+import TableRow from '@mui/material/TableRow';
+import TableCell from '@mui/material/TableCell';
+import Paper from '@mui/material/Paper';
 
 
-const languages = [
-    {
-        icon: react,
-        name: 'Python',
-        level: ''
-    },
-    {
-        icon: react,
-        name: 'Java',
-        level: ''
-    },
-    {
-        icon: react,
-        name: 'HTML',
-        level: ''
-    },
-    {
-        icon: react,
-        name: 'Latex',
-        level: ''
-    },
-]
+export default function Resume() {
 
-const tools = [
-    {
-        icon: react,
-        name: 'Figma',
-        level: ''
-    },
-    {
-        icon: react,
-        name: 'PS',
-        level: ''
-    },
-    {
-        icon: react,
-        name: '',
-        level: ''
-    },
-]
+    function spliceArray(dict) {
+        return Object.values(dict).map(value => {
+            return <TableCell align="right">{value}</TableCell>
+        })
+    }
 
+    function createTable(array) {
+        let cell = undefined
+        return array.map((dict) => {
+            cell = spliceArray(dict)
+            return (
+                <TableContainer component={Paper}>
+                    <Table sx={{minWid: 650}} aria-label="simple table">
+                        <TableHead>
+                            <TableRow>
 
-const Resume = () => {
+                            </TableRow>
+                        </TableHead>
+                        <TableBody>
+                            <TableRow key={dict.major} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+                                {cell}
+                            </TableRow>
+                        </TableBody>
+                    </Table>
+                </TableContainer>
+            )
+        });
+    }
+
+    function HeadsList(props) {
+        const heads = props.heads
+        const listItems = heads.map((object) => {
+            const CustomIconTag = object['icon']
+            return<ListItem>
+                    <ListItemAvatar>
+                        <Avatar>
+                            <CustomIconTag/>
+                        </Avatar>
+                    </ListItemAvatar>
+                    <ListItemText primary={object['field']}/>
+                        {createTable(EDUCATION)}
+                    <Divider variant="inset" component="li"/>
+                </ListItem>
+           }
+        );
+
+        return (
+            <List>
+                {listItems}
+            </List>
+        );
+    }
+
     return (
-        <div.container>
-
-        </div.container>
-
+        <div className="resume">
+            <HeadsList heads={heads}/>
+        </div>
     );
-
 }
-
-export default function Resume();
-/* export default function Resume() {
-
-    return (
-        <div className="resume" id="resume">
-            <div className="left"/>
-            <div className="stuff">
-                    <h1>About me</h1>
-                    <hr/>
-                        <p className="head">Education</p>
-                        <ul>
-                            <li>Master of Science | Computational Linguistics</li>
-                        </ul>
-                        <p className="head">Interests</p>
-                        <ul>
-                            <li>Drawing</li>
-                            <li>Photography</li>
-                            <li>Design</li>
-                            <li>Programming</li>
-                            <li>Computer Science</li>
-                        </ul>
-            </div>
-        </div>)
-}
-*/

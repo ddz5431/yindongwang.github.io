@@ -2,6 +2,11 @@ import "./contact.scss"
 import { useState } from "react";
 
 export default function Contact() {
+    const requiredNotification: [] = [
+        "Please give your email address here.",
+        "Please write something here."
+    ]
+
     const [message, setMessage] = useState(false)
 
     const handleSubmit = (e) => {
@@ -19,9 +24,9 @@ export default function Contact() {
             <div className="right">
                 <h2>Contact</h2>
                 <form onSubmit={handleSubmit}>
-                    <input type="text" placeholder="Email"/>
-                    <textarea placeholder="Message"></textarea>
-                    <button type="submit">Send</button>
+                    <input type="text" placeholder="Email" required={requiredNotification[0]}/>
+                    <textarea placeholder="Message" required={requiredNotification[1]}/>
+                    <button type="submit" >Send</button>
                     {message && <span> Thanks, I'll reply ASAP :)</span>}
                 </form>
             </div>
