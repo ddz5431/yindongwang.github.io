@@ -20,7 +20,7 @@ export default function Works() {
           },
           {
             id: 3,
-            title: "Lexicon Automaton",
+            title: "Personal Website",
             img: "",
             icon: "assets/branding.png"
           }

@@ -1,9 +1,8 @@
 import "./resume.scss"
 import React from "react";
-import {EDUCATION, heads} from "../../education-items.ts";
+import {EDUCATION, heads, work, skills} from "../../resume-items.ts";
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
-import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import Divider from '@mui/material/Divider';
@@ -18,34 +17,38 @@ import Paper from '@mui/material/Paper';
 
 export default function Resume() {
 
-    function spliceArray(dict) {
-        return Object.values(dict).map(value => {
-            return <TableCell align="right">{value}</TableCell>
+    function getKeys(dict) {
+        return Object.keys(dict).map(key => {
+            return <TableCell align="left">{key}</TableCell>
         })
     }
 
-    function createTable(array) {
-        let cell = undefined
-        return array.map((dict) => {
-            cell = spliceArray(dict)
-            return (
-                <TableContainer component={Paper}>
-                    <Table sx={{minWid: 650}} aria-label="simple table">
-                        <TableHead>
-                            <TableRow>
-
-                            </TableRow>
-                        </TableHead>
-                        <TableBody>
-                            <TableRow key={dict.major} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-                                {cell}
-                            </TableRow>
-                        </TableBody>
-                    </Table>
-                </TableContainer>
-            )
-        });
+    function spliceRow(dict) {
+        return Object.values(dict).map(value => {
+            return <TableCell align="left">{value}</TableCell>
+        })
     }
+
+    function createTable(rows) {
+        let columnNames = getKeys(rows[0])  /** Supposed that each row has same properties */
+
+        return (<TableContainer component={Paper}>
+                <Table aria-label="simple table">
+                    <TableHead>
+                        <TableRow>
+                            {columnNames}
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        {rows.map((row) => (
+                            <TableRow>
+                                {spliceRow(row)}
+                            </TableRow>
+                        ))}
+                    </TableBody>
+                </Table>
+            </TableContainer>)
+        }
 
     function HeadsList(props) {
         const heads = props.heads
@@ -57,10 +60,11 @@ export default function Resume() {
                             <CustomIconTag/>
                         </Avatar>
                     </ListItemAvatar>
-                    <ListItemText primary={object['field']}/>
-                        {createTable(EDUCATION)}
-                    <Divider variant="inset" component="li"/>
-                </ListItem>
+
+                <List primary={object['field']}/>
+                    {(object['field']==='Education Experience')? createTable(EDUCATION) : createTable(work)}
+                <Divider variant="inset" component="li"/>
+            </ListItem>
            }
         );
 
@@ -73,6 +77,7 @@ export default function Resume() {
 
     return (
         <div className="resume">
+            <h3 className="title">Education and Work Experience</h3>
             <HeadsList heads={heads}/>
         </div>
     );

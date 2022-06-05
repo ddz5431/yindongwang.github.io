@@ -56,25 +56,32 @@
         padding-top: 150px;
         padding-right: 150px;
         padding-left: 150px;
+        align-items: center;
 
         @include mobile {
             flex: 0.5;
+            font-size: smaller;
             position: relative;
             padding-top: 50px;
-            padding-right: 150px;
+            // padding-right: 150px;
             padding-left: 0;
+        }
+
+        .play {
+            @include mobile {
+                    padding-left: 110px;
+                }
         }
 
         .typewritter {
             width: 100%;
             height: 80%;
             // display: inline-flex;
-            display: flex;
+            display: -moz-popup;
             flex-direction: column;
             justify-content: flex-start;
             // overflow: scroll;
             padding-top: 0;
-
             span {
                 font-family: "Lucida Console", "Courier New", monospace;
                 font-size: 30px;

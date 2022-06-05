@@ -7,6 +7,11 @@
     justify-content: center;
     position: relative;
 
+    .title {
+        font-family: 'Puppies Play', cursive;
+        padding-left: 12%;
+    }
+
     .arrow{
         height: 50px;
         position: absolute;

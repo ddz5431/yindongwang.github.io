@@ -1,0 +1,15 @@
+@import "../../global.scss";
+
+.music_player {
+  text-align: center;
+  .rhap_container {
+    .rhap_header {
+      font-family: "Lucida Console", "Courier New", monospace;
+      color: grey;
+    }
+  }
+  .AudioPlayer {
+    border-radius: 1rem;
+    font-family: inherit;
+  }
+}
