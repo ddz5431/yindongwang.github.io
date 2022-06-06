@@ -1,5 +1,5 @@
 export interface EducationBackground {
-    time: string,
+    period: string,
     university: string,
     major: string,
     degree: string,
