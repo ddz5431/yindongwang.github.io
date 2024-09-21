@@ -61,5 +61,6 @@
     "sass": "^1.52.2",
     "typescript": "^5.6.2"
   },
-  "homepage": "https://yindongwang.github.io"
+  "homepage": "https://ddz5431.github.io/yindongwang.github.io",
+  "publicURL": "/yindongwang.github.io"
 }
