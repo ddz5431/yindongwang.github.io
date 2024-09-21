@@ -1,3 +1,5 @@
+import React from 'react';
+
 import Topbar from "./components/topbar/Topbar";
 import Intro from "./components/intro/Intro"
 import Contact from "./components/contact/Contact"

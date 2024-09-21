@@ -1,3 +1,5 @@
+import React from 'react';
+
 import PortfolioList from "../portfolioList/PortfolioList";
 import "./portfolio.scss"
 import { useState, useEffect } from "react";

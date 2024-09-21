@@ -1,3 +1,5 @@
+import React from 'react';
+
 import "./music.scss";
 import { useState } from "react";
 import AudioPlayer from "react-h5-audio-player";

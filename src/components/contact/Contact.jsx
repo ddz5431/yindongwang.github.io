@@ -1,3 +1,5 @@
+import React from 'react';
+
 import "./contact.scss"
 import github from "../../assets/github.svg"
 import linkedin from "../../assets/linkedin.svg"

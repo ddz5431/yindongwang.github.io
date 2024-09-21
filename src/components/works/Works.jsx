@@ -1,3 +1,5 @@
+import React from 'react';
+
 import "./works.scss";
 import arrow from "../../assets/arrow.png";
 import {useState} from "react";

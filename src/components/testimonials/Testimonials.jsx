@@ -1,3 +1,5 @@
+import React from 'react';
+
 import "./testimonials.scss"
 import rightArrow from "../../assets/right-arrow.png"
 
