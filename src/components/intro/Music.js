@@ -1,19 +1,19 @@
-// https://github.com/lhz516/react-h5-audio-player#readme
-// https://www.bensound.com/
 import "./music.scss";
 import { useState } from "react";
 import AudioPlayer from "react-h5-audio-player";
 import "react-h5-audio-player/lib/styles.css";
+import oneSummerDay from "../../assets/one_summer_day.mp3"
+import madSummer from "../../assets/mad_summer.mp3"
 
 export default function Play() {
     const musicTracks = [
         {
             name: "One summer day",
-            src: "./assets/one_summer_day.mp3"
+            src: oneSummerDay
         },
         {
             name: "Mad summer",
-            src: "./assets/mad_summer.mp3"
+            src: madSummer
         },
         {
             name: "Sunny",
@@ -85,7 +85,6 @@ export default function Play() {
             <AudioPlayer
                 autoPlay
                 src={musicTracks[trackIndex].src}
-                onPlay={(e) => console.log("onPlay")}
                 showSkipControls={true}
                 showJumpControls={false}
                 header={`Now playing: ${musicTracks[trackIndex].name}`}

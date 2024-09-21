@@ -1,12 +1,6 @@
 import React from 'react';
 import { MDBTable, MDBTableHead, MDBTableBody } from 'mdb-react-ui-kit';
 
-
-function CreateTable() {
-
-}
-
-
 export default function Table() {
     return (
         <MDBTable hover className="MDBTable">

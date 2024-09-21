@@ -1,15 +1,21 @@
-@import "../../global.scss";
+@import "../../global";
 
 .music_player {
   text-align: center;
+  * {
+    overflow: hidden;
+  }
+
   .rhap_container {
     .rhap_header {
       font-family: "Lucida Console", "Courier New", monospace;
       color: grey;
+      overflow: hidden;
     }
   }
+
   .AudioPlayer {
-    border-radius: 1rem;
+    /*border-radius: 1rem; */
     font-family: inherit;
   }
 }

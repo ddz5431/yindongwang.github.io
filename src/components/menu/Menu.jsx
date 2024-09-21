@@ -1,25 +1,42 @@
+import {BrowserView, MobileView} from "react-device-detect";
 import "./menu.scss"
 
 export default function Menu({ menuOpen, setMenuOpen }) {
     return (
-        <div className={"menu " + (menuOpen && "active") }>
-            <ul>
-                <li onClick={()=>setMenuOpen(false)}>
-                    <a href="#intro">Home</a>
-                </li>
-                <li onClick={()=>setMenuOpen(false)}>
-                    <a href="#works">Works</a>
-                </li>
-                <li onClick={()=>setMenuOpen(false)}>
-                    <a href="#resume">Resume</a>
-                </li>
-                <li onClick={()=>setMenuOpen(false)}>
-                    <a href="#contact">Contact</a>
-                </li>
-                <li onClik={()=>setMenuOpen(false)}>
-                    <a href="#publications">Publication</a>
-                </li>
-            </ul>
-        </div>
+        <>
+            <BrowserView>
+                <div className={"menu " + (menuOpen && "active") }>
+                    <ul>
+                        <li onClick={()=>setMenuOpen(false)}>
+                            <a href="src/components/menu/Menu#intro">Home</a>
+                        </li>
+                        <li onClick={()=>setMenuOpen(false)}>
+                            <a href="src/components/menu/Menu#education">Education</a>
+                        </li>
+                        <li onClick={()=>setMenuOpen(false)}>
+                            <a href="src/components/menu/Menu#experience">Experience</a>
+                        </li>
+                        <li onClick={()=>setMenuOpen(false)}>
+                            <a href="src/components/menu/Menu#contact">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </BrowserView>
+            <MobileView>
+                <div className={"menu " + (menuOpen && "active") }>
+                    <ul>
+                        <li onClick={()=>setMenuOpen(false)}>
+                            <a href="src/components/menu/Menu#intro">Home</a>
+                        </li>
+                        <li onClick={()=>setMenuOpen(false)}>
+                            <a href="src/components/menu/Menu#resume">Resume</a>
+                        </li>
+                        <li onClick={()=>setMenuOpen(false)}>
+                            <a href="src/components/menu/Menu#contact">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </MobileView>
+        </>
     );
 }

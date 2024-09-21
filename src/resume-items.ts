@@ -1,68 +1,68 @@
-//import { MultilineChart, SignalCellularConnectedNoInternet0Bar } from "@material-ui/icons"
 import { EducationBackground } from "./EducationBackground"
 import WorkIcon from '@mui/icons-material/Work';
 import SchoolIcon from '@mui/icons-material/School';
-import ExploreIcon from '@mui/icons-material/Explore';
-import {create} from "@mui/material/styles/createTransitions";
-
 
 function createDWorkData(
-    period: string,
-    position: string,
-    company: string,
-    location: string
+    Period: string,
+    Position: string,
+    Company: string,
+    Location: string
 ) {
-    return { period, position, company, location}
+    return { Period, Position, Company, Location}
 }
 
 export const work = [
-    createDWorkData("05.2022-now", "PhD candidate", "Hasso Plattner Institute / University of Potsdam", "Potsdam, Germany"),
-    createDWorkData("11.2021-now", "NLP engineer", "MORESOPHY GmbH", "Munich, Germany"),
+    createDWorkData("01.2024-now", "PhD candidate", "Hasso Plattner Institute", "Potsdam, Germany"),
+    createDWorkData("10.2021-12.2023", "NLP engineer", "MORESOPHY GmbH", "Munich, Germany"),
+    createDWorkData("05.2021-10.2021", "Student Data Analyst", "BingoStar GmbH", "Munich, Germany"),
     createDWorkData("10.2019-07.2021", "Teaching Assistant ", "LMU Munich", "Munich, Germany"),
     createDWorkData("11.2019-10.2020", "Student Assistant", "LMU Munich", "Munich, Germany"),
-    createDWorkData("08.2019-09.2019", "Markeing Intern", "ATOSS GmbH", "Munich, Germany"),
+    createDWorkData("08.2019-09.2019", "Marketing Intern", "ATOSS GmbH", "Munich, Germany"),
     createDWorkData("03.2018-09.2018", "Marketing Intern", "Bosch China", "Shanghai, China")
 ];
 
 export const EDUCATION: EducationBackground [] = [
     {
-        period: "2022-2025",
-        major: "Artificial Intelligence and Intelligent Systems",
-        degree: "Doctor of science",
-        university: "Hasso Plattner Institute / University of Potsdam",
-        location: "Potsdam, Germany"
+        Period: "2024-current",
+        Major: "Artificial Intelligence and Intelligent Systems",
+        Degree: "Doctor Degree",
+        University: "Hasso Plattner Institute",
+        Location: "Potsdam, Germany"
     },
     {
-        period: "2019-2021",
-        major: "Computational Linguistics with minor in Computer Science",
-        degree: "Master of Science",
-        university: "LMU Munich",
-        location: "Munich, Germany"
+        Period: "2019-2021",
+        Major: "Computational Linguistics, minored in Computer Science",
+        Degree: "Master of Science",
+        University: "LMU Munich",
+        Location: "Munich, Germany"
     },
     {
-        period: "2018-2019",
-        major: "Computational Linguistics",
-        degree: "Makeup year",
-        university: "LMU Munich",
-        location: "Munich, Germany"
+        Period: "2018-2019",
+        Major: "Computational Linguistics",
+        Degree: "Prerequisite courses",
+        University: "LMU Munich",
+        Location: "Munich, Germany"
     },
     {
-        period: "2014-2018",
-        major: "German Language and Literature",
-        degree: "Bachelor of Arts",
-        university: "University of Anhui",
-        location: "Anhui, China"
+        Period: "2014-2018",
+        Major: "German Language and Literature",
+        Degree: "Bachelor of Arts",
+        University: "University of Anhui",
+        Location: "Anhui, China"
     },
     {
-        period: "2016-2017",
-        major: "German Language and Literature",
-        degree: "Exchange Studies",
-        university: "University of Osnabrück",
-        location: "Osnabrück, Germany"
+        Period: "2016-2017",
+        Major: "German Language and Literature",
+        Degree: "Exchange Studies",
+        University: "University of Osnabrück",
+        Location: "Osnabrück, Germany"
     }
 ]
 
-export const heads = [
-    {field: "Work Experience", icon: WorkIcon},
+export const head_education = [
     {field: "Education Experience", icon: SchoolIcon},
+]
+
+export const head_experience = [
+    {field: "Work Experience", icon: WorkIcon},
 ]

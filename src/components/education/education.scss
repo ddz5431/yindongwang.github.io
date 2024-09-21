@@ -1,0 +1,39 @@
+@import "../../global";
+
+.browser_view {
+  display: flex;
+  background-color: white;
+
+  .education {
+    flex-grow: 1;
+    align-self: center;
+    align-items: normal;
+    font-family: "Lucida Console", "Courier New", monospace;
+    padding-left: 10%;
+    padding-right: 10%;
+
+    .table_container * {
+      font-size: 22px;
+    }
+
+    .title {
+      padding-left: 4%;
+      font-size: 30px;
+    }
+
+    @include mobile {
+      font-size: 8px;
+      padding-left: 1%;
+      padding-right: 1%;
+    }
+
+    ul {
+      padding-right: 3%;
+      // padding-left: 10%;
+      @include mobile {
+        padding-right: 0;
+      }
+    }
+  }
+}
+

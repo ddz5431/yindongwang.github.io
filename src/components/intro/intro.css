@@ -40,7 +40,7 @@
   padding-top: 50px;
   padding-right: 150px;
 }
-.intro .right .typewritter {
+.intro .right .typewriter {
   width: 100%;
   height: 80%;
   display: flex;
@@ -48,23 +48,23 @@
   justify-content: flex-start;
   padding-top: 0;
 }
-.intro .right .typewritter span {
+.intro .right .typewriter {
   font-family: "Lucida Console", "Courier New", monospace;
   font-size: 30px;
   line-height: 1.6;
 }
 @media (max-width: 768px) {
-  .intro .right .typewritter span {
+  .intro .right .typewriter {
     font-size: 20px;
   }
 }
-.intro .right .typewritter span inline {
+.intro .right .typewriter .colored {
   font-size: inherit;
   font-family: inherit;
   color: #dc143c;
 }
 @media (max-width: 768px) {
-  .intro .right .typewritter {
+  .intro .right .typewriter {
     padding-left: 80px;
     align-items: center;
   }

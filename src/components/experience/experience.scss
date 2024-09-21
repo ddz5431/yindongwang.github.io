@@ -1,0 +1,55 @@
+@import "../../global";
+
+.mobile_view {
+
+  .resume {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 50%;
+
+    .title {
+      font-size: 20px;
+      text-align: left;
+      padding-bottom: 3%;
+    }
+  }
+
+  .image {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+.browser_view {
+  display: flex;
+  background-color: white;
+
+  .experience {
+    flex-grow: 1;
+    align-self: center;
+    align-items: normal;
+    font-family: "Lucida Console", "Courier New", monospace;
+    padding-left: 10%;
+    padding-right: 10%;
+    // overflow: hidden;
+
+    .table_container * {
+      font-size: 22px;
+    }
+
+    .title {
+      padding-left: 4%;
+      font-size: 30px;
+    }
+
+    ul {
+      padding-right: 3%;
+      // padding-left: 10%;
+      @include mobile {
+        padding-right: 0;
+      }
+    }
+  }
+}

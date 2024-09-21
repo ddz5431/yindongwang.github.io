@@ -1,8 +1,12 @@
 import "./contact.scss"
+import github from "../../assets/github.svg"
+import linkedin from "../../assets/linkedin.svg"
 import { useState } from "react";
 
+
 export default function Contact() {
-    const requiredNotification: [] = [
+    // @ts-ignore
+    const requiredNotification = [
         "Please give your email address here.",
         "Please write something here."
     ]
@@ -17,8 +21,8 @@ export default function Contact() {
     return (
         <div className="contact" id="contact">
             <div className="left">
-                <a href="https://gitlab2.cip.ifi.lmu.de/wangyind"><img src="assets/gitlab.svg" alt="" /></a>
-                <a href="https://www.linkedin.com/in/yindongwang/"><img src="assets/linkedin.svg" alt="" /></a>
+                <a href="https://github.com/ddz5431"><img src={github} alt="" /></a>
+                <a href="https://www.linkedin.com/in/yindongwang/"><img src={linkedin} alt="" /></a>
 
             </div>
             <div className="right">

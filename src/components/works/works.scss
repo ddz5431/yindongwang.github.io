@@ -1,4 +1,4 @@
-@import "../../global.scss";
+@import "../../global";
 
 .works{
     background-color: #ecf0f1;
@@ -6,6 +6,7 @@
     align-items: center;
     justify-content: center;
     position: relative;
+    overflow: hidden;
 
     .title {
         font-family: 'Puppies Play', cursive;

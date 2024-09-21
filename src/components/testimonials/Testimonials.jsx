@@ -1,4 +1,5 @@
 import "./testimonials.scss"
+import rightArrow from "../../assets/right-arrow.png"
 
 export default function Testimonials() {
     const data = [
@@ -6,8 +7,8 @@ export default function Testimonials() {
             id: 1,
             name: "Yindong Wang",
             title: "NLP Engineer",
-            img: "assets/me.png",
-            icon: "assets/mobile.png",
+            img: "./assets/me.png",
+            icon: "./assets/mobile.png",
             desc: "I'm an NLP Enthusiast. Hanna is my lover!",
         },
         {
@@ -27,7 +28,7 @@ export default function Testimonials() {
                 {data.map((d)=> (
                     <div className={d.featured ? "card featured" : "card"}>
                         <div className="top">
-                            <img src="assets/right-arrow.png" className="left" alt="" />
+                            <img src={rightArrow} className="left" alt="" />
                             <img 
                                 className="user"
                                 src={d.img}

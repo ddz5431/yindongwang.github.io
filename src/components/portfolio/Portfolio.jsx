@@ -1,4 +1,4 @@
-import PortfolioList from "../portfolioList/PortfolioList"
+import PortfolioList from "../portfolioList/PortfolioList";
 import "./portfolio.scss"
 import { useState, useEffect } from "react";
 import { featuredPortfolio,
@@ -55,7 +55,7 @@ export default function Portfolio() {
                 break;
             default:
                 setData(featuredPortfolio);
-        };
+        }
 
     }, [selected]);
 
@@ -76,7 +76,7 @@ export default function Portfolio() {
                 {data.map((d) => (
                     <div className="item">
                         <img 
-                            src="assets/linkedin.png" 
+                            src=""
                             alt="" 
                         />
                     <h3>{d.title}</h3>
