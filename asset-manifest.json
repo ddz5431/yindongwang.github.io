@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/yindongwang.github.io/static/css/main.e8ce260f.css",
+    "main.css": "/yindongwang.github.io/static/css/main.bd2c2932.css",
     "main.js": "/yindongwang.github.io/static/js/main.269c50eb.js",
     "static/media/mad_summer.mp3": "/yindongwang.github.io/static/media/mad_summer.9440b40d4fc994febc33.mp3",
     "static/media/one_summer_day.mp3": "/yindongwang.github.io/static/media/one_summer_day.2ada7e0e4bfa4e812b29.mp3",
@@ -9,11 +9,11 @@
     "static/media/github.svg": "/yindongwang.github.io/static/media/github.9f00fa0d5fbcc90d12ef3fddd45f2456.svg",
     "index.html": "/yindongwang.github.io/index.html",
     "static/media/linkedin.svg": "/yindongwang.github.io/static/media/linkedin.27a3f479ca1bbb0ceef19e395081fb94.svg",
-    "main.e8ce260f.css.map": "/yindongwang.github.io/static/css/main.e8ce260f.css.map",
+    "main.bd2c2932.css.map": "/yindongwang.github.io/static/css/main.bd2c2932.css.map",
     "main.269c50eb.js.map": "/yindongwang.github.io/static/js/main.269c50eb.js.map"
   },
   "entrypoints": [
-    "static/css/main.e8ce260f.css",
+    "static/css/main.bd2c2932.css",
     "static/js/main.269c50eb.js"
   ]
 }
