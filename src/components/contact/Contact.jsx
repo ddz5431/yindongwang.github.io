@@ -1,41 +1,35 @@
 import React from 'react';
-
-import "./contact.scss"
-import github from "../../assets/github.svg"
-import linkedin from "../../assets/linkedin.svg"
-import { useState } from "react";
-
+import './contact.scss';
+import github from '../../assets/github.svg';
+import linkedin from '../../assets/linkedin.svg';
+import emailIcon from '../../assets/email.svg'; // Optional: If using an email icon
 
 export default function Contact() {
-    // @ts-ignore
-    const requiredNotification = [
-        "Please give your email address here.",
-        "Please write something here."
-    ]
+  // Define your email details
+  const email = 'your-email@example.com'; // Replace with your actual email address
+  const subject = encodeURIComponent('Contact Inquiry'); // Subject of the email
+  const body = encodeURIComponent('Hello,\n\nI would like to get in touch with you regarding...'); // Body of the email
 
-    const [message, setMessage] = useState(false)
+  // Construct the mailto link
+  const mailtoLink = `mailto:${email}?subject=${subject}&body=${body}`;
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        setMessage(true)
-    }
-
-    return (
-        <div className="contact" id="contact">
-            <div className="left">
-                <a href="https://github.com/ddz5431"><img src={github} alt="" /></a>
-                <a href="https://www.linkedin.com/in/yindongwang/"><img src={linkedin} alt="" /></a>
-
-            </div>
-            <div className="right">
-                <h2>Contact</h2>
-                <form onSubmit={handleSubmit}>
-                    <input type="text" placeholder="Email" required={requiredNotification[0]}/>
-                    <textarea placeholder="Message" required={requiredNotification[1]}/>
-                    <button type="submit" >Send</button>
-                    {message && <span> Thanks, I'll reply ASAP :)</span>}
-                </form>
-            </div>
+  return (
+      <div className="contact" id="contact">
+        <h2>Contact</h2>
+        <div className="top">
+          <a href="https://github.com/ddz5431" target="_blank" rel="noopener noreferrer">
+            <img src={github} alt="GitHub"/>
+          </a>
+          <a href="https://www.linkedin.com/in/yindongwang/" target="_blank" rel="noopener noreferrer">
+            <img src={linkedin} alt="LinkedIn"/>
+          </a>
         </div>
-    )
+        <div className="bottom">
+          <a href={mailtoLink} className="email-button" title="Click to open your email client">
+            <img src={emailIcon} alt="Email Icon" className="email-icon"/>
+            Send an Email
+          </a>
+        </div>
+      </div>
+  );
 }

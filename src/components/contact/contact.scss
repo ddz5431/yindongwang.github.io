@@ -1,103 +1,110 @@
+@use "sass:color";
 @import "../../global";
 
+$--topbar-height: 60px;
+$button-bg-gradient: linear-gradient(45deg, $mainColor, color.scale($mainColor, $lightness: -15%));
 
-.contact{
-    background: white;
+.contact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* Removed overflow: hidden; */
+  padding-top: $--topbar-height;
+
+  h2 {
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+  }
+
+  .top {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap; // Allows icons to wrap on smaller screens
+  width: 100%;
+  margin-bottom: 50px;
+
+    img {
+        width: 100%;
+        height: auto;
+      }
+}
+
+  .bottom {
+    width: 100%;
+    max-width: 500px;
+    /* Removed overflow: hidden; */
+    margin-bottom: 40px;
+    display: flex;
     flex-direction: column;
-    flex: 1;
+    align-items: center;
 
-    .left{
-        margin-top: 50px;
-        display: flex;
-        overflow: hidden;
-        padding-bottom: 50px;
-        align-content: center;
-        justify-content: center;
+    .email-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 28px;
+      background: $button-bg-gradient;
+      color: white;
+      text-decoration: none;
+      border: none;
+      border-radius: 50px;
+      font-size: 18px;
+      font-weight: bold;
+      transition: background 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+      position: relative;
 
-        @include mobile {
-            padding-left: 0;
-            padding-right: 0;
-            display: flex;
-        }
+      .email-icon {
+        width: 24px;
+        height: 24px;
+        margin-right: 12px;
+      }
 
-        a{
-            display: flex;
-            align-content: center;
-            justify-content: center;
-            width: 10%;
+      &:hover {
+        background: color.scale($mainColor, $lightness: -15%);
+        /* Removed transform properties */
+        /* No movement or scaling */
+        /* Optional: Add a subtle box-shadow */
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+      }
 
-            @include mobile {
-                width: 20%;
-            }
+      &:active {
+        /* No scaling */
+        /* Optional: Darken background on click */
+        background: color.scale($mainColor, $lightness: -20%);
+        box-shadow: none;
+      }
 
-            img{
-                width: 50%;
-                align-content: center;
-                justify-content: center;
-            }
-        }
+      &:focus {
+        outline: 2px solid color.scale($mainColor, $lightness: -20%);
+        outline-offset: 4px;
+      }
+    }
+  }
 
+  @media (max-width: 768px) {
+    padding: 20px 5%;
+
+    h2 {
+      font-size: 1.8em;
     }
 
-    .right{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 30px;
-
-        h2{
-            font-size: 30px;
-        }
-
-        form{
-            width: 70%;
-            height: 70%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-around;
-
-            @include mobile {
-                align-content: center;
-                width: 100%;
-                height: 100%;
-            }
-
-            input{
-                width: 300px;
-                height: 30px;
-                font-size: 14px;
-                margin-top: 20px;
-                margin-bottom: 20px;
-            }
-
-            textarea{
-                width: 300px;
-                height: 200px;
-                font-size: 14px;
-                margin-bottom: 20px;
-            }
-
-            button{
-                width: 150px;
-                height: 30px;
-                color: whitesmoke;
-                background: $mainColor;
-                border: none;
-                border-radius: 10px;
-                font-weight: 500;
-                cursor: pointer;
-
-                &:focus{
-                    outline: none;
-                }
-            }
-
-            span{
-                color: green;
-                margin-top: 20px;
-            }
-        }
+    .email-button {
+      font-size: 16px;
+      padding: 12px 24px;
     }
+
+    .top a {
+      width: 50px;
+      height: 50px;
+
+      img {
+        width: 70%;
+        height: 70%;
+      }
+    }
+  }
 }

@@ -1,21 +1,79 @@
 @import "../../global";
 
+@import "../../global";
+
 .music_player {
   text-align: center;
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto;
+
   * {
     overflow: hidden;
   }
 
   .rhap_container {
+    background-color: rgba(255, 255, 255, 0.2);
+    box-shadow: none;
+    padding: 10px;
+
     .rhap_header {
       font-family: "Lucida Console", "Courier New", monospace;
-      color: grey;
+      color: #333;
       overflow: hidden;
+      margin-bottom: 10px;
+      font-size: 20px;
+    }
+
+    .rhap_main {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .rhap_progress-section {
+      margin-bottom: 5px;
+    }
+
+    .rhap_progress-bar {
+      height: 4px;
+      background-color: rgba(0, 0, 0, 0.2);
+    }
+
+    .rhap_progress-filled {
+      background-color: #333;
+    }
+
+    .rhap_time {
+      color: #333;
+      font-size: 16px;
+    }
+
+    .rhap_controls-section {
+      margin-top: 5px;
+    }
+
+    .rhap_additional-controls,
+    .rhap_volume-controls {
+      flex: 0;
+    }
+
+    .rhap_main-controls {
+      flex: 1;
+      justify-content: space-between;
+    }
+
+    .rhap_main-controls-button,
+    .rhap_volume-button {
+      color: #333;
+      font-size: 20px;
+    }
+
+    .rhap_play-pause-button {
+      font-size: 24px;
     }
   }
 
   .AudioPlayer {
-    /*border-radius: 1rem; */
     font-family: inherit;
   }
 }

@@ -12,8 +12,6 @@ import TableContainer from '@mui/material/TableContainer';
 import TableRow from '@mui/material/TableRow';
 import TableCell from '@mui/material/TableCell';
 import Paper from '@mui/material/Paper';
-import {BrowserView, MobileView} from 'react-device-detect';
-import resume from '../../assets/resume.png'
 
 // import { downloadFile } from 'react-file-downloader'
 
@@ -27,10 +25,21 @@ export default function Education() {
     }
 
     function spliceRow(dict) {
-        return Object.values(dict).map((value, idx) => {
-            return <TableCell align="left" key={"education-table-value-cell-" + idx}>{value}</TableCell>
-        })
+  return Object.entries(dict).map(([key, value], idx) => {
+    let cellContent = value;
+
+    // Example: If the key is 'Position', make the text bold
+    if (key === 'Major') {
+      cellContent = <strong>{value}</strong>;
     }
+
+    return (
+      <TableCell align="left" key={`experience-table-value-cell-${idx}`}>
+        {cellContent}
+      </TableCell>
+    );
+  });
+}
 
     function createTable(rows) {
         let columnNames = getKeys(rows[0])  /** Supposed that each row has same properties */
@@ -77,22 +86,11 @@ export default function Education() {
     }
 
     return (
-        <>
-            <BrowserView className="browser_view">
-                <div className="education" id="education">
-                    <div className="table_container">
-                        <h5 className="title">Education Background</h5>
-                        <HeadsList heads={head_education}/>
-                    </div>
-                </div>
-            </BrowserView>
-            <MobileView>
-                <h5 className="title">Education Background</h5>
-                <a href={process.env.PUBLIC_URL + '/Yindong_Wang_s_CV.pdf'} download>
-                    <img src={resume} alt="resume" >
-                    </img>
-                </a>
-            </MobileView>
-        </>
+        <div className="section education" id="education">
+            <h2 className="title">Education Experience</h2>
+            <div className="table_container">
+                <HeadsList heads={head_education}/>
+            </div>
+        </div>
     );
 }

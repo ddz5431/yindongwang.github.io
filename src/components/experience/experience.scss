@@ -1,55 +1,52 @@
 @import "../../global";
 
-.mobile_view {
+$--topbar-height: 60px;
 
-  .resume {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 50%;
-
-    .title {
-      font-size: 20px;
-      text-align: left;
-      padding-bottom: 3%;
-    }
-  }
-
-  .image {
-    width: 100px;
-    height: 100px;
-  }
-}
-
-.browser_view {
+.section.experience {
+  padding-top: var(--topbar-height) !important;
   display: flex;
-  background-color: white;
+  flex-direction: column;
+  justify-content: flex-start; // Align content to the top
+  align-items: center; // Center content horizontally
 
-  .experience {
-    flex-grow: 1;
-    align-self: center;
-    align-items: normal;
-    font-family: "Lucida Console", "Courier New", monospace;
-    padding-left: 10%;
-    padding-right: 10%;
-    // overflow: hidden;
+  .title {
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+  }
 
-    .table_container * {
-      font-size: 22px;
+  .table_container {
+    width: 100%;
+    height: auto;
+    //max-height: calc(100vh - var(--topbar-height) - 120px);
+    //
+    .MuiTableCell-head {
+      background-color: #43A6C6;
+      color: #fff;
+      font-weight: bold;
     }
 
-    .title {
-      padding-left: 4%;
-      font-size: 30px;
+    .MuiTableCell-body {
+      font-size: 16px;
     }
 
-    ul {
-      padding-right: 3%;
-      // padding-left: 10%;
-      @include mobile {
-        padding-right: 0;
-      }
+    .MuiTableRow-root:hover {
+      background-color: #f1f1f1;
+    }
+  }
+  @media (min-height: 800px) {
+  .table_container {
+    max-height: none; // Allow full expansion on taller screens
+  }
+  }
+
+  @media (max-height: 799px) {
+    .table_container {
+      max-height: calc(100vh - var(--topbar-height));
+      overflow: auto;
     }
   }
 }
+

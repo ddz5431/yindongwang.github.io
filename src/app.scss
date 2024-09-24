@@ -1,24 +1,101 @@
-.app{
-    height: 100vh;
-    background: lightsalmon;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
-    .sections{
-        width: 100%;
-        height: calc(100vh - 70px);
-        background-color: lightsalmon;
-        position: relative;
-        top: 70px;
-        scroll-behavior: smooth;
-        scroll-snap-type: y mandatory;
-        scrollbar-width: none; //for firefox
-        &::-webkit-scrollbar{  //psuedo class: for other browsers
-            display: none;
-        }
 
-        > *{
-            width: 100vw;
-            height: calc(100vh - 70px);
-            scroll-snap-align: start;
-        }
+//:root {
+//  --accent-color: #F9B495;
+//  --accent-color-dark: #E0A07D; /* Darkened by 10% */
+//}
+
+.some-class {
+  background-color: var(--accent-color);
+}
+
+.some-class:hover {
+  background-color: var(--accent-color-dark);
+}
+
+:root {
+  --primary-color: #1a2b3c;
+  --secondary-color: #00b4d8;
+  --accent-color: #ff6b6b;
+  --background-color: #f8f9fa;
+  --text-color: #333333;
+  --topbar-height: 60px;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  color: var(--text-color);
+  background-color: var(--background-color);
+}
+
+.app {
+  min-height: 100vh;
+
+}
+
+.topbar {
+  //background-color: var(--primary-color);
+  color: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.sections {
+  .section {
+    padding: 10px 10px;
+    transition: background-color 0.3s ease;
+
+    h2 {
+      font-weight: 600;
+      color: var(--primary-color);
+      margin-bottom: 30px;
     }
+
+    &#intro {
+      //background-color: var(--primary-color);
+      color: white;
+    }
+
+    &#education {
+      background-color: var(--background-color);
+    }
+
+    &#experience {
+      background-color: var(--secondary-color);
+      color: white;
+    }
+
+    &#contact {
+      background-color: var(--background-color);
+    }
+  }
+}
+
+// Add some modern card styling
+.card {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+}
+
+// Modern button styling
+.button {
+  background-color: var(--accent-color);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 20px;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #E0A07D;
+  }
 }

@@ -25,7 +25,7 @@ export const EDUCATION: EducationBackground [] = [
     {
         Period: "2024-current",
         Major: "Artificial Intelligence and Intelligent Systems",
-        Degree: "Doctor Degree",
+        Degree: "Ph.D. in AI and Artificial Intelligence ",
         University: "Hasso Plattner Institute",
         Location: "Potsdam, Germany"
     },
@@ -48,7 +48,7 @@ export const EDUCATION: EducationBackground [] = [
         Major: "German Language and Literature",
         Degree: "Bachelor of Arts",
         University: "University of Anhui",
-        Location: "Anhui, China"
+        Location: "Hefei, China"
     },
     {
         Period: "2016-2017",
