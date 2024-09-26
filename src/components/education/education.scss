@@ -1,39 +1,80 @@
-@import "../../global";
+@import "../../variables";
 
-$--topbar-height: 60px;
+.education {
+  padding: 2rem 1rem;
+  max-width: 800px;
+  //margin: 0 auto;
+  background-color: whitesmoke;
 
-.section.education {
-  padding-top: var(--topbar-height) !important;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start; // Align content to the top
-  align-items: center; // Center content horizontally
-
-  .title {
-    font-size: 2em;
-    font-weight: bold;
-    margin-bottom: 20px;
-    text-align: center;
-    color: #333;
+  .section-title {
+    font-size: 2rem;
+    font-weight: 600;
+    color: $accentFontColor;
+    margin-bottom: 1.5rem;
+    text-align: left;
   }
 
-  .table_container {
-    width: 100%;
-    height: auto;
-    overflow: auto;
+  .education-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
 
-    .MuiTableCell-head {
-      background-color: #1976d2;
-      color: #fff;
-      font-weight: bold;
+  .education-item {
+    display: flex;
+    align-items: flex-start;
+    padding: 1rem;
+    background-color: $mainFontColor;
+    border-left: 4px solid $accentBackgroundColor;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+    &:hover {
+      transform: translateX(5px);
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      background-color: $hover-color;
     }
 
-    .MuiTableCell-body {
-      font-size: 16px;
+    .education-icon {
+      color: $accentFontColor;
+      margin-right: 1rem;
+      padding-top: 0.25rem;
     }
 
-    .MuiTableRow-root:hover {
-      background-color: #f1f1f1;
+    .education-content {
+      flex: 1;
+
+      .school {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: $accentFontColor;
+        margin: 0 0 0.5rem 0;
+      }
+
+      .degree {
+        font-size: 1rem;
+        color: $introFontColor;
+        margin: 0 0 0.25rem 0;
+      }
+
+      .date, .gpa {
+        font-size: 0.9rem;
+        color: $introFontColor;
+        margin: 0;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .education {
+    padding: 1rem;
+
+    .education-item {
+      flex-direction: column;
+
+      .education-icon {
+        margin-bottom: 0.5rem;
+      }
     }
   }
 }

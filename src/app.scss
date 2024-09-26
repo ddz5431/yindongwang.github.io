@@ -5,7 +5,7 @@
 //  --accent-color-dark: #E0A07D; /* Darkened by 10% */
 //}
 $topbar-height: 4rem;
-$topbar-height-mobile: 50px;
+$topbar-height-mobile: 4rem;
 $section-padding: 10px;
 
 .some-class {
@@ -20,7 +20,7 @@ $section-padding: 10px;
   --primary-color: #1a2b3c;
   --secondary-color: #00b4d8;
   --accent-color: #ff6b6b;
-  --background-color: #f8f9fa;
+  --background-color: whitesmoke;
   --text-color: #333333;
 }
 
@@ -40,10 +40,10 @@ body {
   //background-color: var(--primary-color);
   color: white;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  height: $topbar-height;
 }
 
 .sections {
+  background-color: whitesmoke;
   flex-grow: 1;
   scroll-snap-type: y mandatory;
   height: 100vh;
@@ -53,7 +53,7 @@ body {
     min-height: 100vh;
     scroll-snap-align: start; /* Ensures the section snaps to the top */
 
-    padding: $topbar-height 10px calc($topbar-height - 3px) 10px;
+    padding: 10px;
     transition: background-color 0.3s ease;
 
     h2 {
@@ -63,21 +63,15 @@ body {
     }
 
     &#intro {
-      //background-color: var(--primary-color);
-      background-color: #E6F3FF;
     }
 
     &#education {
-      background-color: var(--background-color);
     }
 
     &#experience {
-      background-color: var(--secondary-color);
-      color: white;
     }
 
     &#contact {
-      background-color: var(--background-color);
     }
   }
 }

@@ -2,13 +2,12 @@
 @import '../../app';
 
 .intro {
-  background-color: #E6F3FF;
+  background-color: whitesmoke;
   display: flex;
   flex-direction: column;
   align-items: center;
-  //justify-content: flex-start;
-  padding-bottom: 2rem; // Space for the player at the bottom
-  padding-top: 2rem;// -top: 3rem;
+  padding-bottom: 1rem; // Space for the player at the bottom
+  //padding-top: 1rem;// -top: 3rem;
   overflow: auto;
   width: 100%;
   position: relative;
@@ -27,30 +26,31 @@
     margin-bottom: 1rem;
 
     .imageContainer {
-    width: 100%;
-    max-width: 20rem;
-    border-radius: 50%;
-    overflow: hidden;
-
-    img {
       width: 100%;
-      height: auto;
-      object-fit: cover;
+      max-width: 25rem;
+      border-radius: 50%;
+      overflow: hidden;
+      aspect-ratio: 1 / 1;
+
+      img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+      }
     }
   }
-  }
 
-  .middle {
-    width: 100%;
+  .typewriter-container {
+    height: 20em;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
-    flex-grow: 1;
   }
 
   .typewriter {
     font-family: monospace;
+    max-width: 80%;
     font-size: clamp(0.9rem, 2.5vw, 1.3rem);
     line-height: 1.4;
     white-space: pre-wrap;
@@ -84,52 +84,75 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-top: 2%;
     justify-content: flex-start;
-    padding-bottom: 2rem; // Space for the player at the bottom
-    padding-top: 2rem;// -top: 3rem;
+    //padding-bottom: 2rem; // Space for the player at the bottom
+    //padding-top: 2rem;// -top: 3rem;
     overflow: auto;
     width: 100%;
     position: relative;
     max-height: 100vh;
+    flex-grow: 2;
 
     .content-wrapper {
       justify-content: center;
-      flex-grow: 1;
+      flex-grow: 2;
       height: auto;
       flex-direction: column;
     }
 
     .top {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    margin-bottom: 1rem;
-    }
-
-    .middle {
       width: 100%;
       display: flex;
-      flex-direction: column;
-      align-items: center;
       justify-content: center;
-      flex-grow: 0.5;
-      margin-top: 2rem;
-  }
+      padding-top: 1%;
+      padding-bottom: 1%;
+      margin: 0;
 
-    .imageContainer {
-      width: 60%;
-      max-width: 12rem;
+      .imageContainer {
+        width: 80%;
+        border-radius: 100%;
+        overflow: hidden;
+        //aspect-ratio: 1 / 1;
+
+        img {
+          height: auto;
+          justify-content: center;
+        }
+      }
     }
 
-    .typewriter {
-      font-size: clamp(1rem, 2vw, 2rem);
-      margin: 0;
-      align-items: center;
-      flex-grow: 0.5;
+    .typewriter-container {
+      height: 13rem;
+      padding-top: 2%;
+      padding-bottom: 2%;
+
+      .typewriter {
+        font-size: clamp(1rem, 2vw, 2rem);
+        align-items: center;
+        flex-grow: 0.5;
+      }
     }
 
     .bottom {
-      display: flex; // Hides the entire bottom section on mobile
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      padding: 1rem;
+      background-color: transparent;
+      //box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+      position: relative; // Keep it at the bottom of the content flow
+      bottom: 0;
+
+      .play-container {
+        width: 85%;
+      }
     }
   }
+
+  @media (max-height: 667px) {
+    .bottom {
+      display: none;
+      }
+    }
 }

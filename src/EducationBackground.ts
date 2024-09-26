@@ -4,5 +4,6 @@ export interface EducationBackground {
     Major: string,
     Degree: string,
     Grade?: any,
-    Location: string
+    Location: string,
+    Link: string
 }

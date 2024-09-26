@@ -14,7 +14,7 @@ export default function Intro() {
                     <img src={profile} alt="" />
                 </div>
             </div>
-            <div className="middle">
+            <div className="typewriter-container">
                 <WindupChildren>
                     <Pace ms={50}>
                         <span className="typewriter">
