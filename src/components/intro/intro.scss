@@ -1,15 +1,15 @@
 @import '../../variables';
+@import '../../app';
 
 .intro {
-  background-color: #e9f5f9;
+  background-color: #E6F3FF;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
-  min-height: calc(100vh - 4.375rem); // Adjust for the height of the topbar
-  margin-top: 4.375rem; // Push content below the topbar
-  padding-bottom: 5rem; // Space for the player at the bottom
-  overflow-y: auto;
+  //justify-content: flex-start;
+  padding-bottom: 2rem; // Space for the player at the bottom
+  padding-top: 2rem;// -top: 3rem;
+  overflow: auto;
   width: 100%;
   position: relative;
 
@@ -18,22 +18,15 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    max-width: 80rem;
-    flex-grow: 1; // Ensure it grows to take up the remaining space
-    padding: 1rem;
-    margin-top: 4.375rem;
-    overflow: hidden;
+    flex-grow: 3; // Ensure it grows to take up the remaining space
   }
 
   .top {
     width: 100%;
-    display: flex;
     justify-content: center;
     margin-bottom: 1rem;
-  }
 
-  .imageContainer {
+    .imageContainer {
     width: 100%;
     max-width: 20rem;
     border-radius: 50%;
@@ -44,6 +37,7 @@
       height: auto;
       object-fit: cover;
     }
+  }
   }
 
   .middle {
@@ -82,19 +76,34 @@
     // Style the Play component if needed
     .play-container {
       width: 100%;
-      max-width: 80rem;
-      padding: 1rem;
+      max-width: 100rem;
     }
   }
 
   @media (max-width: 750px) {
-    margin-top: 203px; // Ensure there's space for the fixed topbar
-    //margin-bottom: 0.5rem; // Remove space for the player when it's hidden
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-bottom: 2rem; // Space for the player at the bottom
+    padding-top: 2rem;// -top: 3rem;
+    overflow: auto;
+    width: 100%;
+    position: relative;
+    max-height: 100vh;
 
     .content-wrapper {
-      padding: 0.5rem;
       justify-content: center;
-      flex-grow: 0;
+      flex-grow: 1;
+      height: auto;
+      flex-direction: column;
+    }
+
+    .top {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
     }
 
     .middle {
@@ -120,7 +129,7 @@
     }
 
     .bottom {
-      display: none; // Hides the entire bottom section on mobile
+      display: flex; // Hides the entire bottom section on mobile
     }
   }
 }

@@ -89,7 +89,7 @@ export default function Experience() {
   return (
     <>
       <BrowserView>
-        <div className="section experience" id="experience">
+        <div className="section experience">
           <h2 className="title">Work Experience</h2>
           <div className="table_container">
             <HeadsList heads={head_education}/>
@@ -97,7 +97,7 @@ export default function Experience() {
         </div>
       </BrowserView>
       <MobileView>
-        <div className="section resume" id="resume">
+        <div className="section resume">
           <h5 className="title">Resume to Download</h5>
           <a href={process.env.PUBLIC_URL + "/Yindong_Wang_s_CV.pdf"} download>
             {/* Uncomment and provide the image if needed */}

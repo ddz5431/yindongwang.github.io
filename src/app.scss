@@ -1,10 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
-
 //:root {
 //  --accent-color: #F9B495;
 //  --accent-color-dark: #E0A07D; /* Darkened by 10% */
 //}
+$topbar-height: 4rem;
+$topbar-height-mobile: 50px;
+$section-padding: 10px;
 
 .some-class {
   background-color: var(--accent-color);
@@ -20,7 +22,6 @@
   --accent-color: #ff6b6b;
   --background-color: #f8f9fa;
   --text-color: #333333;
-  --topbar-height: 60px;
 }
 
 body {
@@ -31,18 +32,28 @@ body {
 
 .app {
   min-height: 100vh;
-
+  display: flex;
+  flex-direction: column;
 }
 
 .topbar {
   //background-color: var(--primary-color);
   color: white;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  height: $topbar-height;
 }
 
 .sections {
+  flex-grow: 1;
+  scroll-snap-type: y mandatory;
+  height: 100vh;
+  overflow-y: auto; /* Enables vertical scrolling */
+
   .section {
-    padding: 10px 10px;
+    min-height: 100vh;
+    scroll-snap-align: start; /* Ensures the section snaps to the top */
+
+    padding: $topbar-height 10px calc($topbar-height - 3px) 10px;
     transition: background-color 0.3s ease;
 
     h2 {
@@ -53,7 +64,7 @@ body {
 
     &#intro {
       //background-color: var(--primary-color);
-      color: white;
+      background-color: #E6F3FF;
     }
 
     &#education {

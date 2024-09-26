@@ -69,7 +69,7 @@ export default function Topbar() {
           </div>
           <div className="itemContainer">
             <Mail className="icon" />
-            <span>yindong.wang@protonmail.com</span>
+            <span>hi@yindong.me</span>
           </div>
         </div>
       </div>
