@@ -1,14 +1,14 @@
-$mainColor:#e17055; //#f2b9ac;
-
+$mainColor: #e17055;
 $width: 768px;
 
 @mixin mobile {
-    @media (max-width: #{$width}){
-        @content
-    }
+  @media (max-width: #{$width}) {
+    @content;
+  }
 }
 
-body, html {
+body,
+html {
   overflow: hidden;
   position: fixed;
   width: 100%;

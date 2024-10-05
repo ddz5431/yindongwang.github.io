@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { Person, Mail } from '@material-ui/icons';
+import { Person, Mail } from '@mui/icons-material';
 import './topbar.scss';
 
 const NAV_LINKS = [
   { to: 'intro', label: 'Home' },
-  { to: 'education', label: 'Education' },
-  { to: 'experience', label: 'Experience' },
+  { to: 'education-experience', label: 'Resume' },
   { to: 'contact', label: 'Contact' },
 ];
 

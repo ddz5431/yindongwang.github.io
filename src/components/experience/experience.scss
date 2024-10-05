@@ -1,52 +1,101 @@
-@import "../../global";
+@import "../../variables";
 
-$--topbar-height: 60px;
+.experience {
+  padding: 2rem 1rem;
+  max-width: 800px;
+  margin: 0 auto;
 
-.section.experience {
-  padding-top: var(--topbar-height) !important;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start; // Align content to the top
-  align-items: center; // Center content horizontally
-
-  .title {
-    font-size: 2em;
-    font-weight: bold;
-    margin-bottom: 20px;
-    text-align: center;
-    color: #333;
+  .section-title {
+    font-size: 2rem;
+    font-weight: 600;
+    color: $accentFontColor;
+    margin-bottom: 1.5rem;
+    text-align: left;
   }
 
-  .table_container {
-    width: 100%;
-    height: auto;
-    //max-height: calc(100vh - var(--topbar-height) - 120px);
-    //
-    .MuiTableCell-head {
-      background-color: #43A6C6;
-      color: #fff;
-      font-weight: bold;
+  .experience-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .experience-item {
+    display: flex;
+    align-items: flex-start;
+    padding: 1rem;
+    background-color: $mainFontColor;
+    border-left: 4px solid $accentBackgroundColor;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+    &:hover {
+      transform: translateX(5px);
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     }
 
-    .MuiTableCell-body {
-      font-size: 16px;
+    .experience-icon {
+      color: $accentFontColor;
+      margin-right: 1rem;
+      padding-top: 0.25rem;
     }
 
-    .MuiTableRow-root:hover {
-      background-color: #f1f1f1;
-    }
-  }
-  @media (min-height: 800px) {
-  .table_container {
-    max-height: none; // Allow full expansion on taller screens
-  }
-  }
+    .experience-content {
+      flex: 1;
 
-  @media (max-height: 799px) {
-    .table_container {
-      max-height: calc(100vh - var(--topbar-height));
-      overflow: auto;
+      .company {
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin: 0 0 0.5rem 0;
+
+        a {
+          color: $accentFontColor;
+          text-decoration: none;
+          display: inline-flex;
+          align-items: center;
+
+          &:hover {
+            text-decoration: underline;
+          }
+
+          .external-link-icon {
+            margin-left: 0.5rem;
+            opacity: 0.7;
+          }
+        }
+      }
+
+      .position {
+        font-size: 1rem;
+        color: $introFontColor;
+        margin: 0 0 0.25rem 0;
+        font-weight: 600;
+      }
+
+      .period, .location {
+        font-size: 0.9rem;
+        color: $introFontColor;
+        margin: 0 0 0.25rem 0;
+        display: flex;
+        align-items: center;
+      }
+
+      .location-icon {
+        margin-right: 0.5rem;
+        color: $accentFontColor;
+      }
     }
   }
 }
 
+@media (max-width: 768px) {
+  .experience {
+    padding: 1rem;
+
+    .experience-item {
+      flex-direction: column;
+
+      .experience-icon {
+        margin-bottom: 0.5rem;
+      }
+    }
+  }
+}

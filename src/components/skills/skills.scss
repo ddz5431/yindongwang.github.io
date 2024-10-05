@@ -1,0 +1,42 @@
+@import '../../variables';
+
+.skills {
+  padding: 2rem 1rem;
+  max-width: 800px;
+  margin: 0 auto;
+
+  .section-title {
+    font-size: 2rem;
+    font-weight: 600;
+    color: $accentFontColor;
+    margin-bottom: 1.5rem;
+    text-align: left;
+  }
+
+  .skills-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .skill-category {
+    .skill-category-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: $accentFontColor;
+    }
+
+    .skill-items {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      .skill-item {
+        font-size: 1rem;
+        color: $introFontColor;
+        margin-bottom: 0.5rem;
+      }
+    }
+  }
+}

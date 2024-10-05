@@ -1,79 +1,148 @@
-import { EducationBackground } from "./EducationBackground"
-import WorkIcon from '@mui/icons-material/Work';
-import SchoolIcon from '@mui/icons-material/School';
-
-function createDWorkData(
-    Period: string,
-    Position: string,
-    Company: string,
-    Location: string,
-    Link: string
-) {
-    return { Period, Position, Company, Location, Link}
+export interface TimelineEvent {
+  type: 'education' | 'work';
+  startDate: string;
+  endDate?: string; // Made endDate optional
+  title: string;
+  subtitle: string;
+  location: string;
+  description?: string;
+  link?: string;
 }
 
-export const work = [
-    createDWorkData("01.2024-now",
-        "PhD candidate",
-        "Hasso Plattner Institute",
-        "Potsdam, Germany",
-        "https://hpi.de"),
+export interface WorkExperience {
+  position: string;
+  startDate: string;
+  endDate?: string; // Made endDate optional
+  company: string;
+  location: string;
+  link: string;
+}
 
-    createDWorkData("10.2021-12.2023", "NLP engineer", "MORESOPHY GmbH", "Munich, Germany", "https://www.moresophy.com/en"),
-    createDWorkData("05.2021-10.2021", "Student Data Analyst", "BingoStar GmbH", "Munich, Germany", "https://www.lmu.de"),
-    createDWorkData("10.2019-07.2021", "Teaching Assistant ", "LMU Munich", "Munich, Germany", "https://www.lmu.de"),
-    createDWorkData("11.2019-10.2020", "Student Assistant", "LMU Munich", "Munich, Germany", "https://www.lmu.de"),
-    createDWorkData("08.2019-09.2019", "Marketing Intern", "ATOSS GmbH", "Munich, Germany", "https://www.atoss.com/de"),
-    createDWorkData("03.2018-09.2018", "Marketing Intern", "Bosch China", "Shanghai, China", "https://www.bosch.de")
+export interface EducationBackground {
+  university: string;
+  startDate: string;
+  endDate?: string; // Made endDate optional
+  major: string;
+  degree: string;
+  grade?: string;
+  location: string;
+  link: string;
+}
+
+export const work: WorkExperience[] = [
+  {
+    startDate: '01.2024',
+    endDate: 'present', // Updated to 'present' for clarity
+    position: 'PhD Candidate',
+    company: 'Hasso Plattner Institute',
+    location: 'Potsdam, Germany',
+    link: 'https://hpi.de',
+  },
+  {
+    startDate: '10.2021',
+    endDate: '12.2023',
+    position: 'NLP Engineer',
+    company: 'MORESOPHY GmbH',
+    location: 'Munich, Germany',
+    link: 'https://www.moresophy.com/en',
+  },
+  {
+    startDate: '05.2021',
+    endDate: '10.2021',
+    position: 'Student Data Analyst',
+    company: 'BingoStar GmbH',
+    location: 'Munich, Germany',
+    link: 'https://www.lmu.de',
+  },
+  {
+    startDate: '10.2019',
+    endDate: '07.2021',
+    position: 'Teaching Assistant',
+    company: 'LMU',
+    location: 'Munich, Germany',
+    link: 'https://www.lmu.de',
+  },
 ];
 
-export const EDUCATION: EducationBackground [] = [
-    {
-        Period: "2024-current",
-        Major: "Artificial Intelligence and Intelligent Systems",
-        Degree: "Ph.D",
-        University: "Hasso Plattner Institute",
-        Location: "Potsdam, Germany",
-        Link: "https://hpi.de"
-    },
-    {
-        Period: "2019-2021",
-        Major: "Computational Linguistics, minored in Computer Science",
-        Degree: "Master of Science",
-        University: "LMU Munich",
-        Location: "Munich, Germany",
-        Link: "https://www.lmu.de"
-    },
-    {
-        Period: "2018-2019",
-        Major: "Computational Linguistics",
-        Degree: "Prerequisite courses",
-        University: "LMU Munich",
-        Location: "Munich, Germany",
-        Link: "https://www.lmu.de"
-    },
-    {
-        Period: "2014-2018",
-        Major: "German Language and Literature",
-        Degree: "Bachelor of Arts",
-        University: "University of Anhui",
-        Location: "Hefei, China",
-        Link: "https://en.ahu.edu.cn/"
-    },
-    {
-        Period: "2016-2017",
-        Major: "German Language and Literature",
-        Degree: "Exchange Studies",
-        University: "University of Osnabrück",
-        Location: "Osnabrück, Germany",
-        Link: "https://www.uni-osnabrueck.de/"
-    }
-]
+export const education: EducationBackground[] = [
+  {
+    startDate: '01.2024',
+    endDate: 'present',
+    major: 'Artificial Intelligence and Intelligent Systems',
+    degree: 'Ph.D.',
+    university: 'Hasso Plattner Institute',
+    location: 'Potsdam, Germany',
+    link: 'https://hpi.de',
+  },
+  {
+    startDate: '10.2019',
+    endDate: '09.2021',
+    major: 'Computational Linguistics, minored in Computer Science',
+    degree: 'Master of Science',
+    university: 'LMU Munich',
+    location: 'Munich, Germany',
+    link: 'https://www.lmu.de',
+  },
+  {
+    startDate: '10.2018',
+    endDate: '09.2019',
+    major: 'Computational Linguistics',
+    degree: 'Prerequisite Courses',
+    university: 'LMU Munich',
+    location: 'Munich, Germany',
+    link: 'https://www.lmu.de',
+  },
+  {
+    startDate: '09.2014',
+    endDate: '06.2018',
+    major: 'German Language and Literature',
+    degree: 'Bachelor of Arts',
+    university: 'University of Anhui',
+    location: 'Hefei, China',
+    link: 'https://en.ahu.edu.cn/',
+  },
+  {
+    startDate: '10.2016',
+    endDate: '08.2017',
+    major: 'German Language and Literature',
+    degree: 'Exchange Studies',
+    university: 'University of Osnabrück',
+    location: 'Osnabrück, Germany',
+    link: 'https://www.uni-osnabrueck.de/',
+  },
+];
 
-export const head_education = [
-    {field: "Education Experience", icon: SchoolIcon},
-]
+function parseDateString(dateStr: string): string {
+  if (['now', 'current', 'present'].includes(dateStr.toLowerCase())) {
+    return new Date().toISOString().split('T')[0];
+  }
 
-export const head_experience = [
-    {field: "Work Experience", icon: WorkIcon},
-]
+  const [month, year] = dateStr.split('.');
+  const date = new Date(parseInt(year), parseInt(month) - 1);
+  return date.toISOString().split('T')[0];
+}
+
+export const combinedTimeline: TimelineEvent[] = [
+  ...work.map((workExp) => ({
+    type: 'work' as const,
+    startDate: parseDateString(workExp.startDate),
+    endDate: workExp.endDate ? parseDateString(workExp.endDate) : undefined,
+    title: workExp.position,
+    subtitle: workExp.company,
+    location: workExp.location,
+    link: workExp.link,
+  })),
+  ...education.map((edu) => ({
+    type: 'education' as const,
+    startDate: parseDateString(edu.startDate),
+    endDate: edu.endDate ? parseDateString(edu.endDate) : undefined,
+    title: `${edu.degree} in ${edu.major}`,
+    subtitle: edu.university,
+    location: edu.location,
+    link: edu.link,
+  })),
+].sort((a, b) => {
+  const dateA = new Date(a.startDate).getTime();
+  const dateB = new Date(b.startDate).getTime();
+  return dateB - dateA; // Sort in descending order (most recent first)
+});
