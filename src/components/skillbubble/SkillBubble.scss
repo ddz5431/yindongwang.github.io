@@ -1,0 +1,24 @@
+@import '../../styles/colors';
+
+.skill-bubble {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  margin: 0.25rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+
+  @each $category, $color in $skill-colors {
+    &.#{$category} {
+      background-color: $color;
+      &:hover, &.highlighted {
+        background-color: darken($color, 10%);
+        transform: scale(1.1);
+      }
+    }
+  }
+}

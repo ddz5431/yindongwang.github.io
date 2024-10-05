@@ -1,0 +1,47 @@
+.timeline-node {
+  position: relative;
+  margin-bottom: 2rem;
+  width: 45%;
+
+  &.left {
+    align-self: flex-start;
+    padding-right: 2rem;
+  }
+
+  &.right {
+    align-self: flex-end;
+    padding-left: 2rem;
+  }
+
+  .node-content {
+    background-color: white;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  .icon {
+    margin-bottom: 0.5rem;
+  }
+
+  h3 {
+    margin: 0 0 0.5rem;
+    font-size: 1.2rem;
+  }
+
+  p {
+    margin: 0 0 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  .date {
+    font-style: italic;
+    color: #666;
+  }
+
+  .skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+  }
+}

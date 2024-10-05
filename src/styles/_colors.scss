@@ -1,0 +1,17 @@
+$background-color: #F8F4F1;
+$text-color: #333333;
+$color-text: #FFA07A;
+$color-work: #4A90E2;
+$color-education: #50C878;
+
+$skill-colors: (
+  'programming': #6772E5,
+  'ml': #3ECF8E,
+  'soft': #F49D6E,
+  'language': #A389F4,
+  'other': #78909C
+);
+
+@function get-skill-color($category) {
+  @return map-get($skill-colors, $category);
+}

@@ -1,0 +1,119 @@
+.timeline-container {
+  position: relative;
+  padding: 2rem 5%;
+  overflow: hidden;
+  background: linear-gradient(to bottom, #f0f4f8, #e1e8ed);
+
+  .growth-line {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    background: linear-gradient(to top, #4ECDC4, #4A90E2);
+    z-index: 0;
+  }
+
+  .timeline-content {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .timeline-column {
+    width: 48%;
+    position: relative;
+  }
+
+  .work-column {
+    padding-right: 2rem;
+  }
+
+  .education-column {
+    padding-left: 2rem;
+  }
+}
+
+.timeline-node {
+  position: relative;
+  margin-bottom: 2rem;
+  width: 100%;
+
+  .node-content {
+    background-color: white;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+
+    &:hover {
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    }
+  }
+
+  .connecting-line {
+    position: absolute;
+    top: 1.5rem;
+    background-color: #4A90E2;
+
+    &.left {
+      left: -20px;
+    }
+
+    &.right {
+      right: -20px;
+    }
+  }
+
+  &.current .node-content {
+    border: 2px solid #4A90E2;
+  }
+
+  .expand-icon {
+    position: absolute;
+    bottom: 0.5rem;
+    right: 0.5rem;
+    cursor: pointer;
+  }
+
+  .expanded-content {
+    background-color: #f9f9f9;
+    padding: 1rem;
+    margin-top: 0.5rem;
+    border-radius: 0 0 8px 8px;
+  }
+
+  .skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+  }
+
+  .more-skills {
+    font-size: 0.8rem;
+    color: #666;
+    background-color: #e0e0e0;
+    padding: 0.2rem 0.5rem;
+    border-radius: 12px;
+  }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .timeline-content {
+    flex-direction: column;
+  }
+
+  .timeline-column {
+    width: 100%;
+    padding: 0 1rem;
+  }
+
+  .connecting-line {
+    display: none;
+  }
+}

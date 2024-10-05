@@ -4,7 +4,7 @@ import './topbar.scss';
 
 const NAV_LINKS = [
   { to: 'intro', label: 'Home' },
-  { to: 'education-experience', label: 'Resume' },
+  { to: 'timeline', label: 'Resume' },
   { to: 'contact', label: 'Contact' },
 ];
 

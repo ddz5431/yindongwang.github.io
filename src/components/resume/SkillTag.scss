@@ -1,0 +1,29 @@
+.skill-tag {
+  display: inline-block;
+  padding: 0.2rem 0.5rem;
+  margin: 0.2rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: white;
+
+  &.programming {
+    background-color: #6772E5;
+  }
+
+  &.ml {
+    background-color: #3ECF8E;
+  }
+
+  &.soft {
+    background-color: #F49D6E;
+  }
+
+  &.language {
+    background-color: #A389F4;
+  }
+
+  &.other {
+    background-color: #78909C;
+  }
+}

@@ -1,7 +1,7 @@
 import React from 'react';
 import Topbar from './components/topbar/Topbar';
 import Intro from './components/intro/Intro';
-import Timeline from './components/timeline/Timeline';
+import Timeline from './components/resume/Timeline';
 import Contact from './components/contact/Contact';
 import './app.scss';
 
