@@ -10,7 +10,19 @@ export const work: WorkExperience[] = [
     company: 'Hasso Plattner Institute',
     location: 'Potsdam, Germany',
     link: 'https://hpi.de',
-    skillIds: ["s1", 's2', 's3', 's4', 's5']
+    skillIds: ["s1", 's2', 's3', 's4', 's5'],
+    projects: [
+      {
+        name: "AI-Assisted Code Generation",
+        description: "Developing novel techniques for generating human-readable and efficient code using large language models.",
+        skills: ["Python", "Large Language Models", "Software Engineering"]
+      },
+      {
+        name: "Ethical AI Decision Making",
+        description: "Researching methods to incorporate ethical considerations into AI decision-making processes.",
+        skills: ["Machine Learning", "AI Ethics", "Python"]
+      }
+    ]
   },
   {
     id: 'work-2',
@@ -21,7 +33,19 @@ export const work: WorkExperience[] = [
     company: 'MORESOPHY GmbH',
     location: 'Munich, Germany',
     link: 'https://www.moresophy.com/en',
-    skillIds: ["s1", 's2']
+    skillIds: ["s1", 's2'],
+    projects: [
+      {
+        name: "Multilingual Sentiment Analysis Tool",
+        description: "Developed a sentiment analysis tool capable of processing text in 10 different languages for customer feedback analysis.",
+        skills: ["Python", "NLP", "Machine Learning", "Docker"]
+      },
+      {
+        name: "Automated Document Classification System",
+        description: "Created an AI-powered system to automatically classify and route internal documents, improving efficiency by 40%.",
+        skills: ["Python", "Machine Learning", "NLP", "PyTorch"]
+      }
+    ]
   },
   {
     id: 'work-3',
@@ -58,7 +82,14 @@ export const education: EducationBackground[] = [
     university: 'Hasso Plattner Institute',
     location: 'Potsdam, Germany',
     link: 'https://hpi.de',
-    skillIds: ["s1", 's2']
+    skillIds: ["s1", 's2'],
+    projects: [
+      {
+        name: "Explainable AI for Medical Diagnosis",
+        description: "Researching methods to make AI-assisted medical diagnoses more transparent and interpretable for healthcare professionals.",
+        skills: ["Python", "Machine Learning", "Deep Learning", "Healthcare AI"]
+      }
+    ]
   },
   {
     id: 'edu-2',
@@ -70,7 +101,19 @@ export const education: EducationBackground[] = [
     university: 'LMU Munich',
     location: 'Munich, Germany',
     link: 'https://www.lmu.de',
-    skillIds: ["s1", 's2']
+    skillIds: ["s1", 's2'],
+    projects: [
+      {
+        name: "Cross-lingual Transfer Learning for Low-resource Languages",
+        description: "Developed a model to improve NLP task performance for languages with limited training data by leveraging knowledge from high-resource languages.",
+        skills: ["Python", "NLP", "Machine Learning", "TensorFlow"]
+      },
+      {
+        name: "Automated Essay Scoring System",
+        description: "Created an AI-based system to automatically grade and provide feedback on student essays, focusing on coherence and argumentation.",
+        skills: ["Python", "NLP", "Machine Learning", "NLTK"]
+      }
+    ]
   },
   {
     id: 'edu-3',

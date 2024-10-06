@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Briefcase, GraduationCap, ChevronDown, ChevronUp } from 'lucide-react';
 import SkillTag from './SkillTag';
-import { TimelineEventData } from '../../types';
+import { TimelineEventData, Project } from '../../types';
 import { skills } from '../../resume-items';
 import './TimelineNode.scss';
 
@@ -19,6 +19,18 @@ const TimelineNode: React.FC<TimelineNodeProps> = ({ event, isLeft, isCurrent, t
   const Icon = event.type === 'work' ? Briefcase : GraduationCap;
 
   const lineThickness = 2 + (index / total) * 4; // Varies from 2px to 6px
+
+  const ProjectItem: React.FC<{ project: Project }> = ({ project }) => (
+    <div className="project-item">
+      <h4>{project.name}</h4>
+      <p>{project.description}</p>
+      <div className="project-skills">
+        {project.skills.map((skill, index) => (
+          <span key={index} className="project-skill">{skill}</span>
+        ))}
+      </div>
+    </div>
+  );
 
   return (
     <motion.div
@@ -66,6 +78,14 @@ const TimelineNode: React.FC<TimelineNodeProps> = ({ event, isLeft, isCurrent, t
                 ) : null;
               })}
             </div>
+            {event.projects && event.projects.length > 0 && (
+              <div className="projects-container">
+                <h4>Projects</h4>
+                {event.projects.map((project, index) => (
+                  <ProjectItem key={index} project={project} />
+                ))}
+              </div>
+            )}
           </motion.div>
         )}
       </AnimatePresence>

@@ -1,3 +1,9 @@
+export type Project = {
+  name: string;
+  description: string;
+  skills: string[];
+};
+
 export interface BaseEvent {
   id: string;
   type: 'work' | 'education';
@@ -12,6 +18,7 @@ export interface WorkExperience extends BaseEvent {
   type: 'work';
   position: string;
   company: string;
+  projects?: Project[];
 }
 
 export interface EducationBackground extends BaseEvent {
@@ -19,6 +26,7 @@ export interface EducationBackground extends BaseEvent {
   major: string;
   degree: string;
   university: string;
+  projects?: Project[];
 }
 
 export type TimelineEventData = WorkExperience | EducationBackground;
@@ -28,3 +36,4 @@ export interface Skill {
   name: string;
   category: string;
 }
+
