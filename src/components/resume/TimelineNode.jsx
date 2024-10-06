@@ -1,99 +1,112 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Briefcase, GraduationCap, ChevronDown, ChevronUp } from 'lucide-react';
-import SkillTag from './SkillTag';
-import { TimelineEventData, Project } from '../../types';
-import { skills } from '../../resume-items';
+import { Briefcase, GraduationCap, ChevronRight, ChevronLeft } from 'lucide-react';
+import { Skill, TimelineEventData } from '../../types';
 import './TimelineNode.scss';
 
 interface TimelineNodeProps {
   event: TimelineEventData;
-  isLeft: boolean;
-  isCurrent: boolean;
-  total: number;
-  index: number;
+  isExpanded: boolean;
+  onClick: () => void;
+  skills: Skill[];
 }
 
-const TimelineNode: React.FC<TimelineNodeProps> = ({ event, isLeft, isCurrent, total, index }) => {
-  const [isExpanded, setIsExpanded] = useState(false);
+const TimelineNode: React.FC<TimelineNodeProps> = ({
+  event,
+  isExpanded,
+  onClick,
+  skills,
+}) => {
   const Icon = event.type === 'work' ? Briefcase : GraduationCap;
 
-  const lineThickness = 2 + (index / total) * 4; // Varies from 2px to 6px
+  const renderDetails = () => {
+    const details = event.type === 'work' ? event.projects : event.courses;
+    if (!details || details.length === 0) return null;
 
-  const ProjectItem: React.FC<{ project: Project }> = ({ project }) => (
-    <div className="project-item">
-      <h4>{project.name}</h4>
-      <p>{project.description}</p>
-      <div className="project-skills">
-        {project.skills.map((skill, index) => (
-          <span key={index} className="project-skill">{skill}</span>
+    return (
+      <div className="details-container">
+        <h4 className="section-title">
+          {event.type === 'work' ? 'Projects' : 'Courses'}
+        </h4>
+        {details.map((item, index) => (
+          <div key={index} className="detail-item">
+            <h5 className="detail-title">{item.name}</h5>
+            <p>{item.description}</p>
+            <div className="detail-skills">
+              {item.skills.slice(0, 5).map((skill, index) => (
+                <span key={index} className="detail-skill">
+                  {skill}
+                </span>
+              ))}
+              {item.skills.length > 5 && (
+                <span className="more-skills">
+                  +{item.skills.length - 5}
+                </span>
+              )}
+            </div>
+          </div>
         ))}
       </div>
-    </div>
-  );
+    );
+  };
 
   return (
-    <motion.div
-      className={`timeline-node ${isLeft ? 'left' : 'right'} ${isCurrent ? 'current' : ''}`}
-      initial={{ opacity: 0, y: 50 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
-    >
-      <motion.div
-        className="node-content"
-        whileHover={{ scale: 1.03 }}
-        style={{ cursor: 'pointer' }}
-        onClick={() => setIsExpanded(!isExpanded)}
-      >
-        <Icon className="icon" />
-        <h3>{event.position || event.major}</h3>
-        <p>{event.company || event.university}</p>
-        <p className="date">{`${event.startDate} - ${event.endDate || 'Present'}`}</p>
-        <div className="skills-container">
-          {event.skillIds.slice(0, 3).map(skillId => {
-            const skill = skills.find(s => s.id === skillId);
-            return skill ? (
-              <SkillTag key={skillId} skill={skill} />
-            ) : null;
-          })}
-          {event.skillIds.length > 3 && <span className="more-skills">+{event.skillIds.length - 3}</span>}
-        </div>
-        {isExpanded ? <ChevronUp className="expand-icon" /> : <ChevronDown className="expand-icon" />}
-      </motion.div>
+    <div className={`timeline-node ${event.type} ${isExpanded ? 'expanded' : ''}`}>
+      <div className="timeline-node-content">
+        <motion.div
+          className="node-card"
+          whileHover={{
+            scale: 1.02,
+            boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)',
+          }}
+          onClick={onClick}
+        >
+          <div className="node-header">
+            <Icon className="icon" />
+            <h3>{event.type === 'work' ? event.position : event.major}</h3>
+            {event.type === 'education' && event.position && (
+              <h4>{event.position}</h4>
+            )}
+          </div>
+          <p className="organization">{event.type === 'work' ? event.company : event.university}</p>
+          <p className="location">{event.location}</p>
+          <p className="date">{`${event.startDate} - ${event.endDate || 'Present'}`}</p>
+          <div className="skills-container">
+            {event.skillIds.slice(0, 4).map((skillId) => {
+              const skill = skills.find((s) => s.id === skillId);
+              return skill ? (
+                <span key={skillId} className="skill-tag">
+                  {skill.name}
+                </span>
+              ) : null;
+            })}
+            {event.skillIds.length > 4 && (
+              <span className="more-skills">
+                +{event.skillIds.length - 4}
+              </span>
+            )}
+          </div>
+          {event.type === 'work' ? (
+            <ChevronLeft className="expand-icon" />
+          ) : (
+            <ChevronRight className="expand-icon" />
+          )}
+        </motion.div>
+      </div>
       <AnimatePresence>
         {isExpanded && (
           <motion.div
             className="expanded-content"
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
+            initial={{ opacity: 0, width: 0 }}
+            animate={{ opacity: 1, width: 'auto' }}
+            exit={{ opacity: 0, width: 0 }}
             transition={{ duration: 0.3 }}
           >
-            <p>{event.description}</p>
-            <div className="all-skills">
-              {event.skillIds.map(skillId => {
-                const skill = skills.find(s => s.id === skillId);
-                return skill ? (
-                  <SkillTag key={skillId} skill={skill} />
-                ) : null;
-              })}
-            </div>
-            {event.projects && event.projects.length > 0 && (
-              <div className="projects-container">
-                <h4>Projects</h4>
-                {event.projects.map((project, index) => (
-                  <ProjectItem key={index} project={project} />
-                ))}
-              </div>
-            )}
+            {renderDetails()}
           </motion.div>
         )}
       </AnimatePresence>
-      <div
-        className={`connecting-line ${isLeft ? 'right' : 'left'}`}
-        style={{ width: `${isLeft ? lineThickness : 20}px`, height: `${isLeft ? 2 : lineThickness}px` }}
-      />
-    </motion.div>
+    </div>
   );
 };
 

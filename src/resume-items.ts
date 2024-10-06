@@ -13,14 +13,14 @@ export const work: WorkExperience[] = [
     skillIds: ["s1", 's2', 's3', 's4', 's5'],
     projects: [
       {
-        name: "AI-Assisted Code Generation",
-        description: "Developing novel techniques for generating human-readable and efficient code using large language models.",
-        skills: ["Python", "Large Language Models", "Software Engineering"]
+        name: "Efficient and Trustworthy Large Language Models (LLMs) Research",
+        description: "Conducting research focusing on Few-Shot Learning, Reasoning, Hallucination Mitigation, LLMs-as-Judges, and LLMs for Educational Psychology.",
+        skills: ["Large Language Models", "Machine Learning", "AI Research", "Natural Language Processing"]
       },
       {
-        name: "Ethical AI Decision Making",
-        description: "Researching methods to incorporate ethical considerations into AI decision-making processes.",
-        skills: ["Machine Learning", "AI Ethics", "Python"]
+        name: "Research Seminar and Master Project Supervision",
+        description: "Teaching and supervising a Research Seminar and Master Project on AI and LLMs (Summer 2024).",
+        skills: ["Teaching", "AI", "Large Language Models", "Project Supervision"]
       }
     ]
   },
@@ -36,14 +36,19 @@ export const work: WorkExperience[] = [
     skillIds: ["s1", 's2'],
     projects: [
       {
-        name: "Multilingual Sentiment Analysis Tool",
-        description: "Developed a sentiment analysis tool capable of processing text in 10 different languages for customer feedback analysis.",
-        skills: ["Python", "NLP", "Machine Learning", "Docker"]
+        name: "Transformer-based NLP Pipeline Transition",
+        description: "Spearheaded the transition from traditional ML pipelines to transformer-based architectures for advanced text analysis tasks (NER, summarization, classification), significantly enhancing multilingual capabilities and model performance.",
+        skills: ["NLP", "Transformer Models", "Machine Learning", "Python"]
       },
       {
-        name: "Automated Document Classification System",
-        description: "Created an AI-powered system to automatically classify and route internal documents, improving efficiency by 40%.",
-        skills: ["Python", "Machine Learning", "NLP", "PyTorch"]
+        name: "Elasticsearch Integration for NLP Infrastructure",
+        description: "Integrated Elasticsearch to optimize data retrieval and indexing, creating a more efficient and scalable NLP infrastructure.",
+        skills: ["Elasticsearch", "Data Indexing", "NLP", "Database Optimization"]
+      },
+      {
+        name: "ML Model Deployment and API Development",
+        description: "Containerized and orchestrated ML model deployments using Kubernetes, developed high-performance APIs with FastAPI for model serving; monitored ML training with MLFlow and Wandb.",
+        skills: ["Kubernetes", "FastAPI", "MLFlow", "Wandb", "DevOps", "API Development"]
       }
     ]
   },
@@ -67,7 +72,14 @@ export const work: WorkExperience[] = [
     company: 'LMU Munich',
     location: 'Munich, Germany',
     link: 'https://www.lmu.de',
-    skillIds: ["s1", 's2']
+    skillIds: ["s1", 's2'],
+    projects: [
+      {
+        name: "Computational Linguistics Course Assistance",
+        description: "Held weekly tutorials, providing guidance on programming in Computational Linguistics. Evaluated student assignments and provided constructive feedback to enhance learning outcomes.",
+        skills: ["Teaching", "Computational Linguistics", "Programming", "Student Evaluation"]
+      }
+    ]
   },
 ];
 
@@ -77,17 +89,22 @@ export const education: EducationBackground[] = [
     type: 'education',
     startDate: '01.2024',
     endDate: 'present',
-    major: 'AI and Intelligent Systems',
+    major: 'AI and Intelligent Systems, Ph.D',
     degree: 'Ph.D.',
     university: 'Hasso Plattner Institute',
     location: 'Potsdam, Germany',
     link: 'https://hpi.de',
     skillIds: ["s1", 's2'],
-    projects: [
+    courses: [
       {
-        name: "Explainable AI for Medical Diagnosis",
-        description: "Researching methods to make AI-assisted medical diagnoses more transparent and interpretable for healthcare professionals.",
-        skills: ["Python", "Machine Learning", "Deep Learning", "Healthcare AI"]
+        name: "Efficient and Trustworthy Large Language Models (LLMs) Research",
+        description: "Conducting research focusing on Few-Shot Learning, Reasoning, Hallucination Mitigation, LLMs-as-Judges, and LLMs for Educational Psychology.",
+        skills: ["Large Language Models", "Machine Learning", "AI Research", "Natural Language Processing"]
+      },
+      {
+        name: "Research Seminar and Master Project Supervision",
+        description: "Teaching and supervising a Research Seminar and Master Project on AI and LLMs (Summer 2024).",
+        skills: ["Teaching", "AI", "Large Language Models", "Project Supervision"]
       }
     ]
   },
@@ -96,13 +113,13 @@ export const education: EducationBackground[] = [
     type: 'education',
     startDate: '10.2019',
     endDate: '09.2021',
-    major: 'Computational Linguistics',
+    major: 'Computational Linguistics, MSc',
     degree: 'Master of Science',
     university: 'LMU Munich',
     location: 'Munich, Germany',
     link: 'https://www.lmu.de',
     skillIds: ["s1", 's2'],
-    projects: [
+    courses: [
       {
         name: "Cross-lingual Transfer Learning for Low-resource Languages",
         description: "Developed a model to improve NLP task performance for languages with limited training data by leveraging knowledge from high-resource languages.",
@@ -120,7 +137,7 @@ export const education: EducationBackground[] = [
     type: 'education',
     startDate: '10.2018',
     endDate: '09.2019',
-    major: 'Computational Linguistics',
+    major: 'Computational Linguistics, Prerequisite Courses',
     degree: 'Prerequisite Courses',
     university: 'LMU Munich',
     location: 'Munich, Germany',
@@ -132,7 +149,7 @@ export const education: EducationBackground[] = [
     type: 'education',
     startDate: '09.2014',
     endDate: '06.2018',
-    major: 'German Language and Literature',
+    major: 'German Language and Literature, BA',
     degree: 'Bachelor of Arts',
     university: 'University of Anhui',
     location: 'Hefei, China',
@@ -144,7 +161,7 @@ export const education: EducationBackground[] = [
     type: 'education',
     startDate: '10.2016',
     endDate: '08.2017',
-    major: 'German Language and Literature',
+    major: 'German Language and Literature, Exchange studies',
     degree: 'Exchange Studies',
     university: 'University of Osnabrück',
     location: 'Osnabrück, Germany',
