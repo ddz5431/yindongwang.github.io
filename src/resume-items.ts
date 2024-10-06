@@ -6,16 +6,16 @@ export const work: WorkExperience[] = [
     type: 'work',
     startDate: '01.2024',
     endDate: 'present',
-    position: 'Doctoral Researcher',
+    position: 'AI Researcher',
     company: 'Hasso Plattner Institute',
     location: 'Potsdam, Germany',
     link: 'https://hpi.de',
     skillIds: ["s1", 's2', 's3', 's4', 's5'],
     projects: [
       {
-        name: "Efficient and Trustworthy Large Language Models (LLMs) Research",
-        description: "Conducting research focusing on Few-Shot Learning, Reasoning, Hallucination Mitigation, LLMs-as-Judges, and LLMs for Educational Psychology.",
-        skills: ["Large Language Models", "Machine Learning", "AI Research", "Natural Language Processing"]
+        name: "Entailment Few-shot Learning with Large Language Models",
+        description: "This study explores few-shot learning with pretrained language models using a textual entailment-based framework, achieving performance improvements across model architectures without relying on external NLI data.",
+        skills: ["Large Language Models", "Entailment Few-shot Learning", "Efficient LLMs downstream application", "Natural Language Processing"]
       },
       {
         name: "Research Seminar and Master Project Supervision",
