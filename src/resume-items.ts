@@ -18,9 +18,19 @@ export const work: WorkExperience[] = [
         skills: ["Large Language Models", "Entailment Few-shot Learning", "Efficient LLMs downstream application", "Natural Language Processing"]
       },
       {
-        name: "Research Seminar and Master Project Supervision",
-        description: "Teaching and supervising a Research Seminar and Master Project on AI and LLMs (Summer 2024).",
+        name: "Master Project: Facts Matter - Benchmark LLMs' hallucination detection and mitigation abilities",
+        description: "Supervise Master Project on LLM hallucinations (Summer 2024).",
         skills: ["Teaching", "AI", "Large Language Models", "Project Supervision"]
+      },
+      {
+        name: "Master Seminar: MetaImage - ",
+        description: "Supervise Master research seminar",
+        skills: ["Teaching", "Diffusion Models"]
+      },
+      {
+        name: "Young women in AI workshop",
+        description: "",
+        skills: ["Workshp"]
       }
     ]
   },
@@ -89,7 +99,7 @@ export const education: EducationBackground[] = [
     type: 'education',
     startDate: '01.2024',
     endDate: 'present',
-    major: 'AI and Intelligent Systems, Ph.D',
+    major: ' Ph.D in AI and Intelligent Systems',
     degree: 'Ph.D.',
     university: 'Hasso Plattner Institute',
     location: 'Potsdam, Germany',
@@ -97,14 +107,29 @@ export const education: EducationBackground[] = [
     skillIds: ["s1", 's2'],
     courses: [
       {
-        name: "Efficient and Trustworthy Large Language Models (LLMs) Research",
-        description: "Conducting research focusing on Few-Shot Learning, Reasoning, Hallucination Mitigation, LLMs-as-Judges, and LLMs for Educational Psychology.",
-        skills: ["Large Language Models", "Machine Learning", "AI Research", "Natural Language Processing"]
+        name: "LLM alignment with Human values",
+        highlights: ["RLHF", "AI Agent"],
+        description: ""
       },
       {
-        name: "Research Seminar and Master Project Supervision",
-        description: "Teaching and supervising a Research Seminar and Master Project on AI and LLMs (Summer 2024).",
-        skills: ["Teaching", "AI", "Large Language Models", "Project Supervision"]
+        name: "Efficient LLM Adaptation for downstream NLP tasks",
+        description: "",
+        highlights: ["Flash Attention", "Adapters"]
+      },
+      {
+        name: "LLM Hallucination Detection and Mitigation",
+        description: "",
+        highlights: [""]
+      },
+      {
+        name: "AI for Social Good",
+        description: "",
+        highlights: [""]
+      },
+      {
+        name: "AI for Educational Pyschology",
+        description: "",
+        highlights: []
       }
     ]
   },
@@ -113,7 +138,7 @@ export const education: EducationBackground[] = [
     type: 'education',
     startDate: '10.2019',
     endDate: '09.2021',
-    major: 'Computational Linguistics, MSc',
+    major: 'MSc in Computational Linguistics and CS',
     degree: 'Master of Science',
     university: 'LMU Munich',
     location: 'Munich, Germany',
@@ -121,14 +146,16 @@ export const education: EducationBackground[] = [
     skillIds: ["s1", 's2'],
     courses: [
       {
-        name: "Cross-lingual Transfer Learning for Low-resource Languages",
-        description: "Developed a model to improve NLP task performance for languages with limited training data by leveraging knowledge from high-resource languages.",
-        skills: ["Python", "NLP", "Machine Learning", "TensorFlow"]
+        name: "Deep Learning For NLP",
       },
       {
-        name: "Automated Essay Scoring System",
-        description: "Created an AI-based system to automatically grade and provide feedback on student essays, focusing on coherence and argumentation.",
-        skills: ["Python", "NLP", "Machine Learning", "NLTK"]
+        name: "Knowledge Discovery in Databases I",
+      },
+      {
+        name: "Lexikon, Syntax, Semantik"
+      },
+      {
+        name: "Specialization in practical and applied computational linguistics"
       }
     ]
   },
@@ -142,14 +169,19 @@ export const education: EducationBackground[] = [
     university: 'LMU Munich',
     location: 'Munich, Germany',
     link: 'https://www.lmu.de',
-    skillIds: ["s1", 's2']
+    skillIds: ["s1", 's2'],
+    courses: [
+      {
+        name: ""
+      },
+    ]
   },
   {
     id: 'edu-4',
     type: 'education',
     startDate: '09.2014',
     endDate: '06.2018',
-    major: 'German Language and Literature, BA',
+    major: 'BA in German Language and Literature',
     degree: 'Bachelor of Arts',
     university: 'University of Anhui',
     location: 'Hefei, China',
@@ -161,7 +193,7 @@ export const education: EducationBackground[] = [
     type: 'education',
     startDate: '10.2016',
     endDate: '08.2017',
-    major: 'German Language and Literature, Exchange studies',
+    major: 'Exchange Studies in German Language and Literature',
     degree: 'Exchange Studies',
     university: 'University of Osnabrück',
     location: 'Osnabrück, Germany',

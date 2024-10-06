@@ -15,6 +15,28 @@ $work-bg: #E0F2F1;
       font-size: larger;
       color: slategray;
     }
+
+    .courses-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+
+      .course-item {
+        font-size: 0.85rem;
+        padding: 0.3rem 0.6rem;
+        border-radius: 12px;
+        background-color: #f0f0f0;
+        color: #333;
+        font-weight: 500;
+        transition: all 0.2s ease;
+
+        &:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+      }
+    }
+
     .detail-item {
       margin-top: 1rem;
       margin-bottom: 1rem;
@@ -56,7 +78,7 @@ $work-bg: #E0F2F1;
   }
   &.education {
     .expanded-content {
-      .detail-skill {
+      .course-item {
         background-color: rgba($education-color, 0.1);
         color: darken($education-color, 20%);
       }

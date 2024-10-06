@@ -20,32 +20,84 @@ const TimelineNode: React.FC<TimelineNodeProps> = ({
   const Icon = event.type === 'work' ? Briefcase : GraduationCap;
 
   const renderDetails = () => {
-    const details = event.type === 'work' ? event.projects : event.courses;
-    if (!details || details.length === 0) return null;
+    if (event.type === 'work') {
+      return renderProjects();
+    } else if (event.major?.includes('Ph.D')) {
+      return renderResearchProjects();
+    } else {
+      return renderCourses();
+    }
+  };
+
+  const renderProjects = () => {
+    if (!event.projects || event.projects.length === 0) return null;
 
     return (
       <div className="details-container">
-        <h4 className="section-title">
-          {event.type === 'work' ? 'Projects' : 'Courses'}
-        </h4>
-        {details.map((item, index) => (
+        <h4 className="section-title">Highlights</h4>
+        {event.projects.map((project, index) => (
           <div key={index} className="detail-item">
-            <h5 className="detail-title">{item.name}</h5>
-            <p>{item.description}</p>
+            <h5 className="detail-title">{project.name}</h5>
+            <p>{project.description}</p>
             <div className="detail-skills">
-              {item.skills.slice(0, 5).map((skill, index) => (
+              {project.skills.slice(0, 5).map((skill, index) => (
                 <span key={index} className="detail-skill">
                   {skill}
                 </span>
               ))}
-              {item.skills.length > 5 && (
+              {project.skills.length > 5 && (
                 <span className="more-skills">
-                  +{item.skills.length - 5}
+                  +{project.skills.length - 5}
                 </span>
               )}
             </div>
           </div>
         ))}
+      </div>
+    );
+  };
+
+  const renderResearchProjects = () => {
+    if (!event.courses || event.courses.length === 0) return null;
+
+    return (
+      <div className="details-container">
+        <h4 className="section-title">Research Interests</h4>
+        {event.courses.map((course, index) => (
+          <div key={index} className="detail-item">
+            <h5 className="detail-title">{course.name}</h5>
+            <p>{course.description}</p>
+            <div className="detail-skills">
+              {course.highlights.slice(0, 5).map((highlight, index) => (
+                <span key={index} className="detail-skill">
+                  {highlight}
+                </span>
+              ))}
+              {course.highlights.length > 5 && (
+                <span className="more-skills">
+                  +{course.highlights.length - 5}
+                </span>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+    );
+  };
+
+  const renderCourses = () => {
+    if (!event.courses || event.courses.length === 0) return null;
+
+    return (
+      <div className="details-container">
+        <h4 className="section-title">Selected Courses</h4>
+        <div className="courses-list">
+          {event.courses.map((course, index) => (
+            <span key={index} className="course-item">
+              {course.name}
+            </span>
+          ))}
+        </div>
       </div>
     );
   };

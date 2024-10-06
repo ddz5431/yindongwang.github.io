@@ -37,10 +37,12 @@ interface Project {
   name: string;
   description: string;
   skills: string[];
+  personalResearch?: boolean;
 }
 
 interface Course {
   name: string;
-  description: string;
-  skills: string[];
+  description?: string,
+  skills?: string[];
+  highlights?: string[];
 }
