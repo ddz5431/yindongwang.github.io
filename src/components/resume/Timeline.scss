@@ -1,3 +1,5 @@
+$timelineColor: #2B6CB0;
+
 .timeline-container {
   position: relative;
   width: 100%;
@@ -12,7 +14,26 @@
   bottom: 0;
   left: 50%;
   width: 2px;
-  background-color: #4A90E2;
+  background-color: $timelineColor;
+}
+
+.timeline-badge {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px; // Adjust as needed
+  z-index: 2;
+
+  .badge-pill {
+    background-color: $timelineColor; // Use your preferred color
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
 }
 
 .timeline-node {
