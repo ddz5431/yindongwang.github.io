@@ -77,7 +77,7 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 
   .title-container {
   text-align: center;
@@ -211,10 +211,18 @@ h1 {
 
 // Responsive styles
 @media (max-width: 768px) {
+  .timeline-header {
+    h1 {
+          font-size: 1.3rem;
+    }
+  }
   .timeline-line {
     left: 20px;
+    font-size: 1rem;
   }
-
+  .toggle-all-button {
+    display: none;
+  }
   .timeline-node {
     &.work, &.education {
       justify-content: flex-start;

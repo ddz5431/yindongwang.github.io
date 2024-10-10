@@ -1,70 +1,37 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { Person, Mail } from '@mui/icons-material';
 import './topbar.scss';
 
 const NAV_LINKS = [
-  { to: 'intro', label: 'Home' },
-  { to: 'timeline', label: 'Resume' },
-  { to: 'contact', label: 'Contact' },
+  { to: '/', label: 'Home' },
+  { to: '/timeline', label: 'Resume' },
+  { to: '/personal-notes', label: 'Personal Notes' },
+  { to: '/publications', label: 'Publications' }
 ];
 
 export default function Topbar() {
-  const [activeSection, setActiveSection] = useState('intro');
-
-  useEffect(() => {
-    const observerOptions = {
-      root: null,
-      rootMargin: '-50% 0px -50% 0px',
-      threshold: 0
-    };
-
-    const observerCallback = (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          setActiveSection(entry.target.id);
-        }
-      });
-    };
-
-    const observer = new IntersectionObserver(observerCallback, observerOptions);
-
-    NAV_LINKS.forEach(({ to }) => {
-      const element = document.getElementById(to);
-      if (element) observer.observe(element);
-    });
-
-    return () => observer.disconnect();
-  }, []);
-
-  const handleClick = (e, sectionId) => {
-    e.preventDefault();
-    const section = document.getElementById(sectionId);
-    if (section) {
-      section.scrollIntoView({ behavior: 'smooth' });
-      setActiveSection(sectionId);
-    }
-  };
+  const location = useLocation();
 
   return (
     <header className="topbar">
       <div className="wrapper">
-        <a href="#intro" className="MyName" onClick={(e) => handleClick(e, 'intro')}>Yindong Wang</a>
+        <Link to="/" className="MyName">Yindong Wang - 王殷冬</Link>
         <nav className="navLinks">
           {NAV_LINKS.map(({ to, label }) => (
-            <a
+            <Link
               key={to}
-              href={`#${to}`}
-              className={`nav-link ${activeSection === to ? 'active' : ''}`}
-              onClick={(e) => handleClick(e, to)}
+              to={to}
+              className={`nav-link ${location.pathname === to ? 'active' : ''}`}
             >
               {label}
-            </a>
+            </Link>
           ))}
         </nav>
         <div className="right">
           <div className="itemContainer">
             <Person className="icon" />
-            <span>NLP Enthusiast</span>
+            <span>AI Enthusiast</span>
           </div>
           <div className="itemContainer">
             <Mail className="icon" />

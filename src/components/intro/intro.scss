@@ -1,151 +1,240 @@
 @import '../../variables';
 @import '../../app';
 
+$accentColor: #007bff;
+$accentFontColor: #0056b3;
+
 .intro {
   background-color: white;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  padding-bottom: 1rem; // Space for the player at the bottom
-  //padding-top: 1rem;// -top: 3rem;
-  overflow: auto;
-  width: 100%;
   position: relative;
+  overflow: hidden;
+
+  .background-pattern {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image:
+      linear-gradient(to right, rgba(0, 123, 255, 0.1) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(0, 123, 255, 0.1) 1px, transparent 1px);
+    background-size: 20px 20px;
+    opacity: 0.05;
+    z-index: 0;
+  }
 
   .content-wrapper {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    flex-grow: 3; // Ensure it grows to take up the remaining space
+    width: 90%;
+    max-width: 1200px;
+    z-index: 1;
   }
 
-  .top {
-    width: 100%;
-    justify-content: center;
-    margin-bottom: 1rem;
+  .left-column, .right-column {
+    flex: 1;
+    padding: 2rem;
+  }
+
+  .left-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
     .imageContainer {
-      width: 100%;
-      max-width: 25rem;
+      width: 350px;
+      height: 350px;
       border-radius: 50%;
       overflow: hidden;
-      aspect-ratio: 1 / 1;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 
       img {
         width: 100%;
-        height: auto;
+        height: 100%;
         object-fit: cover;
+      }
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      margin-top: 1rem;
+
+      a {
+        margin: 0 0.5rem;
+        color: #2B6CB0;
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: darken(#2B6CB0, 30%);
+        }
       }
     }
   }
 
-  .typewriter-container {
-    height: 20em;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-  }
+  .right-column {
+    .main-content {
+      .multilingual-greeting {
+        margin-bottom: 1.5rem;
 
-  .typewriter {
-    font-family: monospace;
-    max-width: 80%;
-    font-size: clamp(0.9rem, 2.5vw, 1.3rem);
-    line-height: 1.4;
-    white-space: pre-wrap;
-    color: #333333;
-    text-align: center;
-    margin: 1rem 0;
+        .greeting-line {
+          font-size: 1.8rem;
+          font-weight: 500;
+          margin-bottom: 0.5rem;
+          color: #333;
 
-    .colored {
-      color: $accentFontColor;
+          .colored {
+            color: darken(lightsalmon, 15%);
+            font-weight: 700;
+          }
+
+          &:nth-child(2) {
+            font-family: 'Noto Sans SC', Poppins, sans-serif
+          }
+
+          &:nth-child(4) {
+            font-family: 'Noto Sans JP', Poppins, sans-serif
+          }
+        }
+      }
+
+      h1 {
+        text-align: start;
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+        color: darken(lightsalmon, 15%);
+      }
+
+      h2 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        color: #666;
+      }
+
+      p {
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+        color: #1a2b3c;
+      }
+
+      .tagline {
+        font-style: italic;
+        color: #00b4d8;
+        font-size: 1.1rem;
+        margin-top: 1rem;
+      }
+    }
+
+    .tech-icons {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+
+      img {
+        width: 40px;
+        height: 40px;
+        margin-right: 1rem;
+        margin-bottom: 1rem;
+      }
     }
   }
 
   .bottom {
     width: 100%;
-    display: flex;
-    justify-content: center;
     padding: 1rem;
     background-color: transparent;
-    //box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
-    position: relative; // Keep it at the bottom of the content flow
+    position: absolute;
     bottom: 0;
-
-    // Style the Play component if needed
-    .play-container {
-      width: 100%;
-      max-width: 100rem;
-    }
-  }
-
-  @media (max-width: 750px) {
+    left: 0;
+    z-index: 2;
     display: flex;
-    flex-direction: column;
+    //justify-content: space-between;
     align-items: center;
-    padding-top: 2%;
-    justify-content: flex-start;
-    //padding-bottom: 2rem; // Space for the player at the bottom
-    //padding-top: 2rem;// -top: 3rem;
-    overflow: auto;
-    width: 100%;
-    position: relative;
-    max-height: 100vh;
-    flex-grow: 2;
 
-    .content-wrapper {
-      justify-content: center;
-      flex-grow: 2;
-      height: auto;
-      flex-direction: column;
+    .play-container {
+      display: none;
+      width: 50%;
+      max-width: 50rem;
+      padding-right: 2rem;
     }
 
-    .top {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      padding-top: 1%;
-      padding-bottom: 1%;
-      margin: 0;
+    .subtle-typewriter {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 0.9rem;
+      color: #555;
+      line-height: 1.5;
+      //max-width: 400px;
+      margin: 0 auto;
+      text-align: left;
 
-      .imageContainer {
-        width: 80%;
-        border-radius: 100%;
-        overflow: hidden;
-        //aspect-ratio: 1 / 1;
-
-        img {
-          height: auto;
-          justify-content: center;
-        }
+      span {
+        display: block;
+        margin-bottom: 0.5rem;
       }
     }
 
-    .typewriter-container {
-      height: 13rem;
-      padding-top: 2%;
-      padding-bottom: 2%;
+    @media (max-width: 768px) {
+        .subtle-typewriter {
+          display: none ;
+        }
+      }
 
-      .typewriter {
-        font-size: clamp(1rem, 2vw, 2rem);
-        align-items: center;
-        flex-grow: 0.5;
+  }
+
+  @media (max-width: 768px) {
+    margin-top: 20px;
+    .content-wrapper {
+      flex-direction: column;
+    }
+
+    .left-column, .right-column {
+      width: 100%;
+      padding: 1rem;
+      font-size: 1rem;
+    }
+
+    .left-column .imageContainer {
+      width: 200px;
+      height: 200px;
+    }
+
+    .right-column .main-content {
+      h1 {
+        font-size: 1.3rem;
+      }
+
+      h2 {
+        font-size: 1rem;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+
+      .multilingual-greeting .greeting-line {
+        font-size: 1.3rem;
+
       }
     }
 
     .bottom {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      padding: 1rem;
-      background-color: transparent;
-      //box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
-      position: relative; // Keep it at the bottom of the content flow
-      bottom: 0;
+      position: relative;
+      flex-direction: column;
 
       .play-container {
-        width: 85%;
+        width: 100%;
+        margin-bottom: 0.5rem;
+      }
+      .subtle-typewriter {
+        display: none;
       }
     }
   }
@@ -153,6 +242,6 @@
   @media (max-height: 667px) {
     .bottom {
       display: none;
-      }
     }
+  }
 }

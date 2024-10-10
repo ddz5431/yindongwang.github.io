@@ -1,7 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 @import './variables';
 
-$section-padding: 10px;
+:root {
+  --color-background: #F7FAFC;
+  --color-card-researcher: #E6F6FF;
+  --color-card-phd: #FFF5F5;
+  --color-text-main: #2D3748;
+  --color-text-secondary: #4A5568;
+  --color-accent-primary: #3182CE;
+  --color-accent-secondary: #ED8936;
+  --color-timeline: #CBD5E0;
+  --color-skill-tag-bg: #EBF8FF;
+  --color-skill-tag-text: #2B6CB0;
+  --color-status-present: #48BB78;
+  --color-status-past: #A0AEC0;
+}
+
+$route-padding: 10px;
 
 body {
   font-family: 'Poppins', sans-serif;
@@ -20,17 +35,17 @@ body {
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-.sections {
+.routes {
   background-color: white;
   flex-grow: 1;
   scroll-snap-type: y mandatory;
   height: 100vh;
   overflow-y: auto;
 
-  .section {
+  .route {
     min-height: 100vh;
     scroll-snap-align: start;
-    padding: $section-padding;
+    padding: $route-padding;
     transition: background-color 0.3s ease;
 
     h2 {
@@ -38,6 +53,12 @@ body {
       color: var(--primary-color);
       margin-bottom: 30px;
     }
+  }
+
+  .personal-notes-route {
+    min-height: auto; // Allow this route to be shorter than 100vh
+    padding: $route-padding;
+    background-color: var(--background-color-light);
   }
 }
 
@@ -70,6 +91,7 @@ body {
   }
 }
 
+
 $breakpoint-small: 576px;
 $breakpoint-medium: 768px;
 $breakpoint-large: 992px;
@@ -87,5 +109,33 @@ $breakpoint-xlarge: 1200px;
   }
   @else if $breakpoint == xlarge {
     @media (max-width: $breakpoint-xlarge) { @content; }
+  }
+}
+
+// Responsive adjustments
+@include respond-to(medium) {
+  .routes {
+    scroll-snap-type: none;  // Disable scroll snapping on smaller screens
+  }
+
+  .personal-notes {
+    margin-top: 20px;
+    padding: 15px;
+  }
+}
+
+@include respond-to(small) {
+  .route, .personal-notes-route {
+    padding: $route-padding / 2;
+  }
+
+  .personal-notes {
+    h3 {
+      font-size: 1.1rem;
+    }
+
+    .note-content {
+      font-size: 0.9rem;
+    }
   }
 }

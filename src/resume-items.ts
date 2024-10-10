@@ -31,7 +31,7 @@ export const work: WorkExperience[] = [
       // {
       //   name: "Young women in AI workshop",
       //   description: "",
-      //   skills: ["Workshp"]
+      //   skillsSection: ["Workshp"]
       // }
     ]
   },

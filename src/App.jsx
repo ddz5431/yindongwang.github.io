@@ -1,28 +1,29 @@
 import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Topbar from './components/topbar/Topbar';
 import Intro from './components/intro/Intro';
 import Timeline from './components/resume/Timeline';
-import Contact from './components/contact/Contact';
-import { combinedTimeline, skills } from './resume-items'; // Adjust the import path as needed
+import Publications from "./components/publications/Publications";
+import { combinedTimeline, skills } from './resume-items';
+import PersonalNotes from './components/notes/PersonalNotes';
 import './app.scss';
 
-
-// @ts-ignore
-const App: React.FC = () => (
-  <div className="app">
-    <Topbar />
-    <div className="sections">
-      <section id="intro" className="section">
-        <Intro />
-      </section>
-      <section id="timeline" className="section">
-          <Timeline events={combinedTimeline} skills={skills} />
-      </section>
-      <section id="contact" className="section">
-        <Contact />
-      </section>
-    </div>
-  </div>
-);
+function App() {
+  return (
+    <Router>
+      <div className="app">
+        <Topbar />
+        <div className="routes">
+          <Routes>
+            <Route path="/" element={<Intro />} />
+            <Route path="/Timeline" element={<Timeline events={combinedTimeline} skills={skills} />} />
+            <Route path="/Publications" element={<Publications />} />
+            <Route path="/personal-notes" element={<PersonalNotes />} />
+          </Routes>
+        </div>
+      </div>
+    </Router>
+  );
+}
 
 export default App;
