@@ -13,25 +13,26 @@ export const work: WorkExperience[] = [
     skillIds: ["s1", 's2', 's3', 's4', 's5'],
     projects: [
       {
-        name: "Entailment Few-shot Learning with Large Language Models",
+        name: "Paper: Entailment Few-shot Learning with Large Language Models",
         description: "This study explores few-shot learning with pretrained language models using a textual entailment-based framework, achieving performance improvements across model architectures without relying on external NLI data.",
         skills: ["Large Language Models", "Entailment Few-shot Learning", "Efficient LLMs downstream application", "Natural Language Processing"]
       },
       {
         name: "Master Project: Facts Matter - Benchmark LLMs' hallucination detection and mitigation abilities",
-        description: "Supervise Master Project on LLM hallucinations (Summer 2024).",
-        skills: ["Teaching", "AI", "Large Language Models", "Project Supervision"]
+        description: "Supervised Master Project on LLM hallucinations (Summer 2024).",
+        skills: ["Project Supervision", "LLM Hallucinations"]
       },
       {
-        name: "Master Seminar: MetaImage - ",
-        description: "Supervise Master research seminar",
-        skills: ["Teaching", "Diffusion Models"]
+        name: "Master Seminar: MetaImage - Decoding Languages from Visual Metaphors",
+        description: "Supervised Research Seminar: Trends in AI and Deep Learning Research Seminar\n" +
+            "(Summer 2024).\n ",
+        skills: ["Diffusion Models", "Multilinguality", "Project Supervision"]
       },
-      {
-        name: "Young women in AI workshop",
-        description: "",
-        skills: ["Workshp"]
-      }
+      // {
+      //   name: "Young women in AI workshop",
+      //   description: "",
+      //   skills: ["Workshp"]
+      // }
     ]
   },
   {
@@ -67,11 +68,18 @@ export const work: WorkExperience[] = [
     type: 'work',
     startDate: '05.2021',
     endDate: '10.2021',
-    position: 'Student Data Analyst',
+    position: 'Data Analyst',
     company: 'BingoStar GmbH',
     location: 'Munich, Germany',
     link: 'https://www.lmu.de',
-    skillIds: ["s1", 's2']
+    skillIds: ["s1", 's2'],
+    projects: [
+      {
+        name: "Sales Data Automation & Trend Analysis",
+        description: "Developed an automated system to generate sales tables for various product categories from diverse types of receipts. Conducted data analysis to identify shopping trends for an Asia market, optimizing product categorization and marketing strategies.",
+        skills: ["Data Automation", "SQL", "Data Analysis"]
+      }
+    ]
   },
   {
     id: 'work-4',
@@ -107,27 +115,27 @@ export const education: EducationBackground[] = [
     skillIds: ["s1", 's2'],
     courses: [
       {
-        name: "LLM alignment with Human values",
-        highlights: ["RLHF", "AI Agent"],
+        name: "LLM Alignment with Human Values",
+        highlights: [], /*"RLHF", "AI Agent"*/
         description: ""
       },
       {
-        name: "Efficient LLM Adaptation for downstream NLP tasks",
+        name: "Preference Learning",
         description: "",
-        highlights: ["Flash Attention", "Adapters"]
+        highlights: []
       },
-      {
-        name: "LLM Hallucination Detection and Mitigation",
-        description: "",
-        highlights: [""]
-      },
+      // {
+      //   name: "Efficient LLM Adaptation for downstream NLP tasks",
+      //   description: "",
+      //   highlights: []
+      // },
       {
         name: "AI for Social Good",
         description: "",
-        highlights: [""]
+        highlights: []
       },
       {
-        name: "AI for Educational Pyschology",
+        name: "AI for Education",
         description: "",
         highlights: []
       }
@@ -138,7 +146,7 @@ export const education: EducationBackground[] = [
     type: 'education',
     startDate: '10.2019',
     endDate: '09.2021',
-    major: 'MSc in Computational Linguistics and CS',
+    major: 'MSc. in Computational Linguistics and CS',
     degree: 'Master of Science',
     university: 'LMU Munich',
     location: 'Munich, Germany',
@@ -172,8 +180,17 @@ export const education: EducationBackground[] = [
     skillIds: ["s1", 's2'],
     courses: [
       {
-        name: ""
+        name: "Discrete Mathematics"
       },
+      {
+        name: "Finite State Automata"
+      },
+      {
+        name: "Introduction in Computational Linguistics"
+      },
+      {
+        name: ""
+      }
     ]
   },
   {
@@ -181,12 +198,15 @@ export const education: EducationBackground[] = [
     type: 'education',
     startDate: '09.2014',
     endDate: '06.2018',
-    major: 'BA in German Language and Literature',
+    major: 'B.A in German Language and Literature',
     degree: 'Bachelor of Arts',
     university: 'University of Anhui',
     location: 'Hefei, China',
     link: 'https://en.ahu.edu.cn/',
-    skillIds: ["s1", 's2']
+    skillIds: ["s1", 's2'],
+    courses: [
+      {name: "I learned how to "},
+    ]
   },
   {
     id: 'edu-5',

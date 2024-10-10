@@ -1,3 +1,10 @@
+:root {
+  --color-badge: #90a4ae;
+  --color-badge-text: #ffffff;
+  --color-skill-badge: #cfd8dc;
+  --color-key-skill-badge: #4fc3f7;
+}
+
 .skill-tag {
   display: inline-block;
   padding: 0.2rem 0.5rem;
@@ -5,7 +12,9 @@
   border-radius: 12px;
   font-size: 0.8rem;
   font-weight: bold;
-  color: white;
+  background-color: var(--color-key-skill-badge);
+  color: var(--color-badge-text);
+}
 
   &.programming {
     background-color: #6772E5;

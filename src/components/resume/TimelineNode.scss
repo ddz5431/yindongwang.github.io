@@ -1,7 +1,22 @@
-$education-color: #FFA07A; // Light Salmon
+// Updated color variables
+$education-color: #FF8C61; // Darker shade of Light Salmon
 $education-bg: #FFF0E8;
-$work-color: #20B2AA; // Light Sea Green
+$work-color: #1A9B94; // Darker shade of Light Sea Green
 $work-bg: #E0F2F1;
+$accent-blue: #3182CE; // Blue from "Expand All" button
+$text-dark: #2D3748; // Darker text for better contrast
+$text-light: #4A5568; // Lighter text for secondary information
+
+$tech-blue: #007bff;
+$tech-indigo: #6610f2;
+$tech-purple: #6f42c1;
+$tech-pink: #e83e8c;
+$tech-green: #28a745;
+$bg-dark: #20232a;
+//$text-light: #eaeaea;
+
+// Font
+$sans-serif-font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
 
 .timeline-node {
   position: relative;
@@ -9,12 +24,103 @@ $work-bg: #E0F2F1;
   width: 100%;
   display: flex;
   align-items: flex-start;
+  font-family: $sans-serif-font;
+
+  // Timeline markers
+  &::before {
+    content: attr(data-year);
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: $accent-blue;
+    color: white;
+    padding: 4px 12px;
+    border-radius: 16px;
+    font-weight: bold;
+    z-index: 1;
+  }
+
+  &.present::before {
+    content: 'Present';
+    background-color: #48BB78; // Green for present
+  }
 
   .expanded-content {
     .section-title {
-      font-size: larger;
-      color: slategray;
+      font-size: 1.1rem;
+      color: $text-dark;
+      font-weight: 600;
     }
+
+    .research-interests {
+      .section-title {
+        font-size: 1.4rem;
+        font-weight: 600;
+        color: $tech-blue;
+        margin-bottom: 1.5rem;
+        border-bottom: 2px solid $tech-blue;
+        padding-bottom: 0.5rem;
+      }
+
+      .interests-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+
+        .interest-item {
+          background-color: rgba(255, 255, 255, 0.05);
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          border-radius: 8px;
+          padding: 1.5rem;
+          position: relative;
+          overflow: hidden;
+
+          &::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(
+              45deg,
+              transparent,
+              transparent 10px,
+              rgba(255, 255, 255, 0.03) 10px,
+              rgba(255, 255, 255, 0.03) 20px
+            );
+            z-index: 1;
+            animation: moveBackground 20s linear infinite;
+          }
+
+          .content {
+            position: relative;
+            z-index: 2;
+          }
+
+          .interest-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: $tech-indigo;
+          }
+
+          .interest-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: $tech-pink;
+            margin-bottom: 0.5rem;
+          }
+
+          .interest-description {
+            font-size: 0.9rem;
+            color: $text-light;
+            line-height: 1.6;
+          }
+        }
+      }
+    }
+  }
 
     .courses-list {
       display: flex;
@@ -25,14 +131,15 @@ $work-bg: #E0F2F1;
         font-size: 0.85rem;
         padding: 0.3rem 0.6rem;
         border-radius: 12px;
-        background-color: #f0f0f0;
-        color: #333;
+        background-color: rgba($accent-blue, 0.1);
+        color: $accent-blue;
         font-weight: 500;
         transition: all 0.2s ease;
 
         &:hover {
           transform: translateY(-2px);
           box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+          background-color: rgba($accent-blue, 0.2);
         }
       }
     }
@@ -45,12 +152,13 @@ $work-bg: #E0F2F1;
         font-size: 1.1rem;
         font-weight: bold;
         margin-bottom: 0.5rem;
-        color: #1a2b3c;
+        color: $text-dark;
       }
 
       p {
         font-size: 0.9rem;
         margin-bottom: 0.5rem;
+        color: $text-light;
       }
 
       .detail-skills {
@@ -63,33 +171,26 @@ $work-bg: #E0F2F1;
           font-size: 0.75rem;
           padding: 0.2rem 0.5rem;
           border-radius: 12px;
-          background-color: #f0f0f0;
-          color: #333;
+          background-color: rgba($accent-blue, 0.1);
+          color: $accent-blue;
           font-weight: 500;
           transition: all 0.2s ease;
 
           &:hover {
             transform: translateY(-2px);
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            background-color: rgba($accent-blue, 0.2);
           }
         }
       }
     }
-  }
-  &.education {
-    .expanded-content {
-      .course-item {
-        background-color: rgba($education-color, 0.1);
-        color: darken($education-color, 20%);
-      }
-    }
-  }
 
-  &.work {
-    .expanded-content {
-      .detail-skill {
-        background-color: rgba($work-color, 0.1);
-        color: darken($work-color, 20%);
+  &.education, &.work {
+    .node-card {
+      transition: all 0.3s ease;
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
       }
     }
   }
@@ -144,11 +245,11 @@ $work-bg: #E0F2F1;
   }
 
   .node-card {
-    background-color: #FFFFFF; // Default white background
-    border: 1px solid #E0E0E0; // Default border color
-    border-radius: 8px;
+    background-color: #FFFFFF;
+    border: 1px solid #E0E0E0;
+    border-radius: 12px; // Consistent corner radius
     padding: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); // Subtle shadow
   }
 
   .node-header {
@@ -158,23 +259,28 @@ $work-bg: #E0F2F1;
 
     .icon {
       margin-right: 10px;
+      color: $accent-blue;
     }
 
     h3 {
       margin: 0;
       font-size: 1.2rem;
+      color: $text-dark;
+      font-weight: 600;
     }
 
     h4 {
       margin: 0 0 0 10px;
       font-size: 1rem;
       font-weight: normal;
+      color: $text-light;
     }
   }
 
   p {
     margin-bottom: 5px;
     font-size: 0.9rem;
+    color: $text-light;
   }
 
   .skills-container {
@@ -185,14 +291,17 @@ $work-bg: #E0F2F1;
 
     .detail-skill {
       font-size: 0.8rem;
-    }
-  }
+      background-color: rgba($accent-blue, 0.1);
+      color: $accent-blue;
+      padding: 3px 8px;
+      border-radius: 12px;
+      transition: all 0.2s ease;
 
-  .skill-tag {
-    background-color: #E0E0E0;
-    padding: 3px 8px;
-    border-radius: 4px;
-    font-size: 0.8rem;
+      &:hover {
+        background-color: rgba($accent-blue, 0.2);
+        transform: translateY(-2px);
+      }
+    }
   }
 
   .expanded-content {
@@ -200,19 +309,9 @@ $work-bg: #E0F2F1;
     max-width: 45%;
     background-color: #FAF9F7;
     border: 1px solid #E0E0E0;
-    border-radius: 8px;
+    border-radius: 12px; // Consistent corner radius
     padding: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-
-  .node-header {
-    h3 {
-      color: $education-color;
-    }
-  }
-
-  &.work .node-header h3 {
-    color: $work-color;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); // Subtle shadow
   }
 }
 
@@ -221,10 +320,22 @@ $work-bg: #E0F2F1;
   .timeline-node {
     flex-direction: column !important;
 
+
     .timeline-node-content, .expanded-content {
       width: 100%;
       max-width: none;
       margin: 0 0 20px 0 !important;
+
+      .research-interests {
+        .interests-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      &::before {
+        left: 20px;
+        transform: none;
+      }
     }
   }
 }

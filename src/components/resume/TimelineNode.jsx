@@ -1,14 +1,17 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Briefcase, GraduationCap, ChevronRight, ChevronLeft } from 'lucide-react';
+import { Brain, TrendingUp, Heart } from 'lucide-react';
 import { Skill, TimelineEventData } from '../../types';
 import './TimelineNode.scss';
+
 
 interface TimelineNodeProps {
   event: TimelineEventData;
   isExpanded: boolean;
   onClick: () => void;
   skills: Skill[];
+  period: string;
 }
 
 const TimelineNode: React.FC<TimelineNodeProps> = ({
@@ -16,8 +19,25 @@ const TimelineNode: React.FC<TimelineNodeProps> = ({
   isExpanded,
   onClick,
   skills,
+    period: string,
 }) => {
   const Icon = event.type === 'work' ? Briefcase : GraduationCap;
+
+  const getInterestIcon = (name: string) => {
+    switch (name) {
+      case 'LLM Alignment with Human Values':
+        return <Brain size={32} />;
+      case 'Preference Learning':
+        return <TrendingUp size={32} />;
+      case 'AI for Social Good':
+        return <Heart size={32} />;
+      case 'AI for Education':
+        return <GraduationCap size={32} />;
+      default:
+        return null;
+    }
+  };
+
 
   const renderDetails = () => {
     if (event.type === 'work') {
@@ -34,7 +54,7 @@ const TimelineNode: React.FC<TimelineNodeProps> = ({
 
     return (
       <div className="details-container">
-        <h4 className="section-title">Highlights</h4>
+        <h4 className="section-title">🌟 Highlights</h4>
         {event.projects.map((project, index) => (
           <div key={index} className="detail-item">
             <h5 className="detail-title">{project.name}</h5>
@@ -61,26 +81,24 @@ const TimelineNode: React.FC<TimelineNodeProps> = ({
     if (!event.courses || event.courses.length === 0) return null;
 
     return (
-      <div className="details-container">
+      <div className="research-interests">
         <h4 className="section-title">Research Interests</h4>
-        {event.courses.map((course, index) => (
-          <div key={index} className="detail-item">
-            <h5 className="detail-title">{course.name}</h5>
-            <p>{course.description}</p>
-            <div className="detail-skills">
-              {course.highlights.slice(0, 5).map((highlight, index) => (
-                <span key={index} className="detail-skill">
-                  {highlight}
-                </span>
-              ))}
-              {course.highlights.length > 5 && (
-                <span className="more-skills">
-                  +{course.highlights.length - 5}
-                </span>
-              )}
-            </div>
-          </div>
-        ))}
+        <div className="interests-grid">
+          {event.courses.map((course, index) => (
+            <motion.div
+              key={index}
+              className="interest-item"
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
+              <div className="content">
+                <div className="interest-icon">{getInterestIcon(course.name)}</div>
+                <h5 className="interest-name">{course.name}</h5>
+                {course.description && <p className="interest-description">{course.description}</p>}
+              </div>
+            </motion.div>
+          ))}
+        </div>
       </div>
     );
   };
