@@ -14,6 +14,11 @@ $accentFontColor: #0056b3;
   position: relative;
   overflow: hidden;
 
+  @media (max-width: 768px) {
+    flex-direction: column; // Stack columns on small screens
+    padding: 1rem;
+  }
+
   .background-pattern {
     position: absolute;
     top: 0;
@@ -34,11 +39,20 @@ $accentFontColor: #0056b3;
     width: 90%;
     max-width: 1200px;
     z-index: 1;
+
+    @media (max-width: 768px) {
+      flex-direction: column; // Stack content vertically
+    }
   }
 
   .left-column, .right-column {
     flex: 1;
     padding: 2rem;
+
+    @media (max-width: 768px) {
+      width: 100%;
+      padding: 1rem;
+    }
   }
 
   .left-column {
@@ -57,6 +71,11 @@ $accentFontColor: #0056b3;
         width: 100%;
         height: 100%;
         object-fit: cover;
+      }
+
+      @media (max-width: 768px) {
+        width: 200px;
+        height: 200px;
       }
     }
 
@@ -100,6 +119,10 @@ $accentFontColor: #0056b3;
           &:nth-child(4) {
             font-family: 'Noto Sans JP', Poppins, sans-serif
           }
+
+          @media (max-width: 768px) {
+            font-size: 1.3rem;
+          }
         }
       }
 
@@ -108,18 +131,28 @@ $accentFontColor: #0056b3;
         font-size: 2.5rem;
         margin-bottom: 0.5rem;
         color: darken(lightsalmon, 15%);
+
+        @media (max-width: 768px) {
+          font-size: 1.8rem;
+        }
       }
 
       h2 {
         font-size: 1.5rem;
         margin-bottom: 1rem;
         color: #666;
+        @media (max-width: 768px) {
+          font-size: 1.2rem;
+        }
       }
 
       p {
         font-size: 1.2rem;
         margin-bottom: 0.5rem;
         color: #1a2b3c;
+        @media (max-width: 768px) {
+          font-size: 1rem;
+        }
       }
 
       .tagline {
@@ -146,6 +179,13 @@ $accentFontColor: #0056b3;
         height: 40px;
         margin-right: 1rem;
         margin-bottom: 1rem;
+
+        @media (max-width: 768px) {
+          width: 30px;
+          height: 30px;
+          margin-right: 0.5rem;
+          margin-bottom: 0.5rem;
+        }
       }
     }
   }
@@ -186,14 +226,18 @@ $accentFontColor: #0056b3;
           display: block;
           margin-bottom: 0.5rem;
         }
-      }
+      }}
 
-      @media (max-width: 768px) {
+     @media (max-width: 768px) {
         .subtle-typewriter {
+          display: none; // Hide on mobile
+
+          .subtle-typewriter span {
           display: none;
+          margin-bottom: 0.5rem;
+        }
         }
       }
-    }
 
     @media (max-width: 768px) {
       margin-top: 20px;

@@ -1,12 +1,11 @@
-// Updated color variables
-$education-color: #FF8C61; // Darker shade of Light Salmon
+// Color variables
+$education-color: #FF8C61;
 $education-bg: #FFF0E8;
-$work-color: #1A9B94; // Darker shade of Light Sea Green
+$work-color: #1A9B94;
 $work-bg: #E0F2F1;
-$accent-blue: #3182CE; // Blue from "Expand All" button
-$text-dark: #2D3748; // Darker text for better contrast
-$text-light: #4A5568; // Lighter text for secondary information
-$accent-blue: #3498db;  // Or your preferred accent color
+$accent-blue: #3182CE;
+$text-dark: #2D3748;
+$text-light: #4A5568;
 $primary-text-color: #333333;
 $secondary-text-color: #666666;
 $color-skill-badge: #3498db;
@@ -16,18 +15,28 @@ $tech-purple: #6f42c1;
 $tech-pink: #e83e8c;
 $tech-green: #28a745;
 $bg-dark: #20232a;
-//$text-light: #eaeaea;
-
-// Font
 $sans-serif-font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
 
 .timeline-node {
   position: relative;
-  margin-bottom: 30px;
+  margin-bottom: 60px;
   width: 100%;
   display: flex;
+  flex-wrap: nowrap;
   align-items: flex-start;
-  font-family: $sans-serif-font;
+  //justify-content: center;
+  //padding: 30px;
+
+  .timeline-node-content,
+  .expanded-content-container {
+    flex-basis: 50%;
+    padding: 15px;
+  }
+
+  .timeline-node-content {
+    align-self: flex-start;
+    margin-right: 5%;
+  }
 
   // Timeline markers
   &::before {
@@ -46,7 +55,7 @@ $sans-serif-font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Robot
 
   &.present::before {
     content: 'Present';
-    background-color: #48BB78; // Green for present
+    background-color: #48BB78;
   }
 
   .expanded-content {
@@ -90,8 +99,8 @@ $sans-serif-font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Robot
                 margin-block-end: 0;
                 margin-inline-start: 0;
                 margin-inline-end: 0;
+              }
             }
-          }
 
             .interest-description {
               font-size: 0.9rem;
@@ -104,80 +113,76 @@ $sans-serif-font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Robot
     }
   }
 
-    .courses-list {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-      margin-top: 0.5rem;
-      //background: whitesmoke;
+  .courses-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
 
-      .course-item {
-        font-size: 0.9rem;
-        padding: 0.3rem 0;
-        color: $secondary-text-color;
-        font-weight: 400;
-        border-bottom: 1px solid rgba($accent-blue, 0.1);
+    .course-item {
+      font-size: 0.9rem;
+      padding: 0.3rem 0;
+      color: $secondary-text-color;
+      font-weight: 400;
+      border-bottom: 1px solid rgba($accent-blue, 0.1);
+      transition: all 0.2s ease;
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      &:hover {
+        color: $primary-text-color;
+        padding-left: 0.3rem;
+      }
+    }
+  }
+
+  .detail-item {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+
+    .detail-title {
+      font-size: 1.1rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+      color: $text-dark;
+    }
+
+    p {
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+      color: $text-light;
+    }
+
+    .detail-skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+      margin-top: 0.5rem;
+
+      .detail-skill {
+        font-size: 0.75rem;
+        padding: 0.2rem 0.5rem;
+        border-radius: 12px;
+        background-color: rgba($accent-blue, 0.1);
+        color: $accent-blue;
+        font-weight: 500;
         transition: all 0.2s ease;
 
-        &:last-child {
-          border-bottom: none;
-        }
-
         &:hover {
-          color: $primary-text-color;
-          padding-left: 0.3rem;
+          transform: translateY(-2px);
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+          background-color: rgba($accent-blue, 0.2);
         }
       }
     }
+  }
 
-    .detail-item {
-      margin-top: 1rem;
-      margin-bottom: 1rem;
-
-      .detail-title {
-        font-size: 1.1rem;
-        font-weight: bold;
-        margin-bottom: 0.5rem;
-        color: $text-dark;
-      }
-
-      p {
-        font-size: 0.9rem;
-        margin-bottom: 0.5rem;
-        color: $text-light;
-      }
-
-      .detail-skills {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.3rem;
-        margin-top: 0.5rem;
-
-        .detail-skill {
-          font-size: 0.75rem;
-          padding: 0.2rem 0.5rem;
-          border-radius: 12px;
-          background-color: rgba($accent-blue, 0.1);
-          color: $accent-blue;
-          font-weight: 500;
-          transition: all 0.2s ease;
-
-          &:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            background-color: rgba($accent-blue, 0.2);
-          }
-        }
-      }
-    }
-
-  &.education, &.work {
+  &.education,
+  &.work {
     .node-card {
       transition: all 0.3s ease;
-      &:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-      }
     }
   }
 
@@ -189,17 +194,21 @@ $sans-serif-font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Robot
       border-color: $work-color;
     }
 
+    .timeline-node-content {
+      margin-left: 5%;
+      margin-right: 0;
+    }
+
     .expanded-content {
       border-color: $work-color;
+      margin-right: 5%;
+      margin-left: 0;
     }
 
-    .timeline-node-content {
-      margin-left: auto;
-      margin-right: 30px;
-    }
-
-    .expanded-content {
-      margin-right: 20px;
+    .expanded-content-container {
+      border-color: $work-color;
+      margin-right: 5%;
+      margin-left: 0;
     }
   }
 
@@ -214,28 +223,12 @@ $sans-serif-font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Robot
     .expanded-content {
       border-color: $education-color;
     }
-
-    .timeline-node-content {
-      margin-left: 30px;
-      margin-right: auto;
-    }
-
-    .expanded-content {
-      margin-left: 20px;
-    }
-  }
-
-  .timeline-node-content {
-    width: 45%;
-    max-width: 400px;
   }
 
   .node-card {
-    background-color: #FFFFFF;
-    border: 1px solid #E0E0E0;
-    border-radius: 12px; // Consistent corner radius
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
     padding: 20px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); // Subtle shadow
   }
 
   .node-header {
@@ -291,13 +284,11 @@ $sans-serif-font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Robot
   }
 
   .expanded-content {
-    flex: 1;
-    max-width: 45%;
-    background-color: #FAF9F7;
-    border: 1px solid #E0E0E0;
-    border-radius: 12px; // Consistent corner radius
+    background-color: #faf9f7;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
     padding: 20px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); // Subtle shadow
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
 }
 
@@ -306,22 +297,27 @@ $sans-serif-font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Robot
   .timeline-node {
     flex-direction: column !important;
 
-
-    .timeline-node-content, .expanded-content {
+    .timeline-node-content,
+    .expanded-content {
       width: 100%;
       max-width: none;
       margin: 0 0 20px 0 !important;
+    }
 
-      .research-interests {
-        .interests-grid {
-          grid-template-columns: 1fr;
-        }
-      }
+    .timeline-node-content,
+    .expanded-content-container {
+      width: 100%;
+      max-width: none;
+      margin: 0 0 20px 0 !important;
+    }
 
-      &::before {
-        left: 20px;
-        transform: none;
-      }
+    &::before {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    &.work::before {
+      left: 50%;
     }
   }
 }

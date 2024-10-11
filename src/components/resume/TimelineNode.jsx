@@ -155,13 +155,15 @@ const TimelineNode: React.FC<TimelineNodeProps> = ({
       <AnimatePresence>
         {isExpanded && (
           <motion.div
-            className="expanded-content"
-            initial={{ opacity: 0, width: 0 }}
-            animate={{ opacity: 1, width: 'auto' }}
-            exit={{ opacity: 0, width: 0 }}
-            transition={{ duration: 0.3 }}
+              className="expanded-content-container"
+              initial={{ opacity: 0, width: 0 }}
+              animate={{ opacity: 1, width: 'auto' }}
+              exit={{ opacity: 0, width: 0 }}
+              transition={{ duration: 0.3 }}
           >
-            {renderDetails()}
+            <div className="expanded-content">
+              {renderDetails()}
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
