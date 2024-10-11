@@ -117,11 +117,6 @@ $breakpoint-xlarge: 1200px;
   .routes {
     scroll-snap-type: none;  // Disable scroll snapping on smaller screens
   }
-
-  .personal-notes {
-    margin-top: 20px;
-    padding: 15px;
-  }
 }
 
 @include respond-to(small) {

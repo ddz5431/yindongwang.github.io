@@ -9,7 +9,7 @@ $timelineColor: #3182CE; // A vibrant blue
   --color-accent-primary: #3182CE;
   --color-accent-secondary: #ED8936;
   --color-timeline: #CBD5E0;
-  --color-skill-tag-bg: #EBF8FF;
+  --color-skill-tag-bg: #3498db;
   --color-skill-tag-text: #2B6CB0;
   --color-status-present: #48BB78;
   --color-status-past: #A0AEC0;
@@ -164,7 +164,7 @@ h1 {
 }
 
 .skill-tag {
-  background-color: var(--color-skill-badge);
+  background-color: white;
   color: var(--color-text);
   padding: 4px 10px;
   border-radius: 16px;
@@ -175,7 +175,7 @@ h1 {
   transition: background-color 0.3s ease;
 
   &:hover {
-    background-color: var(--color-key-skill-badge);
+    background-color: beige;
   }
 
   &.key-skill {

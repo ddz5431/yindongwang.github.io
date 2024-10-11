@@ -21,22 +21,22 @@ const TimelineNode: React.FC<TimelineNodeProps> = ({
   skills,
     period: string,
 }) => {
-  const Icon = event.type === 'work' ? Briefcase : GraduationCap;
+  // const Icon = event.type === 'work' ? Briefcase : GraduationCap;
 
-  const getInterestIcon = (name: string) => {
-    switch (name) {
-      case 'LLM Alignment with Human Values':
-        return <Brain size={32} />;
-      case 'Preference Learning':
-        return <TrendingUp size={32} />;
-      case 'AI for Social Good':
-        return <Heart size={32} />;
-      case 'AI for Education':
-        return <GraduationCap size={32} />;
-      default:
-        return null;
-    }
-  };
+  // const getInterestIcon = (name: string) => {
+  //   switch (name) {
+  //     case 'LLM Alignment with Human Values':
+  //       return <Brain size={20} />;
+  //     case 'Preference Learning':
+  //       return <TrendingUp size={20} />;
+  //     case 'AI for Social Good':
+  //       return <Heart size={20} />;
+  //     case 'AI for Education':
+  //       return <GraduationCap size={20} />;
+  //     default:
+  //       return null;
+  //   }
+  // };
 
 
   const renderDetails = () => {
@@ -80,9 +80,16 @@ const TimelineNode: React.FC<TimelineNodeProps> = ({
   const renderResearchProjects = () => {
     if (!event.courses || event.courses.length === 0) return null;
 
+    const researchDescriptions = {
+      'LLM Alignment with Human Values': 'Exploring methods to ensure large language models behave consistently with human ethics and values.',
+      'Preference Learning': 'Investigating algorithms and models that can learn and predict human preferences from various types of feedback.',
+      'AI for Social Good': 'Developing AI applications aimed at addressing pressing societal challenges like sustainability and public health.',
+      'AI for Education': 'Researching how AI can enhance learning experiences and educational outcomes through adaptive systems.'
+    };
+
     return (
       <div className="research-interests">
-        <h4 className="section-title">Research Interests</h4>
+        <h4 className="section-title">🧑‍🔬 Research Interests</h4>
         <div className="interests-grid">
           {event.courses.map((course, index) => (
             <motion.div
@@ -92,9 +99,11 @@ const TimelineNode: React.FC<TimelineNodeProps> = ({
               transition={{ type: "spring", stiffness: 300 }}
             >
               <div className="content">
-                <div className="interest-icon">{getInterestIcon(course.name)}</div>
-                <h5 className="interest-name">{course.name}</h5>
-                {course.description && <p className="interest-description">{course.description}</p>}
+                <div className="interest-header">
+                  <h5 className="interest-name">{course.name}</h5>
+                  {/*{getInterestIcon(course.name)}*/}
+                </div>
+                <p className="interest-description">{researchDescriptions[course.name] || course.description}</p>
               </div>
             </motion.div>
           ))}
@@ -103,20 +112,21 @@ const TimelineNode: React.FC<TimelineNodeProps> = ({
     );
   };
 
+
   const renderCourses = () => {
     if (!event.courses || event.courses.length === 0) return null;
 
     return (
       <div className="details-container">
-        <h4 className="section-title">Selected Courses</h4>
-        <div className="courses-list">
-          {event.courses.map((course, index) => (
-            <span key={index} className="course-item">
-              {course.name}
-            </span>
-          ))}
-        </div>
-      </div>
+      <h4 className="section-title">📝 Selected Courses</h4>
+      <ul className="courses-list">
+        {event.courses.map((course, index) => (
+          <li key={index} className="course-item">
+            {course.name}
+          </li>
+        ))}
+      </ul>
+    </div>
     );
   };
 
@@ -132,17 +142,17 @@ const TimelineNode: React.FC<TimelineNodeProps> = ({
           onClick={onClick}
         >
           <div className="node-header">
-            <Icon className="icon" />
+            {/*<Icon className="icon" />*/}
             <h3>{event.type === 'work' ? event.position : event.major}</h3>
             {event.type === 'education' && event.position && (
               <h4>{event.position}</h4>
             )}
           </div>
           <p className="organization">{event.type === 'work' ? event.company : event.university}</p>
-          <p className="location">{event.location}</p>
-          <p className="date">{`${event.startDate} - ${event.endDate || 'Present'}`}</p>
+          <p className="location"> 📍 {event.location}</p>
+          <p className="date"> 📅 {`${event.startDate} - ${event.endDate || 'Present'}`}</p>
           <div className="skills-container">
-            {event.skillIds.slice(0, 4).map((skillId) => {
+            💪 {event.skillIds.slice(0, 4).map((skillId) => {
               const skill = skills.find((s) => s.id === skillId);
               return skill ? (
                 <span key={skillId} className="skill-tag">

@@ -6,27 +6,27 @@ export const work: WorkExperience[] = [
     type: 'work',
     startDate: '01.2024',
     endDate: 'present',
-    position: 'AI Researcher',
+    position: 'Doctoral AI Researcher',
     company: 'Hasso Plattner Institute',
     location: 'Potsdam, Germany',
     link: 'https://hpi.de',
-    skillIds: ["s1", 's2', 's3', 's4', 's5'],
+    skillIds: ['s9', 's11', 's10', 's14', 's3', 's16', 's17'],
     projects: [
       {
         name: "Paper: Entailment Few-shot Learning with Large Language Models",
         description: "This study explores few-shot learning with pretrained language models using a textual entailment-based framework, achieving performance improvements across model architectures without relying on external NLI data.",
-        skills: ["Large Language Models", "Entailment Few-shot Learning", "Efficient LLMs downstream application", "Natural Language Processing"]
+        skills: ["Large Language Models", "Few-shot Learning", "Text Classification"]
       },
       {
         name: "Master Project: Facts Matter - Benchmark LLMs' hallucination detection and mitigation abilities",
         description: "Supervised Master Project on LLM hallucinations (Summer 2024).",
-        skills: ["Project Supervision", "LLM Hallucinations"]
+        skills: ["LLM Hallucinations", "AI Safety"]
       },
       {
         name: "Master Seminar: MetaImage - Decoding Languages from Visual Metaphors",
         description: "Supervised Research Seminar: Trends in AI and Deep Learning Research Seminar\n" +
             "(Summer 2024).\n ",
-        skills: ["Diffusion Models", "Multilinguality", "Project Supervision"]
+        skills: ["Vision-Language Models", "Multilinguality", "Language Bias"]
       },
       // {
       //   name: "Young women in AI workshop",
@@ -44,7 +44,7 @@ export const work: WorkExperience[] = [
     company: 'MORESOPHY GmbH',
     location: 'Munich, Germany',
     link: 'https://www.moresophy.com/en',
-    skillIds: ["s1", 's2'],
+    skillIds: ["s1", 's2', 's4'],
     projects: [
       {
         name: "Transformer-based NLP Pipeline Transition",
@@ -72,7 +72,7 @@ export const work: WorkExperience[] = [
     company: 'BingoStar GmbH',
     location: 'Munich, Germany',
     link: 'https://www.lmu.de',
-    skillIds: ["s1", 's2'],
+    skillIds: ["s1"],
     projects: [
       {
         name: "Sales Data Automation & Trend Analysis",
@@ -90,7 +90,7 @@ export const work: WorkExperience[] = [
     company: 'LMU Munich',
     location: 'Munich, Germany',
     link: 'https://www.lmu.de',
-    skillIds: ["s1", 's2'],
+    skillIds: ["s1", 's2', 's17'],
     projects: [
       {
         name: "Computational Linguistics Course Assistance",
@@ -112,7 +112,7 @@ export const education: EducationBackground[] = [
     university: 'Hasso Plattner Institute',
     location: 'Potsdam, Germany',
     link: 'https://hpi.de',
-    skillIds: ["s1", 's2'],
+    skillIds: ["s6", 's5', 's13', 's10', 's14'],
     courses: [
       {
         name: "LLM Alignment with Human Values",
@@ -151,13 +151,13 @@ export const education: EducationBackground[] = [
     university: 'LMU Munich',
     location: 'Munich, Germany',
     link: 'https://www.lmu.de',
-    skillIds: ["s1", 's2'],
+    skillIds: ['s2', 's4', 's5', 's7'],
     courses: [
       {
         name: "Deep Learning For NLP",
       },
       {
-        name: "Knowledge Discovery in Databases I",
+        name: "Knowledge Discovery in Databases",
       },
       {
         name: "Lexikon, Syntax, Semantik"
@@ -177,7 +177,7 @@ export const education: EducationBackground[] = [
     university: 'LMU Munich',
     location: 'Munich, Germany',
     link: 'https://www.lmu.de',
-    skillIds: ["s1", 's2'],
+    skillIds: ["s1", 's2', "s4"],
     courses: [
       {
         name: "Discrete Mathematics"
@@ -189,7 +189,7 @@ export const education: EducationBackground[] = [
         name: "Introduction in Computational Linguistics"
       },
       {
-        name: ""
+        name: "Programming course: Python"
       }
     ]
   },
@@ -203,9 +203,9 @@ export const education: EducationBackground[] = [
     university: 'University of Anhui',
     location: 'Hefei, China',
     link: 'https://en.ahu.edu.cn/',
-    skillIds: ["s1", 's2'],
+    skillIds: ["s15"],
     courses: [
-      {name: "I learned how to "},
+      {name: "Started learning German from scratch during my bachelor's studies, going from 0 knowledge to native level now. "},
     ]
   },
   {
@@ -218,7 +218,10 @@ export const education: EducationBackground[] = [
     university: 'University of Osnabrück',
     location: 'Osnabrück, Germany',
     link: 'https://www.uni-osnabrueck.de/',
-    skillIds: ["s13", 's2', 's1']
+    skillIds: ["s15"],
+    courses: [
+      {name: "I learned about German culture and history."},
+    ]
   },
 ];
 
@@ -237,7 +240,9 @@ export const skills: Skill[] = [
   { id: 's12', name: 'Computer Vision', category: 'ml' },
   { id: 's13', name: 'Artificial Intelligence Ethics', category: 'ml' },
   { id: 's14', name: 'Problem Solving', category: 'soft' },
-  { id: "s15", name: 'German', category: "language"}
+  { id: "s15", name: 'Foreign Language', category: "language"},
+  { id: "s16", name: 'Thesis Supervision', category:'soft'},
+  { id: "s17", name: "Teaching", category: "soft"}
 ];
 
 function parseDateString(dateStr: string): string {
