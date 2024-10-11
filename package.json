@@ -35,7 +35,7 @@
     "test": "node_modules/.bin/react-scripts test",
     "eject": "node_modules/.bin/react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -b main -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -56,9 +56,9 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^6.1.1",
+    "gh-pages": "^6.2.0",
     "sass": "^1.79.3",
     "sass-loader": "^16.0.2"
   },
-  "homepage": "https://yindong.me/"
+  "homepage": "https://yindong.me"
 }
