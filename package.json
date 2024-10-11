@@ -13,6 +13,7 @@
     "framer-motion": "^11.11.1",
     "howler": "^2.2.4",
     "ityped": "^1.0.3",
+    "jekyll": "^3.0.0-beta1",
     "lucide-react": "^0.447.0",
     "mdb-react-ui-kit": "^9.0.0",
     "prop-types": "^15.8.1",
