@@ -40,6 +40,9 @@ $transition-speed: 0.3s;
       &:hover {
         color: $hover-color;
       }
+      @media (max-width: 768px) {
+        display: none;
+      }
     }
 
     .navLinks {
@@ -165,7 +168,7 @@ section {
 
 @media (max-width: 768px) {
   body {
-    padding-top: calc(#{$topbar-height-mobile} + 20px);
+    padding-top: calc(#{$topbar-height-mobile});
   }
 
   section {

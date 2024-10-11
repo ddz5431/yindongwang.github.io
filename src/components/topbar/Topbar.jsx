@@ -6,7 +6,7 @@ import './topbar.scss';
 const NAV_LINKS = [
   { to: '/', label: 'Home' },
   { to: '/timeline', label: 'Resume' },
-  { to: '/personal-notes', label: 'Personal Notes' },
+  { to: '/personal-notes', label: 'Blog' },
   { to: '/publications', label: 'Publications' }
 ];
 

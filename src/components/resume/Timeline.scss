@@ -211,6 +211,11 @@ h1 {
 
 // Responsive styles
 @media (max-width: 768px) {
+
+  .timeline-container {
+    padding: 0;
+    margin: 1rem auto;
+  }
   .timeline-header {
     h1 {
           font-size: 1.3rem;

@@ -1,5 +1,5 @@
-import React from 'react';
-import { Pause, Pace, WindupChildren } from "windups";
+import React, { useState, useRef, useEffect } from 'react';
+import { Pause, WindupChildren, CharWrapper, Pace } from "windups";
 import profile from '../../assets/profile_old.jpg';
 import "./intro.scss";
 
@@ -25,11 +25,13 @@ const MailIcon = () => (
 const TypewriterContent = () => (
   <div className="subtle-typewriter">
     <WindupChildren>
-      <Pace ms={50}>
+      <Pace ms={100}>
         <span>Something interesting about me:
-            1. I was an avid tree climber in primary school. 🌳
-            2. Friends called me "social queen" (still a mystery to me). 👑
-            3. I built this website from scratch. Surprised? 😉</span>
+            1. I was an avid tree climber in primary school 🌳.
+            2. Friends called me "social queen" (still a mystery to me) 👑.
+            3. I built this website from scratch. Surprised? 😉
+            4. 日本語が少し話せますよ 🇯🇵.
+        </span>
       </Pace>
     </WindupChildren>
   </div>
