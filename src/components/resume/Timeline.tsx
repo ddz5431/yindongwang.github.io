@@ -24,7 +24,9 @@ const Timeline: React.FC<TimelineProps> = ({ events, skills }) => {
       [id]: !prev[id],
     }));
 
-    setAreAllExpanded(Object.values({ ...expandedNodes, [id]: !expandedNodes[id] }).every(Boolean));
+    setAreAllExpanded(
+      Object.values({ ...expandedNodes, [id]: !expandedNodes[id] }).every(Boolean)
+    );
   };
 
   const toggleAllNodes = () => {
@@ -39,17 +41,24 @@ const Timeline: React.FC<TimelineProps> = ({ events, skills }) => {
   };
 
   const parseDate = (dateString: string): Date | null => {
-    const parts = dateString.split('.');
-    if (parts.length === 2) {
-      const [month, year] = parts;
-      return new Date(parseInt(year), parseInt(month) - 1);
+    if (['now', 'current', 'present'].includes(dateString.toLowerCase())) {
+      return new Date(); // Return current date for 'present'
+    }
+
+    const [monthName, yearStr] = dateString.split(' ');
+    if (monthName && yearStr) {
+      const month = new Date(`${monthName} 1, ${yearStr}`).getMonth();
+      const year = parseInt(yearStr);
+      if (!isNaN(month) && !isNaN(year)) {
+        return new Date(year, month);
+      }
     }
     return null;
   };
 
   const getYear = (dateString: string): string => {
     const date = parseDate(dateString);
-    return date ? date.getFullYear().toString() : dateString.split('.')[1] || 'Present';
+    return date ? date.getFullYear().toString() : dateString.split(' ')[1] || 'Present';
   };
 
   const sortedEvents = [...events].sort((a, b) => {
@@ -57,11 +66,19 @@ const Timeline: React.FC<TimelineProps> = ({ events, skills }) => {
     const dateB = parseDate(b.startDate);
     if (dateA && dateB) {
       return dateB.getTime() - dateA.getTime();
+    } else if (dateA) {
+      return -1;
+    } else if (dateB) {
+      return 1;
+    } else {
+      return 0;
     }
-    return 0;
   });
 
-  const getPeriod = (startDate: string, endDate: string): 'past' | 'present' | 'future' => {
+  const getPeriod = (
+    startDate: string,
+    endDate: string
+  ): 'past' | 'present' | 'future' => {
     const now = new Date();
     const start = parseDate(startDate);
     const end = parseDate(endDate);
@@ -72,37 +89,39 @@ const Timeline: React.FC<TimelineProps> = ({ events, skills }) => {
   };
 
   return (
-      <div className="timeline-container">
-        <div className="timeline-header">
-          <div className="title-container">
-            <h1>Experience</h1>
-          </div>
-          <button onClick={toggleAllNodes} className="toggle-all-button">
-            {areAllExpanded ? 'Collapse All' : 'Expand All'}
-          </button>
+    <div className="timeline-container">
+      <div className="timeline-header">
+        <div className="title-container">
+          <h1>
+            <span >Education & Experience</span>
+          </h1>
         </div>
-        {sortedEvents.map((event, index) => {
-          const period = getPeriod(event.startDate, event.endDate);
-          return (
-              <React.Fragment key={event.id}>
-                {index >= 0 && (
-                    <div className="timeline-badge">
-                      <span className="badge-pill">{getYear(event.endDate)}</span>
-                    </div>
-                )}
-                <div className={`timeline-line ${period}`}></div>
-                <TimelineNode
-                    key={event.id}
-                    event={event}
-                    isExpanded={expandedNodes[event.id]}
-                    onClick={() => handleNodeClick(event.id)}
-                    skills={skills}
-                    period={period}
-                />
-              </React.Fragment>
-          );
-        })}
+        {/*<button onClick={toggleAllNodes} className="toggle-all-button">*/}
+        {/*  {areAllExpanded ? 'Collapse All' : 'Expand All'}*/}
+        {/*</button>*/}
       </div>
+      {sortedEvents.map((event, index) => {
+        const period = getPeriod(event.startDate, event.endDate);
+        return (
+          <React.Fragment key={event.id}>
+            {index >= 0 && (
+              <div className="timeline-badge">
+                <span className="badge-pill">{getYear(event.endDate)}</span>
+              </div>
+            )}
+            <div className={`timeline-line ${period}`}></div>
+            <TimelineNode
+              key={event.id}
+              event={event}
+              isExpanded={expandedNodes[event.id]}
+              onClick={() => handleNodeClick(event.id)}
+              skills={skills}
+              period={period}
+            />
+          </React.Fragment>
+        );
+      })}
+    </div>
   );
 };
 

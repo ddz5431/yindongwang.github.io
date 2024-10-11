@@ -23,6 +23,7 @@ export interface EducationBackground {
   link: string;
   skillIds: string[];
   courses?: Course[];
+  projects?: Project[];
 }
 
 export interface Skill {
