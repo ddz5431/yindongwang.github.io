@@ -5,12 +5,14 @@
   padding: 40px 20px;
   background-color: white;
   //display: flex;
-  font-size: 30px;
+  //font-size: 5rem;
   font-family: "Lucida Console", "Courier New", monospace;
+  text-align: center;
 
-   p{
-       text-align:center;
-   }
+  p {
+    font-size: 1.5rem;
+  }
+
   @include mobile {
     font-size: 17px;
   }
