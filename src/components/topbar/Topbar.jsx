@@ -34,8 +34,10 @@ export default function Topbar() {
             <span>AI Enthusiast</span>
           </div>
           <div className="itemContainer">
-            <Mail className="icon" />
-            <span>hi@yindong.me</span>
+            <a href="mailto:hi@yindong.me">
+              <Mail className="icon"/>
+              <span>hi@yindong.me</span>
+            </a>
           </div>
         </div>
       </div>
