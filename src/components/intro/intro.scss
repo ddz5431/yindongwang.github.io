@@ -14,11 +14,6 @@ $accentFontColor: #0056b3;
   position: relative;
   overflow: hidden;
 
-  @media (max-width: 768px) {
-    flex-direction: column; // Stack columns on small screens
-    padding: 1rem;
-  }
-
   .background-pattern {
     position: absolute;
     top: 0;
@@ -27,7 +22,7 @@ $accentFontColor: #0056b3;
     bottom: 0;
     background-image: linear-gradient(to right, rgba(0, 123, 255, 0.1) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(0, 123, 255, 0.1) 1px, transparent 1px);
-    background-size: 20px 20px;
+    //background-size: 20px 20px;
     opacity: 0.05;
     z-index: 0;
   }
@@ -42,17 +37,14 @@ $accentFontColor: #0056b3;
 
     @media (max-width: 768px) {
       flex-direction: column; // Stack content vertically
+      width: 100%;
+      padding: 1rem;
     }
   }
 
   .left-column, .right-column {
     flex: 1;
-    padding: 2rem;
-
-    @media (max-width: 768px) {
-      width: 100%;
-      padding: 1rem;
-    }
+    padding: 1rem;
   }
 
   .left-column {
@@ -74,8 +66,8 @@ $accentFontColor: #0056b3;
       }
 
       @media (max-width: 768px) {
-        width: 200px;
-        height: 200px;
+        width: 150px;
+        height: 150px;
       }
     }
 
@@ -97,6 +89,7 @@ $accentFontColor: #0056b3;
   }
 
   .right-column {
+
     .main-content {
       .multilingual-greeting {
         margin-bottom: 1.5rem;
@@ -121,7 +114,9 @@ $accentFontColor: #0056b3;
           }
 
           @media (max-width: 768px) {
-            font-size: 1.3rem;
+            font-size: 1.0rem;
+            margin-bottom: 0.6rem;
+            text-align: center;
           }
         }
       }
@@ -133,7 +128,7 @@ $accentFontColor: #0056b3;
         color: darken(lightsalmon, 15%);
 
         @media (max-width: 768px) {
-          font-size: 1.8rem;
+          font-size: 1.2rem;
         }
       }
 
@@ -142,7 +137,7 @@ $accentFontColor: #0056b3;
         margin-bottom: 1rem;
         color: #666;
         @media (max-width: 768px) {
-          font-size: 1.2rem;
+          font-size: 1rem;
         }
       }
 
@@ -151,7 +146,7 @@ $accentFontColor: #0056b3;
         margin-bottom: 0.5rem;
         color: #1a2b3c;
         @media (max-width: 768px) {
-          font-size: 1rem;
+          font-size: 0.8rem;
         }
       }
 
@@ -240,7 +235,7 @@ $accentFontColor: #0056b3;
       }
 
     @media (max-width: 768px) {
-      margin-top: 20px;
+      margin-top: 40px;
       .content-wrapper {
         flex-direction: column;
       }
@@ -270,8 +265,7 @@ $accentFontColor: #0056b3;
         }
 
         .multilingual-greeting .greeting-line {
-          font-size: 1.3rem;
-
+          font-size: 1rem;
         }
       }
 

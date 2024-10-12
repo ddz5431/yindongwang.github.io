@@ -26,11 +26,10 @@ const TypewriterContent = () => (
   <div className="subtle-typewriter">
     <WindupChildren>
       <Pace ms={100}>
-        <span>Something interesting about me:
+        <span> Fun facts about me:
             1. I was an avid tree climber in primary school 🌳.
             2. Friends called me "social queen" (still a mystery to me) 👑.
-            3. I built this website from scratch. Surprised? 😉
-            4. 日本語が少し話せますよ 🇯🇵.
+            3. 日本語が少し話せますよ 🇯🇵.
         </span>
       </Pace>
     </WindupChildren>
