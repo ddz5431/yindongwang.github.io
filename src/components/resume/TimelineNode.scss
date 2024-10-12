@@ -69,6 +69,45 @@ $sans-serif-font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Robot
       border: 1px solid #e0e0e0;
       border-radius: 12px;
       padding: 1rem;
+      position: relative;
+
+      .expand-collapse-button {
+        position: absolute;
+        right: 10px;
+        bottom: 10px;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        width: 25px;
+        height: 25px;
+        transition: all 0.3s ease;
+        //box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+         display: flex;
+        align-items: center;
+        z-index: 1;
+
+        svg {
+        color: darkslategrey;
+        transition: transform 0.3s ease;
+      }
+
+      &:hover {
+        background-color: #e0e0e0; // Slightly darker on hover
+        box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        transform: translateY(-2px); // Slight lift effect
+      }
+
+      &:active {
+        transform: translateY(0); // Press effect
+      }
+
+      //.expand-icon {
+      //  color: #333; // Dark grey icon color
+      //}
+        &[aria-expanded="true"] .expand-icon {
+        transform: rotate(45deg); // Rotate icon when expanded
+      }
+    }
     }
   }
   .expanded-content-container {
@@ -204,6 +243,13 @@ $sans-serif-font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Robot
 
   &.work {
     //margin-left: 2rem; // Add gap to the right of the content
+    .expand-collapse-button {
+        background: map-get($colors, bg, work);
+
+        &:hover {
+          background: darken(#FFF5F5, 10%);
+        }
+      }
 
     @media (max-width: 1024px) {
       margin-left: 0
@@ -219,7 +265,13 @@ $sans-serif-font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Robot
   }
 
   &.education {
-    //margin-right: 2rem; // Add gap to the right of the content
+    .expand-collapse-button {
+        background: map-get($colors, bg, education);
+
+        &:hover {
+          background: darken(#E6F6FF, 10%);
+        }
+      }
 
     @media (max-width: 1024px) {
       margin-right: 0
@@ -320,5 +372,3 @@ $sans-serif-font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Robot
     }
   }
 }
-
-

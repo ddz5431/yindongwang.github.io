@@ -124,9 +124,11 @@ body {
   //margin-bottom: 60px;
   width: 100%;
   display: flex;
+  justify-content: flex-start;
 
   &.work, &.education {
-    justify-content: flex-end;
+    justify-content: flex-start;
+;
     background: whitesmoke;
   }
 

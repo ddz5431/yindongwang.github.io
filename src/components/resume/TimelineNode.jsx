@@ -1,6 +1,7 @@
 import React from 'react';
+import { Plus, X  } from 'lucide-react';
+
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronRight, ChevronLeft } from 'lucide-react';
 import { Skill, TimelineEventData } from '../../types';
 import './TimelineNode.scss';
 
@@ -12,16 +13,36 @@ interface TimelineNodeProps {
   period: string;
 }
 
+
+const ExpandCollapseButton = ({ isExpanded, onClick, nodeType }) => {
+  return (
+    <button
+      onClick={onClick}
+      className={`expand-collapse-button ${isExpanded ? 'expanded' : ''} ${nodeType}`}
+      aria-expanded={isExpanded}
+      aria-label={isExpanded ? "Collapse" : "Expand"}
+    >
+      {isExpanded ? <X size={24} /> : <Plus size={24} />}
+    </button>
+  );
+};
+
 const TimelineNode: React.FC<TimelineNodeProps> = ({
-  event,
-  isExpanded,
-  onClick,
-  skills,
-  period,
-}) => {
+                                                     event,
+                                                     isExpanded,
+                                                     onClick,
+                                                     skills,
+                                                     period,
+                                                   }) => {
+
   const isPhD =
-    (event.type === 'work' && event.position?.includes('Ph.D')) ||
-    event.major?.includes('Ph.D');
+      (event.type === 'work' && event.position?.includes('Ph.D')) ||
+      event.major?.includes('Ph.D');
+
+  const handleExpandCollapse = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    onClick();
+  };
 
   const renderDetails = () => {
     if (isPhD) {
@@ -145,11 +166,11 @@ const TimelineNode: React.FC<TimelineNodeProps> = ({
             })}
           </div>
 
-          {event.type === 'work'? (
-            <ChevronLeft className="expand-icon" />
-          ) : (
-            <ChevronRight className="expand-icon" />
-          )}
+          <ExpandCollapseButton
+            isExpanded={isExpanded}
+            onClick={handleExpandCollapse}
+            // isWork={event.type === 'work'}
+          />
         </motion.div>
       </div>
       <AnimatePresence>
