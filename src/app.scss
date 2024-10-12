@@ -38,13 +38,9 @@ body {
 .routes {
   background-color: white;
   flex-grow: 1;
-  scroll-snap-type: y mandatory;
-  height: 100vh;
-  overflow-y: auto;
 
   .route {
     min-height: 100vh;
-    scroll-snap-align: start;
     padding: $route-padding;
     transition: background-color 0.3s ease;
 

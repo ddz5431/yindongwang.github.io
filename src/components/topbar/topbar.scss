@@ -12,7 +12,7 @@ $transition-speed: 0.3s;
   width: 100%;
   background-color: $topbar-bg;
   color: $text-color;
-  position: fixed;
+  position: sticky;
   top: 0;
   left: 0;
   right: 0;
@@ -162,19 +162,8 @@ body {
 }
 
 section {
-  min-height: calc(100vh - #{$topbar-height});
   display: flex;
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-}
-
-@media (max-width: 768px) {
-  body {
-    padding-top: calc(#{$topbar-height-mobile});
-  }
-
-  section {
-    min-height: calc(100vh - #{$topbar-height-mobile});
-  }
 }

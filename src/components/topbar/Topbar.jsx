@@ -5,9 +5,9 @@ import './topbar.scss';
 
 const NAV_LINKS = [
   { to: '/', label: 'Home' },
-  { to: '/Timeline', label: 'Resume' },
-  { to: '/PersonalNotes', label: 'Blog' },
-  { to: '/Publications', label: 'Publications' }
+  { to: '/resume', label: 'Resume' },
+  { to: '/blog', label: 'Blog' },
+  { to: '/publications', label: 'Publications' }
 ];
 
 export default function Topbar() {
@@ -34,7 +34,7 @@ export default function Topbar() {
         <div className="right">
           <div className="itemContainer">
             <Person className="icon" />
-            <span>AI Enthusiast</span>
+            <span>AI Researcher</span>
           </div>
           <div className="itemContainer">
             <a href="mailto:hi@yindong.me">

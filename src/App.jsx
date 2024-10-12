@@ -11,16 +11,14 @@ import './app.scss';
 function App() {
   return (
     <Router>
-      <div className="app">
-        <Topbar />
-        <div className="routes">
-          <Routes>
-            <Route path="/" element={<Intro />} />
-            <Route path="/Timeline" element={<Timeline events={combinedTimeline} skills={skills} />} />
-            <Route path="/Publications" element={<Publications />} />
-            <Route path="/PersonalNotes" element={<PersonalNotes />} />
-          </Routes>
-        </div>
+      <Topbar />
+      <div className="routes">
+        <Routes>
+          <Route path="/" element={<Intro />} />
+          <Route path="/resume" element={<Timeline events={combinedTimeline} skills={skills} />} />
+          <Route path="/publications" element={<Publications />} />
+          <Route path="/blog" element={<PersonalNotes />} />
+        </Routes>
       </div>
     </Router>
   );

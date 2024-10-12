@@ -1,5 +1,5 @@
 .intro {
-  background-color: white;
+  background-color: var(--color-background);
   display: flex;
 }
 @media (max-width: 768px) {

@@ -23,17 +23,10 @@ body {
 
 .timeline-container {
   position: relative;
-  //width: 100%;
   max-width: 75%;
   padding: 20px 20px;
-  margin: 3rem auto;
-
-  @media (max-width: 1024px) {
-    margin: 0.5rem auto;
-    max-width: 95%;
-  }
+  margin: 0rem auto;
 }
-
 .timeline-container h1 {
   text-align: center;
   margin: 0.8rem 0 2rem;
@@ -203,10 +196,10 @@ body {
 
 // Responsive styles
 @media (max-width: 1024px) {
-
   .timeline-container {
-    padding: 0;
-    margin: 1rem auto;
+    max-width: 95%;
+    padding: 20px 20px;
+    margin: 0;
   }
   .timeline-header {
     h1 {
@@ -215,24 +208,8 @@ body {
   }
   .timeline-line {
     display: none;
-   position: absolute;
-    top: 6rem;
-    bottom: 0;
-    left: 50%;
-    width: 2px;
-    background-color: var(--color-timeline);
-    border-radius: 15px;
   }
   .toggle-all-button {
     display: none;
   }
-  //.timeline-node {
-  //  &.work, &.education {
-  //    justify-content: flex-start;
-  //  }
-
-    //.timeline-node-content {
-    //  width: calc(100% - 40px);
-    //}
-
 }

@@ -28,7 +28,7 @@ const TypewriterContent = () => (
       <Pace ms={100}>
         <span> Fun facts about me:
             1. I was an avid tree climber in primary school 🌳.
-            2. Friends called me "social queen" (still a mystery to me) 👑.
+            2. Friends used to call me "social queen" (still a mystery to me) 👑.
             3. 日本語が少し話せますよ 🇯🇵.
         </span>
       </Pace>
@@ -39,7 +39,6 @@ const TypewriterContent = () => (
 export default function Intro() {
     return (
         <div className="intro" id="intro">
-            <div className="background-pattern"></div>
             <div className="content-wrapper">
                 <div className="left-column">
                     <div className="imageContainer">
