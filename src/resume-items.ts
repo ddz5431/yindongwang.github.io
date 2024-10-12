@@ -109,7 +109,7 @@ export const work: WorkExperience[] = [
     company: 'Bosch China',
     location: 'Shanghai, China',
     link: 'https://www.lmu.de',
-    skillIds: ['s1', 's2', 's17'],
+    skillIds: ['s22', 's23'],
     projects: [
     {
       name: "Market Analysis for Diesel Products",
@@ -132,7 +132,7 @@ export const work: WorkExperience[] = [
     company: 'Freelancer',
     location: 'Shanghai, China',
     link: 'https://www.lmu.de',
-    skillIds: ['s1', 's2', 's17'],
+    skillIds: ['s17', 's22'],
     projects: [
     {
       name: "Personalized German Language Lessons",
@@ -150,7 +150,7 @@ export const work: WorkExperience[] = [
   company: 'Freelancer',
   location: 'Munich, Germany',
       link: "",
-  skillIds: ['s3', 's10', 's12'], // Replace with actual skill names
+  skillIds: ['s22'], // Replace with actual skill names
   projects: [
     {
       name: "Exhibition Interpreter",
@@ -289,6 +289,8 @@ export const skills: Skill[] = [
   { id: 's19', name: 'AI for Education', category: 'soft' },
   { id: 's20', name: 'LLM Hallucinations', category: 'soft' },
   { id: 's21', name: 'LLM Reasoning', category: 'soft' },
+  { id: 's22', name: 'Human communication', category: 'soft'},
+  { id: 's23', name: 'Marketing', category: 'soft'}
 ];
 
 function parseDateString(dateStr: string): Date {
