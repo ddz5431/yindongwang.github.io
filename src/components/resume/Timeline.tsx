@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import TimelineNode from './TimelineNode';
 import { Skill, TimelineEventData } from '../../types';
 import './Timeline.scss';
@@ -9,14 +9,27 @@ interface TimelineProps {
 }
 
 const Timeline: React.FC<TimelineProps> = ({ events, skills }) => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkIfMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    checkIfMobile();
+    window.addEventListener('resize', checkIfMobile);
+
+    return () => window.removeEventListener('resize', checkIfMobile);
+  }, []);
+
   const [expandedNodes, setExpandedNodes] = useState<{ [key: string]: boolean }>(() => {
     return events.reduce((acc, event) => {
-      acc[event.id] = true; // Set initial state to true for all nodes
+      acc[event.id] = !isMobile; // Set initial state based on device type
       return acc;
     }, {} as { [key: string]: boolean });
   });
 
-  const [areAllExpanded, setAreAllExpanded] = useState(true); // New state for tracking overall expansion
+  // const [areAllExpanded, setAreAllExpanded] = useState(true); // New state for tracking overall expansion
 
   const handleNodeClick = (id: string) => {
     setExpandedNodes((prev) => ({
@@ -29,16 +42,16 @@ const Timeline: React.FC<TimelineProps> = ({ events, skills }) => {
     );
   };
 
-  const toggleAllNodes = () => {
-    const newExpandedState = !areAllExpanded;
-    setAreAllExpanded(newExpandedState);
-    setExpandedNodes(
-      events.reduce((acc, event) => {
-        acc[event.id] = newExpandedState;
-        return acc;
-      }, {} as { [key: string]: boolean })
-    );
-  };
+  const [areAllExpanded, setAreAllExpanded] = useState(!isMobile);
+
+  useEffect(() => {
+    setExpandedNodes(events.reduce((acc, event) => {
+      acc[event.id] = !isMobile;
+      return acc;
+    }, {} as { [key: string]: boolean }));
+    setAreAllExpanded(!isMobile);
+  }, [isMobile, events]);
+
 
   const parseDate = (dateString: string): Date | null => {
     if (['now', 'current', 'present'].includes(dateString.toLowerCase())) {
