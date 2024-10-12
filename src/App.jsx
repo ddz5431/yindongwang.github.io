@@ -18,7 +18,7 @@ function App() {
             <Route path="/" element={<Intro />} />
             <Route path="/Timeline" element={<Timeline events={combinedTimeline} skills={skills} />} />
             <Route path="/Publications" element={<Publications />} />
-            <Route path="/personal-notes" element={<PersonalNotes />} />
+            <Route path="/PersonalNotes" element={<PersonalNotes />} />
           </Routes>
         </div>
       </div>

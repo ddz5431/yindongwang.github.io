@@ -5,9 +5,9 @@ import './topbar.scss';
 
 const NAV_LINKS = [
   { to: '/', label: 'Home' },
-  { to: '/timeline', label: 'Resume' },
-  { to: '/personal-notes', label: 'Blog' },
-  { to: '/publications', label: 'Publications' }
+  { to: '/Timeline', label: 'Resume' },
+  { to: '/PersonalNotes', label: 'Blog' },
+  { to: '/Publications', label: 'Publications' }
 ];
 
 export default function Topbar() {
@@ -16,10 +16,13 @@ export default function Topbar() {
   return (
     <header className="topbar">
       <div className="wrapper">
-        <Link to="/" className="MyName">Yindong Wang - 王殷冬</Link>
+        <Link to="/" className="MyName">
+          <span className="full-name">Yindong Wang</span>
+          <span className="chinese-name"> - 王殷冬</span>
+        </Link>
         <nav className="navLinks">
-          {NAV_LINKS.map(({ to, label }) => (
-            <Link
+          {NAV_LINKS.map(({to, label}) => (
+              <Link
               key={to}
               to={to}
               className={`nav-link ${location.pathname === to ? 'active' : ''}`}
