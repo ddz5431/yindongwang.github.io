@@ -93,7 +93,7 @@ export const work: WorkExperience[] = [
     skillIds: ['s1', 's2', 's17'],
     projects: [
       {
-        name: "Computational Linguistics Course Assistance",
+        name: "Computational Linguistics Course Teaching Assistant",
         description:
           "Held weekly tutorials, providing guidance on programming in Computational Linguistics. Evaluated student assignments and provided constructive feedback to enhance learning outcomes.",
         skills: ["Teaching", "Computational Linguistics", "Programming", "Student Evaluation"],
