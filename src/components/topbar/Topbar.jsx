@@ -5,9 +5,9 @@ import './topbar.scss';
 
 const NAV_LINKS = [
   { to: '/', label: 'Home' },
-  { to: '/resume', label: 'Resume' },
-  { to: '/blog', label: 'Blog' },
-  { to: '/publications', label: 'Publications' }
+  { to: 'resume', label: 'Resume' },
+  { to: 'blog', label: 'Blog' },
+  { to: 'publications', label: 'Publications' }
 ];
 
 export default function Topbar() {
