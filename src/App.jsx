@@ -10,7 +10,7 @@ import './app.scss';
 
 function App() {
   return (
-    <Router basename="/">
+    <Router>
       <Topbar />
       <div className="routes">
         <Routes>
