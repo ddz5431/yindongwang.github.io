@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { HashRouter as Router, Route, Routes } from 'react-router-dom';
 import Topbar from './components/topbar/Topbar';
 import Intro from './components/intro/Intro';
 import Timeline from './components/resume/Timeline';
@@ -10,7 +10,7 @@ import './app.scss';
 
 function App() {
   return (
-    <Router>
+    <Router basename="/">
       <Topbar />
       <div className="routes">
         <Routes>
