@@ -1,5 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { Pause, WindupChildren, CharWrapper, Pace } from "windups";
+import { WindupChildren, Pace } from "windups";
 import profile from '../../assets/profile_old.jpg';
 import "./intro.scss";
 

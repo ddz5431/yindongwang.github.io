@@ -187,9 +187,9 @@ export const education: EducationBackground[] = [
           skills: ["Large Language Models", "Few-shot Learning", "Text Classification"],
         },
         {
-          name: "Master Project: Facts Matter - Benchmark LLMs' hallucination detection and mitigation abilities",
-          description: "Supervised Master Project on LLM hallucinations (Summer 2024).",
-          skills: ["LLM Hallucinations", "AI Safety"],
+          name: "Master Project: ReFACT - A Benchmark Based on r/AskScience for Misinformation Detection with LLMs",
+          description: "Main Supervisor for a Master’s project focused on evaluating and mitigating hallucinations in Large Language Models (Summer 2024). Proposed the research idea, experimental design, evaluation metrics, and contributed to final paper revision.",
+          skills: ["LLM Hallucinations", "AI Safety", "Supervision"],
         },
         {
           name: "Master Seminar: MetaImage - Decoding Languages from Visual Metaphors",
@@ -230,7 +230,7 @@ export const education: EducationBackground[] = [
     skillIds: ['s1', 's2', 's4'],
     courses: [
       { name: "Discrete Mathematics" },
-      { name: "Finite State Automata" },
+      { name: "Formal Languages and Automata" },
       { name: "Introduction to Computational Linguistics" },
       { name: "Programming Course: Python" },
     ],

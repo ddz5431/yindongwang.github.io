@@ -29,8 +29,6 @@ const Timeline: React.FC<TimelineProps> = ({ events, skills }) => {
     }, {} as { [key: string]: boolean });
   });
 
-  // const [areAllExpanded, setAreAllExpanded] = useState(true); // New state for tracking overall expansion
-
   const handleNodeClick = (id: string) => {
     setExpandedNodes((prev) => ({
       ...prev,
