@@ -1,19 +1,211 @@
-@import "../../global";
+// Publications — mini-timeline style
+$title: #2D3748;
+$timeline-teal: #D4A043;
+$link-blue: #2B6CB0;
+$author: #718096;
+$venue: #A0AEC0;
+$main-orange: #e17055;
 
-.publication-table {
+// Timeline dimensions
+$dot-size: 10px;
+$line-left: 5px;  // center of dot = dot-size / 2
+$content-indent: 28px;
+
+.publications-section {
+  max-width: 880px;
   margin: 2rem auto;
-  padding: 40px 20px;
-  background-color: white;
-  //display: flex;
-  //font-size: 5rem;
-  font-family: "Lucida Console", "Courier New", monospace;
-  text-align: center;
+  padding: 3rem 2rem;
 
-  p {
-    font-size: 1.5rem;
+  // Year group — two-column: year left, content right
+  .year-group {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 2.5rem;
+    gap: 2rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 
-  @include mobile {
-    font-size: 17px;
+  .year-sidebar {
+    width: 80px;
+    flex-shrink: 0;
+    padding-top: 1rem;
+  }
+
+  .year-content {
+    flex: 1;
+    min-width: 0;
+    border-left: 2px solid rgba($timeline-teal, 0.18);
+    padding-left: $content-indent;
+  }
+
+  // Year label
+  .year-label {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: $timeline-teal;
+    margin: 0;
+    line-height: 1;
+
+    .year-icon {
+      height: 2rem;
+      width: auto;
+      display: inline-block;
+      vertical-align: middle;
+      margin-left: 4px;
+    }
+  }
+
+  // Publication card
+  .publication-card {
+    padding: 1rem 0 1rem 0;
+    margin-bottom: 0.4rem;
+    background-color: transparent;
+    transition: background-color 0.2s ease;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &.highlight {
+      animation: pub-highlight 2s ease;
+    }
+  }
+
+  @keyframes pub-highlight {
+    0% {
+      background-color: rgba($timeline-teal, 0.05);
+    }
+    100% {
+      background-color: transparent;
+    }
+  }
+
+  .publication-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: $title;
+    line-height: 1.55;
+    margin: 0 0 0.5rem 0;
+    transition: color 0.2s ease;
+  }
+
+  .publication-card:hover .publication-title {
+    color: $link-blue;
+  }
+
+  .publication-authors {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+    color: $title;
+    line-height: 1.7;
+    margin: 0 0 0.3rem 0;
+
+    strong {
+      color: $title;
+      font-weight: 700;
+    }
+  }
+
+  .publication-venue {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.88rem;
+    font-style: italic;
+    color: $venue;
+    margin: 0 0 0.7rem 0;
+  }
+
+  // Tags + links row
+  .publication-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+
+  // Oral Presentation tag
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.2rem 0.6rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-radius: 20px;
+
+    &.badge-highlight {
+      background-color: transparent;
+      color: $main-orange;
+      border: 1px solid rgba($main-orange, 0.4);
+
+      &::before {
+        content: '';
+        display: inline-block;
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background-color: $main-orange;
+        box-shadow: 0 0 4px rgba($main-orange, 0.4);
+        flex-shrink: 0;
+      }
+    }
+  }
+
+  // Link buttons
+  .action-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.3rem 0;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    background: none;
+    border: none;
+    text-decoration: none;
+    transition: color 0.2s ease;
+    cursor: pointer;
+    color: $link-blue;
+
+    svg {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+    }
+
+    &:hover {
+      color: darken($link-blue, 10%);
+    }
+
+    & + .action-btn::before {
+      content: '\00b7';
+      margin-right: 0.3rem;
+      color: $venue;
+      font-weight: 300;
+    }
+  }
+
+  // Responsive
+  @media (max-width: 768px) {
+    padding: 2rem 1.25rem;
+
+    .year-label {
+      font-size: 0.9rem;
+    }
+
+    .publication-card {
+      padding: 0.8rem 0;
+    }
+
+    .publication-title {
+      font-size: 1.05rem;
+    }
   }
 }

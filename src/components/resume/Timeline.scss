@@ -1,215 +1,177 @@
-$timelineColor: #3182CE; // A vibrant blue
+// ── 水墨竹 Timeline — Ink Wash Bamboo ──
+$deep: #001524;
+$body: #334155;
+$mute: #94A3B8;
+$ink-dark: rgba(30, 55, 25, 0.6);
 
-:root {
-  --color-background: #F7FAFC;
-  --color-card-researcher: #E6F6FF;
-  --color-card-phd: #FFF5F5;
-  --color-text-main: #2D3748;
-  --color-text-secondary: #4A5568;
-  --color-accent-primary: #3182CE;
-  --color-accent-secondary: #ED8936;
-  --color-timeline: #CBD5E0;
-  --color-skill-tag-bg: #3498db;
-  --color-skill-tag-text: #2B6CB0;
-  --color-status-present: #48BB78;
-  --color-status-past: #A0AEC0;
-}
-
-body {
-  background-color: var(--color-background);
-  color: var(--color-text);
-  font-family: 'Inter', Arial, sans-serif;
-}
-
-.timeline-container {
+// ── Rice paper background ──
+.tree-page {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 3rem 2rem 5rem;
+  min-height: 100vh;
+  background: #FFFFFF;
   position: relative;
-  max-width: 75%;
-  padding: 20px 20px;
-  margin: 0rem auto;
-}
-.timeline-container h1 {
-  text-align: center;
-  margin: 0.8rem 0 2rem;
-  font-weight: 600;
-  font-size: 1.7rem;
-  color: var(--color-text); /* Keep the text color neutral */
-}
 
-.timeline-container h1 span {
-  position: relative; /* Necessary for positioning the underline */
-  display: inline-block;
-}
-
-.timeline-container h1 span::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -4px; /* Position the underline slightly below the text */
-  width: 100%;
-  height: 2px;
-  background: linear-gradient(to right, #FF6F61, #1A9B94); /* Gradient from peach to teal */
-}
-
-.timeline-line {
-  position: absolute;
-  top: 6rem;
-  bottom: 0;
-  left: 50%;
-  width: 2px;
-  background-color: var(--color-timeline);
-  border-radius: 15px;
-  display: inline-block;
-}
-
-.timeline-badge {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 60px;
-  z-index: 2;
-
-  .badge-pill {
-    background-color: $timelineColor;
-    //color: var(--color-badge-text);
-    color: whitesmoke;
-    padding: 5px 15px;
-    border-radius: 20px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    box-shadow: var(--shadow-card);
-    transition: background-color 0.3s ease;
-
-    &:hover {
-      background-color: darken($timelineColor, 10%);
-    }
-  }
-}
-
-.toggle-all-button {
+  // Subtle paper grain overlay
+  &::before {
+    content: '';
     position: absolute;
-    right: 0;
-    top: 0;
-    padding: 8px 16px;
-    background-color: var(--color-badge);
-    color: var(--color-badge-text);
-    border: none;
-    border-radius: 20px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-
-  &:hover {
-    background-color: darken($timelineColor, 10%);
-    //color: whitesmoke;
-  }
-
-  &:focus {
-    outline: none;
-    //color: whitesmoke;
-    box-shadow: 0 0 0 2px var(--color-highlight);
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='0.025'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
   }
 }
 
-.timeline-node {
+.tree-heading {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: $deep;
+  text-align: center;
+  margin: 0 0 1.5rem;
   position: relative;
-  //margin-bottom: 60px;
-  width: 100%;
+  z-index: 1;
+}
+
+// ── Timeline container ──
+.tree-timeline {
+  position: relative;
+  margin-left: 50px; // room for leaves on the left
+  z-index: 1;
+}
+
+// ── Bamboo SVG ──
+.bamboo-svg {
+  position: absolute;
+  left: -22px;
+  top: 0;
+  width: 70px;
+  z-index: 0;
+  pointer-events: none;
+  overflow: visible; // let leaves extend past the viewBox
+}
+
+// ── Each Row ──
+.tree-row {
   display: flex;
-  justify-content: flex-start;
+  align-items: flex-start;
+  position: relative;
+  padding-left: 80px;
+  padding-bottom: 2.2rem;
 
-  &.work, &.education {
-    justify-content: flex-start;
-;
-    background: whitesmoke;
+  // Scroll ink-reveal — mimics ink seeping into paper
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 1s ease-out, transform 0.8s ease-out;
+
+  &.ink-visible {
+    opacity: 1;
+    transform: translateY(0);
   }
 
-  &.education {
-    justify-content: flex-start;
-
+  &:last-child {
+    padding-bottom: 0;
   }
 
-  h3 {
-    margin-bottom: 10px;
-    font-size: 1.2rem;
-    color: var(--color-text);
-    font-weight: 600;
-  }
-
-  &.expanded {
-    .timeline-node-content {
-      box-shadow: var(--shadow-card), 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-    }
-
-    .event-details {
-      display: block;
-    }
-  }
-}
-
-.skill-tag {
-  background-color: white;
-  color: var(--color-text);
-  padding: 4px 10px;
-  border-radius: 16px;
-  font-size: 0.8em;
-  margin-right: 5px;
-  margin-bottom: 5px;
-  display: inline-block;
-  transition: background-color 0.3s ease;
-
-  &:hover {
-    background-color: beige;
-  }
-
-  &.key-skill {
-    background-color: var(--color-key-skill-badge);
-    color: var(--color-text);
-    font-weight: 500;
-  }
-}
-
-.event-details {
-  display: none; // Hide by default
-  background-color: var(--color-highlight);
-  padding: 15px;
-  border-radius: 8px;
-  margin-top: 15px;
-  border-top: 1px solid var(--color-card-border);
-  transition: all 0.3s ease;
-
-  p {
-    margin-bottom: 10px;
-    line-height: 1.5;
-  }
-
-  ul {
-    padding-left: 20px;
-    margin-bottom: 10px;
-
-    li {
-      margin-bottom: 5px;
-    }
-  }
-}
-
-// Responsive styles
-@media (max-width: 1024px) {
-  .timeline-container {
-    max-width: 95%;
-    padding: 20px 20px;
-    margin: 0;
-  }
-  .timeline-header {
-    h1 {
-          font-size: 1.3rem;
-    }
-  }
-  .timeline-line {
+  // ── Ink branch stroke — removed ──
+  &::before {
     display: none;
+    border-top: 1.2px solid $ink-dark;
+    pointer-events: none;
+    z-index: 2;
   }
-  .toggle-all-button {
-    display: none;
+}
+
+// ── Node Column ──
+.tree-node-col {
+  position: relative;
+  width: 125px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-top: 4px;
+  z-index: 2;
+}
+
+.tree-icon {
+  font-size: 0.8rem !important;
+  margin-right: 3px;
+  vertical-align: -1px;
+  opacity: 0.5;
+  color: $mute;
+}
+
+.tree-date-range {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: $body;
+  letter-spacing: 0.01em;
+  line-height: 1.5;
+  display: flex;
+  align-items: center;
+}
+
+.tree-location {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 400;
+  color: $mute;
+  font-style: italic;
+  line-height: 1.5;
+  display: flex;
+  align-items: center;
+}
+
+// ── Content Column ──
+.tree-content-col {
+  flex: 1;
+  min-width: 0;
+  padding-left: 8px;
+}
+
+// ── Responsive ──
+@media (max-width: 768px) {
+  .tree-page {
+    padding: 2rem 1rem 3rem;
+  }
+
+  .tree-heading {
+    font-size: 1.4rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .tree-timeline {
+    margin-left: 30px;
+  }
+
+  .bamboo-svg {
+    width: 60px;
+    left: -18px;
+  }
+
+  .tree-row {
+    padding-left: 30px;
+    padding-bottom: 1.8rem;
+
+    &::before {
+      left: 18px;
+      width: 10px;
+    }
+  }
+
+  .tree-node-col {
+    width: 100px;
+  }
+
+  .tree-date-range {
+    font-size: 0.7rem;
+  }
+
+  .tree-location {
+    font-size: 0.65rem;
   }
 }

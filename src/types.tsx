@@ -22,6 +22,8 @@ export interface EducationBackground {
   location: string;
   link: string;
   skillIds: string[];
+  advisor?: string;
+  advisorLink?: string;
   courses?: Course[];
   projects?: Project[];
 }
@@ -34,11 +36,13 @@ export interface Skill {
 
 export type TimelineEventData = WorkExperience | EducationBackground;
 
-interface Project {
+export interface Project {
   name: string;
   description: string;
   skills: string[];
   personalResearch?: boolean;
+  link?: string;
+  highlightSkills?: string[];
 }
 
 interface Course {

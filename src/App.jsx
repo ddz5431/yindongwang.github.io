@@ -4,8 +4,10 @@ import Topbar from './components/topbar/Topbar';
 import Intro from './components/intro/Intro';
 import Timeline from './components/resume/Timeline';
 import Publications from "./components/publications/Publications";
+import Research from './components/research/Research';
 import { combinedTimeline, skills } from './resume-items';
 import PersonalNotes from './components/notes/PersonalNotes';
+import Moments from './components/moments/Moments';
 import './app.scss';
 
 function AppContent() {
@@ -17,10 +19,12 @@ function AppContent() {
       <Topbar />
       <div className="routes">
         <Routes>
-          <Route path="" element={<Intro />} />
-          <Route path="resume" element={<Timeline events={combinedTimeline} skills={skills} />} />
-          <Route path="publications" element={<Publications />} />
-          <Route path="blog" element={<PersonalNotes />} />
+            <Route path="" element={<Intro />} />
+            <Route path="research" element={<Research />} />
+            <Route path="publications" element={<Publications />} />
+            <Route path="resume" element={<Timeline events={combinedTimeline} skills={skills} />} />
+            <Route path="blog" element={<PersonalNotes />} />
+            <Route path="moments" element={<Moments />} />
         </Routes>
       </div>
     </>

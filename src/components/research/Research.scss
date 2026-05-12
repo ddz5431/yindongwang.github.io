@@ -1,0 +1,269 @@
+// Research — matching Publications palette & style
+$title: #2D3748;
+$timeline-teal: #2B9E8F;
+$link-blue: #2B6CB0;
+$secondary: #4A5568;
+$light: #A0AEC0;
+$main-orange: #e17055;
+
+.researchTopic {
+  max-width: 880px;
+  margin: 2rem auto;
+  padding: 3rem 2rem;
+
+  .research-header {
+    margin-bottom: 2.5rem;
+    cursor: pointer;
+
+    h2 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: $title;
+      margin: 0 0 0.8rem 0;
+    }
+
+    .research-toggle {
+      display: inline-block;
+      font-size: 1.2rem;
+      color: $light;
+      transition: transform 0.25s ease;
+      transform: rotate(0deg);
+
+      &.open {
+        transform: rotate(90deg);
+      }
+    }
+
+    .research-intro {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1rem;
+      color: $secondary;
+      line-height: 1.8;
+      margin: 0;
+    }
+  }
+
+  // Section divider — clean line instead of gradient
+  .research-entry {
+    position: relative;
+    padding: 2rem 0;
+
+    &:not(:last-child) {
+      border-bottom: 1px solid rgba($light, 0.4);
+    }
+
+    &:first-child {
+      padding-top: 0;
+    }
+  }
+
+  // Topic heading — teal dot marker
+  .research-topic {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: $title;
+    margin: 0 0 0.5rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+
+    &::before {
+      content: '';
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background-color: $timeline-teal;
+      border-radius: 50%;
+      box-shadow: 0 0 0 3px rgba($timeline-teal, 0.15);
+      flex-shrink: 0;
+    }
+  }
+
+  .research-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    color: $secondary;
+    font-style: italic;
+    margin: 0 0 0.5rem 0;
+    line-height: 1.7;
+  }
+
+  .research-content {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    color: $secondary;
+    line-height: 1.8;
+    margin: 0 0 1.2rem 0;
+  }
+
+  // Topic-level publication links
+  .topic-publications {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.8rem;
+  }
+
+  .pub-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.35rem 0.8rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: $link-blue;
+    background-color: transparent;
+    border: 1px solid rgba($link-blue, 0.25);
+    border-radius: 20px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background-color: $link-blue;
+      color: white;
+      border-color: $link-blue;
+    }
+  }
+
+  // Subtopics
+  .research-subtopics {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .research-subtopic {
+    position: relative;
+    padding: 1.2rem 0 1.2rem 1.4rem;
+    border-left: 2px solid rgba($timeline-teal, 0.18);
+    transition: border-color 0.2s ease;
+
+    &:hover {
+      border-left-color: $timeline-teal;
+    }
+
+    .subtopic-name {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.08rem;
+      font-weight: 600;
+      color: $title;
+    }
+
+    .subtopic-description {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.95rem;
+      color: $secondary;
+
+      // replace the em dash with lighter styling
+      &::before {
+        content: none;
+      }
+    }
+
+    // Works within subtopic
+    .subtopic-works {
+      margin-top: 0.8rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .work-item {
+      padding: 0.7rem 1rem;
+      background-color: transparent;
+      border: 1px solid rgba($light, 0.35);
+      border-radius: 6px;
+      transition: border-color 0.2s ease;
+
+      &:hover {
+        border-color: rgba($timeline-teal, 0.4);
+      }
+
+      .work-header {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        flex-wrap: wrap;
+      }
+
+      .work-title {
+        font-family: 'Poppins', sans-serif;
+        font-size: 1rem;
+        font-weight: 600;
+        color: $title;
+        text-decoration: none;
+        transition: color 0.2s ease;
+      }
+
+      a.work-title {
+        color: $link-blue;
+
+        &:hover {
+          color: darken($link-blue, 12%);
+        }
+      }
+
+      .work-status {
+        display: inline-block;
+        padding: 0.15rem 0.55rem;
+        font-family: 'Poppins', sans-serif;
+        font-size: 0.72rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        border-radius: 20px;
+
+        &.status-published {
+          color: $timeline-teal;
+          border: 1px solid rgba($timeline-teal, 0.3);
+        }
+
+        &.status-working-paper {
+          color: $link-blue;
+          border: 1px solid rgba($link-blue, 0.3);
+        }
+
+        &.status-manuscript {
+          color: $main-orange;
+          border: 1px solid rgba($main-orange, 0.3);
+        }
+
+        &.status-unpublished-exploration {
+          color: $light;
+          border: 1px solid rgba($light, 0.4);
+        }
+      }
+
+      .work-note {
+        font-family: 'Poppins', sans-serif;
+        font-size: 0.92rem;
+        color: $secondary;
+        line-height: 1.6;
+        margin: 0.3rem 0 0 0;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 2rem 1.25rem;
+
+    .research-header h2 {
+      font-size: 1.3rem;
+    }
+
+    .research-topic {
+      font-size: 1.05rem;
+    }
+
+    .research-subtopic {
+      padding: 1rem 0 1rem 1.1rem;
+    }
+  }
+}

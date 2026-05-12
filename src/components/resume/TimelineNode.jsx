@@ -1,190 +1,163 @@
-import React from 'react';
-import { Plus, X  } from 'lucide-react';
-
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Skill, TimelineEventData } from '../../types';
 import './TimelineNode.scss';
 
-interface TimelineNodeProps {
-  event: TimelineEventData;
-  isExpanded: boolean;
-  onClick: () => void;
-  skills: Skill[];
-  period: string;
-}
-
-
-const ExpandCollapseButton = ({ isExpanded, onClick, nodeType }) => {
-  return (
-    <button
-      onClick={onClick}
-      className={`expand-collapse-button ${isExpanded ? 'expanded' : ''} ${nodeType}`}
-      aria-expanded={isExpanded}
-      aria-label={isExpanded ? "Collapse" : "Expand"}
-    >
-      {isExpanded ? <X size={24} /> : <Plus size={24} />}
-    </button>
-  );
-};
-
-const TimelineNode: React.FC<TimelineNodeProps> = ({
-                                                     event,
-                                                     isExpanded,
-                                                     onClick,
-                                                     skills,
-                                                     period,
-                                                   }) => {
+const TimelineNode = ({
+  event,
+  isExpanded,
+  onClick,
+  skills,
+  period,
+  index,
+  totalCount,
+}) => {
+  const [highlightedSkills, setHighlightedSkills] = useState([]);
 
   const isPhD =
-      (event.type === 'work' && event.position?.includes('Ph.D')) ||
-      event.major?.includes('Ph.D');
-
-  const handleExpandCollapse = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    onClick();
-  };
+    (event.type === 'work' && event.position?.includes('Ph.D')) ||
+    event.major?.includes('Ph.D');
 
   const renderDetails = () => {
-    if (isPhD) {
-      return renderResearchProjects();
-    } else if (event.type === 'work') {
-      return renderProjects();
-    } else {
-      return renderCourses();
-    }
+    if (isPhD) return renderResearchHighlights();
+    if (event.type === 'work') return renderProjects();
+    return renderCourses();
   };
 
   const renderProjects = () => {
     if (!event.projects || event.projects.length === 0) return null;
-
     return (
-      <div className="details-container">
-        <h4 className="section-title">🌟 Highlights</h4>
-        {event.projects.map((project, index) => (
-          <div key={index} className="detail-item">
-            <h5 className="detail-title">{project.name}</h5>
-            <p>{project.description}</p>
-            <div className="detail-skills">
-              {project.skills.slice(0, 5).map((skill, index) => (
-                <span key={index} className="detail-skill">
-                  {skill}
-                </span>
-              ))}
-              {project.skills.length > 5 && (
-                <span className="more-skills">+{project.skills.length - 5}</span>
-              )}
-            </div>
-          </div>
-        ))}
+      <div className="nd-details">
+        <h4 className="nd-details-title">Highlights</h4>
+        <div className="nd-project-cards">
+          {event.projects.map((project, idx) => (
+            <motion.div
+              key={idx}
+              className="nd-project-card"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3, delay: idx * 0.1 }}
+            >
+              <div className="nd-project-name">{project.name}</div>
+              <div className="nd-project-desc">{project.description}</div>
+            </motion.div>
+          ))}
+        </div>
       </div>
     );
   };
 
-  const renderResearchProjects = () => {
-    const items = event.projects || event.courses;
-
-    if (!items || items.length === 0) return null;
-
+  const renderResearchHighlights = () => {
+    if (!event.projects || event.projects.length === 0) return null;
     return (
-      <div className="research-interests">
-        <h4 className="section-title">🧑‍🔬 Research Projects</h4>
-        {event.projects.map((project, index) => (
-          <div key={index} className="detail-item">
-            <h5 className="detail-title">{project.name}</h5>
-            <p>{project.description}</p>
-            <div className="detail-skills">
-              {project.skills.slice(0, 5).map((skill, index) => (
-                <span key={index} className="detail-skill">
-                  {skill}
-                </span>
-              ))}
-              {project.skills.length > 5 && (
-                <span className="more-skills">+{project.skills.length - 5}</span>
-              )}
-            </div>
-          </div>
-        ))}
+      <div className="nd-details">
+        <h4 className="nd-details-title">Projects</h4>
+        <div className="nd-project-cards">
+          {event.projects.map((project, idx) => (
+            <motion.div
+              key={idx}
+              className="nd-project-card"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3, delay: idx * 0.1 }}
+              onMouseEnter={() => project.highlightSkills && setHighlightedSkills(project.highlightSkills)}
+              onMouseLeave={() => setHighlightedSkills([])}
+            >
+              <div className="nd-project-name">
+                {project.name}
+                {project.link && (
+                  <a href={project.link} target="_blank" rel="noopener noreferrer" className="nd-paper-link" onClick={e => e.stopPropagation()}>
+                    [Paper]
+                  </a>
+                )}
+              </div>
+              <div className="nd-project-desc">{project.description}</div>
+            </motion.div>
+          ))}
+        </div>
       </div>
     );
   };
 
   const renderCourses = () => {
     if (!event.courses || event.courses.length === 0) return null;
-
     return (
-      <div className="details-container">
-        <h4 className="section-title">📝 Selected Courses</h4>
-        <ul className="courses-list">
-          {event.courses.map((course, index) => (
-            <li key={index} className="course-item">
-              {course.name}
-            </li>
+      <div className="nd-details">
+        <h4 className="nd-details-title">Selected Courses</h4>
+        <ul className="nd-details-list nd-courses">
+          {event.courses.map((course, idx) => (
+            <li key={idx}>{course.name}</li>
           ))}
         </ul>
       </div>
     );
   };
 
-  return (
-    <div
-      className={`timeline-node ${event.type} ${isPhD ? 'phd' : ''} ${
-        isExpanded ? 'expanded' : ''
-      }`}
-    >
-      <div className="timeline-node-content">
-        <motion.div
-          className="node-card"
-          whileHover={{
-            scale: 1.02,
-            boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)',
-          }}
-          onClick={onClick}
-        >
-          <div className="node-header">
-            <h3>{event.type === 'work' ? event.position : event.major}</h3>
-            {event.type === 'education' && event.position && (
-              <h4>{event.position}</h4>
-            )}
-          </div>
-          <p className="organization">
-            {event.type === 'work' ? event.company : event.university}
-          </p>
-          <p className="location"> 📍 {event.location}</p>
-          <p className="date">
-            {' '}
-            📅 {`${event.startDate} - ${event.endDate || 'Present'}`}
-          </p>
-          <div className="skills-container">
-            💪{' '}
-            {event.skillIds.map((skillId) => {
-              const skill = skills.find((s) => s.id === skillId);
-              return skill ? (
-                <span key={skillId} className="skill-tag">
-                  {skill.name}
-                </span>
-              ) : null;
-            })}
-          </div>
+  const title = event.type === 'work' ? event.position : event.major;
+  const organization = event.type === 'work' ? event.company : event.university;
+  const hasExpandableContent = (event.projects?.length > 0 || event.courses?.length > 0);
 
-          <ExpandCollapseButton
-            isExpanded={isExpanded}
-            onClick={handleExpandCollapse}
-            // isWork={event.type === 'work'}
-          />
-        </motion.div>
-      </div>
+  return (
+    <div className="nd-entry" onClick={hasExpandableContent ? onClick : undefined}>
+      <h3 className="nd-title">
+        {title}
+        {hasExpandableContent && (
+          <span className={`nd-chevron ${isExpanded ? 'open' : ''}`}>›</span>
+        )}
+      </h3>
+      <p className="nd-org">
+        {event.link ? (
+          <a href={event.link} target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()}>
+            {organization}
+          </a>
+        ) : organization}
+      </p>
+      {event.type === 'education' && event.advisor && (
+        <p className="nd-advisor">
+          Supervisor:{' '}
+          {event.advisorLink ? (
+            <a href={event.advisorLink} target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()}>
+              {event.advisor}
+            </a>
+          ) : event.advisor}
+        </p>
+      )}
+
+      {isPhD && <div className="nd-tags">
+        <span className="nd-tags-label">Research Interests:</span>
+        {event.skillIds.map((skillId) => {
+          const skill = skills.find((s) => s.id === skillId);
+          if (!skill) return null;
+          const linkMap = {
+            'LLM Alignment': '/research#llm-alignment',
+            'LLM Hallucinations': '/research#llm-evaluation',
+            'LLM Reasoning': '/research#llm-reasoning',
+          };
+          const href = linkMap[skill.name];
+          const isHighlighted = highlightedSkills.includes(skillId);
+          const isDimmed = highlightedSkills.length > 0 && !isHighlighted;
+          const cls = `nd-tag ${event.type} ${isHighlighted ? 'nd-tag-highlighted' : ''} ${isDimmed ? 'nd-tag-dimmed' : ''}`;
+          return href ? (
+            <Link key={skillId} to={href} className={`${cls} nd-tag-link`} onClick={e => e.stopPropagation()}>
+              {skill.name}
+            </Link>
+          ) : (
+            <span key={skillId} className={cls}>{skill.name}</span>
+          );
+        })}
+      </div>}
+
       <AnimatePresence>
         {isExpanded && (
           <motion.div
-              className="expanded-content-container"
-              initial={{ opacity: 0, width: 0 }}
-              animate={{ opacity: 1, width: 'auto' }}
-              exit={{ opacity: 0, width: 0 }}
-              transition={{ duration: 0.3 }}
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.25 }}
+            style={{ overflow: 'hidden' }}
+            onClick={e => e.stopPropagation()}
           >
-            <div className="expanded-content">
-              {renderDetails()}
-            </div>
+            {renderDetails()}
           </motion.div>
         )}
       </AnimatePresence>

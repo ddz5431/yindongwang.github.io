@@ -1,25 +1,27 @@
 @import '../../variables';
-@import '../../app.scss';
 
-$topbar-bg: #E6F3FF;
-$text-color: #1A365D;
-$active-color: #2B6CB0;
-$inactive-color: #4A5568;
-$hover-color: #63B3ED;
+$topbar-bg: rgba(255, 255, 255, 0.8);
+$text-color: #2D3748;
+$active-color: #e17055;
+$inactive-color: #718096;
+$hover-color: #2B9E8F;
 $transition-speed: 0.3s;
 
 .topbar {
   width: 100%;
   background-color: $topbar-bg;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   color: $text-color;
   position: sticky;
   top: 0;
   left: 0;
   right: 0;
   z-index: 1000;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: none;
   height: $topbar-height;
   transition: height $transition-speed ease;
+
 
   .wrapper {
     display: flex;
@@ -31,18 +33,45 @@ $transition-speed: 0.3s;
     margin: 0 auto;
 
     .MyName {
-      font-size: 24px;
-      font-weight: bold;
+      font-family: 'Dancing Script', cursive;
+      font-size: 28px;
+      font-weight: 700;
       text-decoration: none;
       color: $text-color;
       transition: color $transition-speed ease;
+      position: relative;
+      display: inline-flex;
+      align-items: center;
 
       &:hover {
         color: $hover-color;
       }
-      @media (max-width: 1024px) {
-        display: none;
+
+      .full-name {
+        font-family: 'Pacifico', cursive;
+        font-size: 36px;
+        position: relative;
+        z-index: 1;
       }
+
+      .chinese-name {
+        font-family: 'Ma Shan Zheng', cursive;
+        @media (max-width: 1024px) {
+          display: none;
+        }
+      }
+
+      @media (max-width: 1024px) {
+        font-size: 22px;
+      }
+    }
+
+    .name-line {
+      flex: 1;
+      height: 50px;
+      object-fit: fill;
+      margin: 0 -2px;
+      opacity: 0.8;
     }
 
     .navLinks {
@@ -59,6 +88,28 @@ $transition-speed: 0.3s;
         position: relative;
         padding: 5px 0;
         transition: color $transition-speed ease;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+
+        .nav-icon {
+          width: 100px;
+          height: 100px;
+          object-fit: contain;
+          display: none;
+        }
+
+        &.has-icon.active {
+          .nav-icon {
+            display: block;
+          }
+          .nav-label {
+            display: none;
+          }
+          &::after {
+            display: none !important;
+          }
+        }
 
         &:hover {
           color: $hover-color;

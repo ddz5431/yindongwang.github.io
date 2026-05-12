@@ -62,25 +62,25 @@ export const work: WorkExperience[] = [
       },
     ],
   },
-  {
-    id: 'work-3',
-    type: 'work',
-    startDate: 'May 2021',
-    endDate: 'Oct 2021',
-    position: 'Data Analyst',
-    company: 'BingoStar GmbH',
-    location: 'Munich, Germany',
-    link: 'https://www.lmu.de',
-    skillIds: ['s1'],
-    projects: [
-      {
-        name: "Sales Data Automation & Trend Analysis",
-        description:
-          "Developed an automated system to generate sales tables for various product categories from diverse types of receipts. Conducted data analysis to identify shopping trends for an Asia market, optimizing product categorization and marketing strategies.",
-        skills: ["Data Automation", "SQL", "Data Analysis"],
-      },
-    ],
-  },
+  // {
+  //   id: 'work-3',
+  //   type: 'work',
+  //   startDate: 'May 2021',
+  //   endDate: 'Oct 2021',
+  //   position: 'Data Analyst',
+  //   company: 'BingoStar GmbH',
+  //   location: 'Munich, Germany',
+  //   link: 'https://www.lmu.de',
+  //   skillIds: ['s1'],
+  //   projects: [
+  //     {
+  //       name: "Sales Data Automation & Trend Analysis",
+  //       description:
+  //         "Developed an automated system to generate sales tables for various product categories from diverse types of receipts. Conducted data analysis to identify shopping trends for an Asia market, optimizing product categorization and marketing strategies.",
+  //       skills: ["Data Automation", "SQL", "Data Analysis"],
+  //     },
+  //   ],
+  // },
   {
     id: 'work-4',
     type: 'work',
@@ -100,29 +100,29 @@ export const work: WorkExperience[] = [
       },
     ],
   },
-    {
-    id: 'work-5',
-    type: 'work',
-    startDate: 'Sep 2018',
-    endDate: 'March 2018',
-    position: 'Marketing Intern',
-    company: 'Bosch China',
-    location: 'Shanghai, China',
-    link: 'https://www.lmu.de',
-    skillIds: ['s22', 's23'],
-    projects: [
-    {
-      name: "Market Analysis for Diesel Products",
-      description: "Assisted the Diesel Product Manager with market research and analysis, contributing to data-driven product and marketing decisions.",
-      skills: ["Market Analysis", "Data Interpretation", "Product Strategy"],
-    },
-    {
-      name: "National Diesel Roadshow 2018",
-      description: "Coordinated and supported the organization of a national Diesel Roadshow to increase product visibility and customer engagement across multiple regions.",
-      skills: ["Event Coordination", "Logistics Management", "Customer Engagement"],
-    }
-  ]
-  },
+  //   {
+  //   id: 'work-5',
+  //   type: 'work',
+  //   startDate: 'Sep 2018',
+  //   endDate: 'March 2018',
+  //   position: 'Marketing Intern',
+  //   company: 'Bosch China',
+  //   location: 'Shanghai, China',
+  //   link: 'https://www.lmu.de',
+  //   skillIds: ['s22', 's23'],
+  //   projects: [
+  //   {
+  //     name: "Market Analysis for Diesel Products",
+  //     description: "Assisted the Diesel Product Manager with market research and analysis, contributing to data-driven product and marketing decisions.",
+  //     skills: ["Market Analysis", "Data Interpretation", "Product Strategy"],
+  //   },
+  //   {
+  //     name: "National Diesel Roadshow 2018",
+  //     description: "Coordinated and supported the organization of a national Diesel Roadshow to increase product visibility and customer engagement across multiple regions.",
+  //     skills: ["Event Coordination", "Logistics Management", "Customer Engagement"],
+  //   }
+  // ]
+  // },
     {
     id: 'work-6',
     type: 'work',
@@ -174,28 +174,32 @@ export const education: EducationBackground[] = [
       startDate: 'Jan 2024',
       endDate: 'present',
       major: 'Ph.D. Candidate in AI and Intelligent Systems',
+      advisor: 'Gerard de Melo',
+      advisorLink: 'http://gerard.demelo.org/',
       degree: 'Doctor Degree',
       university: 'Hasso Plattner Institute',
       location: 'Potsdam, Germany',
       link: 'https://hpi.de',
-      skillIds: ['s18', 's20', 's21'],
+      skillIds: ['s20', 's18', 's21'],
       projects: [
         {
-          name: "Paper: Entailment Few-shot Learning with Large Language Models",
+          name: "SuffixGuid: Inference-Time Alignment for Large Language Models",
+          description: "Leveraging decoder's causal nature, applying semantic constraints as suffix at each decoding step to detect errors by quantifying the uncertainty for both generation and evaluation position, we steer the model generation towards the direction we expect. Through it, LLMs inference-time alignment is possible.",
+          skills: [],
+          highlightSkills: ['s21', 's18'], // LLM Reasoning, LLM Alignment
+        },
+        {
+          name: "Entailment Few-shot Learning with Large Language Models",
           description:
-            "This study explores few-shot learning with pretrained language models using a textual entailment-based framework, achieving performance improvements across model architectures without relying on external NLI data.",
+            "Exploring few-shot learning with pretrained language models using a textual entailment-based framework, achieving performance improvements across model architectures without relying on external NLI data.",
           skills: ["Large Language Models", "Few-shot Learning", "Text Classification"],
+          highlightSkills: ['s21'], // LLM Reasoning
         },
         {
-          name: "Master Project: ReFACT - A Benchmark Based on r/AskScience for Misinformation Detection with LLMs",
-          description: "Main Supervisor for a Master’s project focused on evaluating and mitigating hallucinations in Large Language Models (Summer 2024). Proposed the research idea, experimental design, evaluation metrics, and contributed to final paper revision.",
-          skills: ["LLM Hallucinations", "AI Safety", "Supervision"],
-        },
-        {
-          name: "Master Seminar: MetaImage - Decoding Languages from Visual Metaphors",
-          description:
-            "Supervised Research Seminar: Trends in AI and Deep Learning Research Seminar (Summer 2024).",
-          skills: ["Vision-Language Models", "Multilinguality", "Language Bias"],
+          name: "ReFACT: A Benchmark for Scientific Confabulation Detection with Positional Error Annotations",
+          description: "A benchmark with positional error annotations for detecting and localizing factual hallucinations in LLM-generated scientific text.",
+          skills: ["Mentoring", "LLM Hallucinations", "AI Safety"],
+          highlightSkills: ['s20'], // LLM Hallucinations / Evaluation
         },
       ],
   },
@@ -287,7 +291,7 @@ export const skills: Skill[] = [
   { id: 's17', name: 'Teaching', category: 'soft' },
   { id: 's18', name: 'LLM Alignment', category: 'soft' },
   { id: 's19', name: 'AI for Education', category: 'soft' },
-  { id: 's20', name: 'LLM Hallucinations', category: 'soft' },
+  { id: 's20', name: 'LLM Evaluation', category: 'soft' },
   { id: 's21', name: 'LLM Reasoning', category: 'soft' },
   { id: 's22', name: 'Human communication', category: 'soft'},
   { id: 's23', name: 'Marketing', category: 'soft'}

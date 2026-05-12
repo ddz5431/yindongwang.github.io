@@ -62,7 +62,7 @@ export default function Intro() {
                             diversity. I strive to ensure that AI technologies are not only intelligent but also ethical,
                             unbiased, and beneficial to all of humanity.
                         </p>
-                        <p className="tagline">My mission: Exploring the frontiers of AI Agents research to shape a better AGI for humanity.</p>
+                        <p className="tagline">My mission: Exploring the frontiers of AI research to shape a better AGI for humanity.</p>
                     </div>
                     <div className="tech-icons">
                     </div>

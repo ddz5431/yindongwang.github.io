@@ -4,10 +4,11 @@ import { Person, Mail } from '@mui/icons-material';
 import './topbar.scss';
 
 const NAV_LINKS = [
-  { to: '', label: 'Home' },
-  { to: 'resume', label: 'Resume' },
-  { to: 'blog', label: 'Blog' },
-  { to: 'publications', label: 'Publications' }
+  { to: '', label: 'Home', icon: '/home.svg' },
+  { to: 'publications', label: 'Publications', icon: '/publication.svg' },
+  { to: 'resume', label: 'Resume', icon: '/resume.svg' },
+  { to: 'research', label: 'Research', icon: '/research.svg' },
+  { to: 'blog', label: 'Blog', icon: '/blog.svg' },
 ];
 
 export default function Topbar() {
@@ -23,18 +24,19 @@ export default function Topbar() {
     <header className="topbar">
       <div className="wrapper">
         <Link to="" className="MyName" onClick={() => handleClick('')}>
-          <span className="full-name">Yindong Wang</span>
-          <span className="chinese-name"> - 王殷冬</span>
+          <span className="full-name">Ddz</span>
         </Link>
+        {!isActive('') && <img src="/line.svg" alt="" className="name-line" />}
         <nav className="navLinks">
-          {NAV_LINKS.map(({to, label}) => (
+          {NAV_LINKS.map(({to, label, icon}) => (
             <Link
               key={to}
               to={to}
-              className={`nav-link ${isActive(to) ? 'active' : ''}`}
+              className={`nav-link ${isActive(to) ? 'active' : ''} ${icon ? 'has-icon' : ''}`}
               onClick={() => handleClick(to)}
             >
-              {label}
+              {icon && <img src={icon} alt={label} className="nav-icon" />}
+              <span className="nav-label">{label}</span>
             </Link>
           ))}
         </nav>
