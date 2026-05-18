@@ -42,6 +42,8 @@ export interface Project {
   skills: string[];
   personalResearch?: boolean;
   link?: string;
+  publicationId?: string;
+  comingSoon?: boolean;
   highlightSkills?: string[];
 }
 

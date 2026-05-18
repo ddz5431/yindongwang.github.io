@@ -38,7 +38,22 @@ const TimelineNode = ({
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3, delay: idx * 0.1 }}
             >
-              <div className="nd-project-name">{project.name}</div>
+              <div className="nd-project-name">
+                {project.publicationId ? (
+                  <Link
+                    to={`/publications#${project.publicationId}`}
+                    className="nd-project-link"
+                    onClick={e => e.stopPropagation()}
+                  >
+                    {project.name}
+                  </Link>
+                ) : (
+                  project.name
+                )}
+                {project.comingSoon && (
+                  <span className="nd-coming-soon"> · Paper to appear soon</span>
+                )}
+              </div>
               <div className="nd-project-desc">{project.description}</div>
             </motion.div>
           ))}
@@ -64,11 +79,24 @@ const TimelineNode = ({
               onMouseLeave={() => setHighlightedSkills([])}
             >
               <div className="nd-project-name">
-                {project.name}
+                {project.publicationId ? (
+                  <Link
+                    to={`/publications#${project.publicationId}`}
+                    className="nd-project-link"
+                    onClick={e => e.stopPropagation()}
+                  >
+                    {project.name}
+                  </Link>
+                ) : (
+                  project.name
+                )}
                 {project.link && (
                   <a href={project.link} target="_blank" rel="noopener noreferrer" className="nd-paper-link" onClick={e => e.stopPropagation()}>
                     [Paper]
                   </a>
+                )}
+                {project.comingSoon && (
+                  <span className="nd-coming-soon"> · Paper to appear soon</span>
                 )}
               </div>
               <div className="nd-project-desc">{project.description}</div>
@@ -130,7 +158,7 @@ const TimelineNode = ({
           if (!skill) return null;
           const linkMap = {
             'LLM Alignment': '/research#llm-alignment',
-            'LLM Hallucinations': '/research#llm-evaluation',
+            'LLM Evaluation': '/research#llm-evaluation',
             'LLM Reasoning': '/research#llm-reasoning',
           };
           const href = linkMap[skill.name];

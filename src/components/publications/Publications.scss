@@ -61,10 +61,29 @@ $content-indent: 28px;
 
   // Publication card
   .publication-card {
+    position: relative;
     padding: 1rem 0 1rem 0;
     margin-bottom: 0.4rem;
     background-color: transparent;
     transition: background-color 0.2s ease;
+
+    // Timeline-segment overlay: brightens the matching section of the
+    // .year-content border-left when this card is hovered.
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: calc(-1 * (#{$content-indent} + 2px));
+      width: 3px;
+      background-color: $timeline-teal;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+
+    &:hover::before {
+      opacity: 1;
+    }
 
     &:last-child {
       margin-bottom: 0;
@@ -72,6 +91,10 @@ $content-indent: 28px;
 
     &.highlight {
       animation: pub-highlight 2s ease;
+
+      &::before {
+        opacity: 1;
+      }
     }
   }
 
@@ -132,18 +155,16 @@ $content-indent: 28px;
     display: inline-flex;
     align-items: center;
     gap: 0.35rem;
-    padding: 0.2rem 0.6rem;
+    margin-left: 0.6rem;
     font-family: 'Poppins', sans-serif;
-    font-size: 0.72rem;
+    font-size: 0.78rem;
     font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    border-radius: 20px;
+    font-style: normal;
+    letter-spacing: 0.02em;
+    vertical-align: middle;
 
     &.badge-highlight {
-      background-color: transparent;
       color: $main-orange;
-      border: 1px solid rgba($main-orange, 0.4);
 
       &::before {
         content: '';

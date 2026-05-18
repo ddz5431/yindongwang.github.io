@@ -1,42 +1,54 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import './Research.scss'
 
 const Research = () => {
   const [showIntro, setShowIntro] = useState(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) {
+      const el = document.getElementById(location.hash.slice(1));
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        el.classList.add('highlight');
+        const t = setTimeout(() => el.classList.remove('highlight'), 2000);
+        return () => clearTimeout(t);
+      }
+    }
+  }, [location]);
   const researchTopics = [
     {
       topic: "Artificial Intelligence",
       title: "Large Language Models (LLMs) represent the current frontier of AI.",
-      content: "Through LLM research, I aim to answer foundational questions about their nature: what they truly are, how their capabilities emerge, and where their development will lead. I believe that exploring these interconnected topics systematically is crucial for advancing our overall understanding of intelligence.",
+      content: "Through LLM research, I aim to answer foundational questions about their nature from both an evolutionary and human-centric perspective. Although we created LLMs to mimic human cognition, they are fundamentally distinct, currently serving as highly advanced tools. Yet, the mechanics of their creation, the dynamics of our interaction with them, and their ultimate trajectory remain deeply mysterious. By systematically exploring these open questions, from how their capabilities emerge to how they will ultimately reshape human life. I believe we can advance our overarching understanding of intelligence itself.",
       subtopics: [
         {
           id: "llm-reasoning",
           name: "LLM Reasoning",
-          description: "Investigating how LLMs perform logical reasoning, identifying their current cognitive gaps, and understanding the root causes of these limitations.",
+          description: "Intuition and logical reasoning serve as the two foundational pillars of human intelligence. Intuition, a highly energy-efficient product of evolution, governs the vast majority of our cognitive processes. Logical reasoning, by contrast, is a metabolically expensive mechanism used to test and correct our intuitions when interacting with complex environments. Ultimately, the goal of reasoning is cognitive efficiency: to compress newly acquired, verified knowledge back into intuitive responses. This continuous cycle of correcting and internalizing is the essence of learning. While human intuition evolved under strict thermodynamic constraints—forcing the continuous compression of complex reasoning into rapid, energy-efficient heuristics—the 'intuition' of an LLM is driven by a singular, unconstrained objective: next-token prediction. It is a remarkable testament to this mechanism that a one-dimensional objective can yield such a powerful, multi-dimensional approximation of intelligence.\n" +
+              "\n" +
+              "However, the very nature of this objective bottlenecks their reasoning capabilities. Human reasoning adapts efficiently to diverse, complex environments because energy conservation demands it. LLMs, conversely, operate without a metabolic cost. Having been trained with massive compute and often rewarded for verbosity, they lack the biological imperative to optimize their cognitive load. Consequently, their reasoning is unrolled explicitly into the token space, applying the same computational sprawl to trivial queries as they do to complex ones. They fail to reason efficiently simply because they have never had to survive.\n" + "\n" +
+              "If their inability to adapt their reasoning efficiency stems from this lack of a \"metabolic cost,\" how might we algorithmically or mathematically introduce an artificial constraint during the decoding process to force them to reason more efficiently? This is one of my research questions I'm trying to answer by researching on it throughout my PhD journey."
+          ,
           works: []
-        },
-        {
-          id: "llm-evaluation",
-          name: "LLM Evaluation",
-          description: "Mapping the boundaries of model capabilities to understand what they can achieve, where they fail, and the underlying mechanisms.",
-          works: [
-            { title: "ReFACT", note: "A benchmark for scientific confabulation detection with positional error annotations.", id: "refact", status: "Published", url: "https://aclanthology.org/2026.eacl-long.381/" },
-          ]
         },
         {
           id: "llm-alignment",
           name: "LLM Alignment",
-          description: "Exploring the theoretical foundations of value alignment and developing practical methodologies to ensure safe and human-aligned AI systems.",
+          description: "Human alignment operates across multiple dimensions. Externally, we adopt shared communication protocols—such as language—and foundational moral imperatives to ensure social cohesion and collective survival, even as our individual variance provides the necessary diversity for a vibrant world. Internally, psychological stability depends on aligning our explicit actions with our latent desires and beliefs.\n" +
+              "\n" +
+              "As the creators of Large Language Models, we are essentially projecting this dual framework onto artificial intelligence. We demand external alignment: the model must dynamically adapt to the user's language while strictly adhering to global human values of safety and helpfulness. Simultaneously, we demand internal alignment: a high-fidelity mapping between the model's latent representations—its 'thoughts'—and its generated output.\n" +
+              "\n" +
+              "My research approaches this from a strictly technical perspective—focusing on how we algorithmically enforce and decode these semantic and safety requirements, and how we can make this process fundamentally more efficient. The current alignment paradigm relies heavily on brute-force post-training, demanding vast human effort to annotate preference data and immense computational power for reinforcement learning. But do humans align their values through such exhaustive iterations? Can we draw inspiration from the natural efficiency of human interaction to evolve LLM alignment? Ultimately, how can we liberate this process from its current computational bottlenecks?",
           works: []
         },
-      ]
-    },
-    {
-      topic: "Education and Psychology",
-      title: "Investigating the transmission of intelligence: how education facilitates knowledge transfer, and how teacher-student dynamics influence the cognitive development process.",
-      publications: [
-        { label: "LLM Teacher Classification", id: "llm-teacher-classification", url: "https://bpspsychub.onlinelibrary.wiley.com/doi/full/10.1111/bjep.70013" },
-        { label: "LLM Teacher Speech", id: "llm-teacher-speech", url: "https://bpspsychub.onlinelibrary.wiley.com/doi/full/10.1111/bjep.12779" },
+          {
+          id: "llm-evaluation",
+          name: "LLM Evaluation",
+          description: "This is essential for doing LLM research. It helps me to better understand the true reasoning and alignment capabilities of LLMs.",
+          works: []
+        },
       ]
     }
   ];
@@ -72,10 +84,22 @@ const Research = () => {
           )}
           {item.subtopics && item.subtopics.length > 0 && (
             <ul className="research-subtopics">
-              {item.subtopics.map((sub, subIndex) => (
+              {item.subtopics.map((sub, subIndex) => {
+                const paragraphs = sub.description
+                  ? sub.description.split(/\n{2,}/).map(p => p.trim()).filter(Boolean)
+                  : [];
+                const multiPara = paragraphs.length > 1;
+                return (
                 <li key={subIndex} id={sub.id} className="research-subtopic">
                   <span className="subtopic-name">{sub.name}</span>
-                  {sub.description && <span className="subtopic-description"> — {sub.description}</span>}
+                  {sub.description && !multiPara && (
+                    <span className="subtopic-description"> — {sub.description}</span>
+                  )}
+                  {multiPara && (
+                    <div className="subtopic-description subtopic-description-block">
+                      {paragraphs.map((p, i) => <p key={i}>{p}</p>)}
+                    </div>
+                  )}
                   {sub.works && sub.works.length > 0 && (
                     <div className="subtopic-works">
                       {sub.works.map((work, workIndex) => (
@@ -95,7 +119,8 @@ const Research = () => {
                     </div>
                   )}
                 </li>
-              ))}
+                );
+              })}
             </ul>
           )}
         </div>

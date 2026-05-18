@@ -68,10 +68,16 @@ $transition-speed: 0.3s;
 
     .name-line {
       flex: 1;
-      height: 50px;
-      object-fit: fill;
+      min-width: 0;
+      max-width: 220px;
+      height: 32px;
+      object-fit: contain;
       margin: 0 -2px;
       opacity: 0.8;
+
+      @media (max-width: 1024px) {
+        display: none;
+      }
     }
 
     .navLinks {
@@ -93,8 +99,8 @@ $transition-speed: 0.3s;
         gap: 4px;
 
         .nav-icon {
-          width: 100px;
-          height: 100px;
+          width: 32px;
+          height: 32px;
           object-fit: contain;
           display: none;
         }
@@ -182,12 +188,13 @@ $transition-speed: 0.3s;
     }
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     height: auto;
     padding: 10px 0;
 
     .wrapper {
       flex-direction: column;
+      gap: 8px;
 
       .navLinks {
         margin-bottom: 10px;

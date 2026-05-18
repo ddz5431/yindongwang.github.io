@@ -192,9 +192,27 @@ $node-work: #2B9E8F;
   font-weight: 600;
   color: $deep;
   margin-bottom: 6px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
+  line-height: 1.45;
+}
+
+.nd-project-link {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: $node-edu;
+  }
+}
+
+.nd-coming-soon {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: $mute;
+  font-style: italic;
+  white-space: nowrap;
 }
 
 .nd-project-desc {

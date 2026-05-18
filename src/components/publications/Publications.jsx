@@ -91,11 +91,13 @@ export default function Publications() {
                                     </span>
                                 ))}
                             </p>
-                            <p className="publication-venue">{pub.venue}</p>
-                            <div className="publication-actions">
+                            <p className="publication-venue">
+                                {pub.venue}
                                 {pub.tags.map((tag, i) => (
                                     <span key={i} className="tag badge-highlight">{tag}</span>
                                 ))}
+                            </p>
+                            <div className="publication-actions">
                                 {pub.links.paper && (
                                     <a href={pub.links.paper} target="_blank" rel="noopener noreferrer" className="action-btn" title="Paper">
                                         <FaRegFileAlt /> Paper
