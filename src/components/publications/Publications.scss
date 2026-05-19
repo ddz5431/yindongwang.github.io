@@ -89,8 +89,9 @@ $content-indent: 28px;
       margin-bottom: 0;
     }
 
+    // Deep-link highlight (e.g. /publications#refact from resume)
     &.highlight {
-      animation: pub-highlight 2s ease;
+      animation: pub-highlight 2.2s ease;
 
       &::before {
         opacity: 1;
@@ -99,12 +100,9 @@ $content-indent: 28px;
   }
 
   @keyframes pub-highlight {
-    0% {
-      background-color: rgba($timeline-teal, 0.05);
-    }
-    100% {
-      background-color: transparent;
-    }
+    0%   { background-color: rgba($main-orange, 0.16); }
+    60%  { background-color: rgba($main-orange, 0.08); }
+    100% { background-color: transparent; }
   }
 
   .publication-title {
@@ -115,10 +113,10 @@ $content-indent: 28px;
     line-height: 1.55;
     margin: 0 0 0.5rem 0;
     transition: color 0.2s ease;
-  }
 
-  .publication-card:hover .publication-title {
-    color: $link-blue;
+    &:hover {
+      color: $main-orange;
+    }
   }
 
   .publication-authors {
@@ -164,7 +162,8 @@ $content-indent: 28px;
     vertical-align: middle;
 
     &.badge-highlight {
-      color: $main-orange;
+      color: rgba($main-orange, 0.8);
+      transition: color 0.2s ease;
 
       &::before {
         content: '';
@@ -172,10 +171,20 @@ $content-indent: 28px;
         width: 5px;
         height: 5px;
         border-radius: 50%;
-        background-color: $main-orange;
-        box-shadow: 0 0 4px rgba($main-orange, 0.4);
+        background-color: rgba($main-orange, 0.8);
+        box-shadow: 0 0 4px rgba($main-orange, 0.3);
         flex-shrink: 0;
+        transition: background-color 0.2s ease, box-shadow 0.2s ease;
       }
+    }
+  }
+
+  .publication-card:hover .tag.badge-highlight {
+    color: $main-orange;
+
+    &::before {
+      background-color: $main-orange;
+      box-shadow: 0 0 4px rgba($main-orange, 0.4);
     }
   }
 
@@ -186,14 +195,14 @@ $content-indent: 28px;
     gap: 0.35rem;
     padding: 0.3rem 0;
     font-family: 'Poppins', sans-serif;
-    font-size: 0.95rem;
+    font-size: 0.82rem;
     font-weight: 600;
     background: none;
     border: none;
     text-decoration: none;
     transition: color 0.2s ease;
     cursor: pointer;
-    color: $link-blue;
+    color: rgba($link-blue, 0.8);
 
     svg {
       width: 16px;
@@ -213,16 +222,129 @@ $content-indent: 28px;
     }
   }
 
+  .publication-card:hover .action-btn {
+    color: $link-blue;
+
+    &:hover {
+      color: darken($link-blue, 10%);
+    }
+  }
+
+  // BibTeX block
+  .publication-bibtex {
+    margin-top: 0.8rem;
+    background-color: #f8f8f6;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    border-radius: 6px;
+    padding: 0.5rem 1rem 0.8rem;
+    font-size: 0.82rem;
+    overflow: auto;
+
+    pre {
+      margin: 0;
+      white-space: pre;
+      font-family: 'SFMono-Regular', Menlo, Consolas, 'Liberation Mono', monospace;
+      color: #2D3748;
+    }
+
+    code {
+      font-family: inherit;
+    }
+  }
+
+  .publication-bibtex {
+    display: flex;
+    flex-direction: column;
+  }
+
+  // Abstract block — same skeleton as BibTeX, prose styling
+  .publication-abstract {
+    display: flex;
+    flex-direction: column;
+    margin-top: 0.8rem;
+    background-color: #fbfaf7;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    border-radius: 6px;
+    padding: 0.5rem 1rem 1rem;
+    font-size: 0.9rem;
+
+    p {
+      margin: 0;
+      color: $title;
+      line-height: 1.7;
+    }
+  }
+
+  .bibtex-toolbar {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 0.4rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .bibtex-copy,
+  .bibtex-close {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.15rem 0.45rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.68rem;
+    font-weight: 600;
+    color: $title;
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 999px;
+    cursor: pointer;
+    transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+
+    svg {
+      width: 10px;
+      height: 10px;
+    }
+
+    &:hover {
+      color: $main-orange;
+      border-color: rgba($main-orange, 0.4);
+    }
+
+    &:active {
+      color: darken($main-orange, 10%);
+      border-color: rgba($main-orange, 0.6);
+    }
+  }
+
+  .bibtex-close {
+    padding: 0.15rem 0.4rem;
+  }
+
   // Responsive
   @media (max-width: 768px) {
     padding: 2rem 1.25rem;
 
-    .year-label {
-      font-size: 0.9rem;
+    .year-group {
+      gap: 0.8rem;
+    }
+
+    .year-sidebar {
+      width: 48px;
+    }
+
+    .year-content {
+      padding-left: 12px;
     }
 
     .publication-card {
       padding: 0.8rem 0;
+
+      &::before {
+        left: calc(-1 * (12px + 2px));
+      }
+    }
+
+    .year-label {
+      font-size: 0.9rem;
     }
 
     .publication-title {

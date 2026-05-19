@@ -16,6 +16,30 @@ $main-orange: #e17055;
   margin: 2rem auto;
   padding: 3rem 2rem;
 
+  .subtopic-back-link {
+    display: flex;
+    width: fit-content;
+    align-items: center;
+    gap: 0.3rem;
+    margin-top: 0.9rem;
+    padding: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: $secondary;
+    text-decoration: none;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: $main-orange;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+  }
+
   .research-header {
     margin-bottom: 0.8rem;
     cursor: pointer;

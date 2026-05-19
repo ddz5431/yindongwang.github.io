@@ -5,8 +5,8 @@ import './topbar.scss';
 
 const NAV_LINKS = [
   { to: '', label: 'Home', icon: '/home.svg' },
-  { to: 'publications', label: 'Publications', icon: '/publication.svg' },
   { to: 'resume', label: 'Resume', icon: '/resume.svg' },
+  { to: 'publications', label: 'Publications', icon: '/publication.svg' },
   { to: 'research', label: 'Research', icon: '/research.svg' },
   { to: 'blog', label: 'Blog', icon: '/blog.svg' },
 ];

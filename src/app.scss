@@ -21,7 +21,55 @@ $route-padding: 10px;
 body {
   font-family: 'Poppins', sans-serif;
   color: var(--text-color);
-  background-color: var(--background-color);
+  background-color: #F5F5F7;
+}
+
+body.blog-reading {
+  background-color: #f4f4f2;
+}
+
+// Global text selection — orange highlight on any selected text
+// (double-click selects a word, click-drag selects a range, etc.)
+::selection {
+  background-color: rgba(225, 112, 85, 0.35);
+  color: inherit;
+}
+
+::-moz-selection {
+  background-color: rgba(225, 112, 85, 0.35);
+  color: inherit;
+}
+
+// Custom scrollbar — lighter peach, same family as the blog accent
+$scrollbar-color: #ffd9d1;
+$scrollbar-color-hover: #ffc0b3;
+
+// Firefox
+html {
+  scrollbar-color: #{$scrollbar-color} transparent;
+  scrollbar-width: thin;
+}
+
+// WebKit (Chrome, Safari, Edge)
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: $scrollbar-color;
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+
+  &:hover {
+    background-color: $scrollbar-color-hover;
+    background-clip: padding-box;
+  }
 }
 
 .app {
@@ -32,11 +80,10 @@ body {
 
 .topbar {
   color: white;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .routes {
-  background-color: white;
+  background-color: #F5F5F7;
   flex-grow: 1;
 
   .route {
@@ -56,6 +103,12 @@ body {
     padding: $route-padding;
     background-color: var(--background-color-light);
   }
+}
+
+// Blog article detail page only — soft reading background
+body.blog-reading .routes {
+  background-color: #f4f4f2;
+  transition: background-color 0.3s ease-in-out;
 }
 
 // Card Styling

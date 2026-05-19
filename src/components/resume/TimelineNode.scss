@@ -25,6 +25,14 @@ $node-work: #2B9E8F;
   cursor: pointer;
 }
 
+.nd-title-icon {
+  flex-shrink: 0;
+  margin-right: 2px;
+
+  &.nd-title-icon-edu  { color: $node-edu; }
+  &.nd-title-icon-work { color: #2B6CB0; }
+}
+
 .nd-chevron {
   display: inline-block;
   font-size: 1rem;
@@ -107,9 +115,9 @@ $node-work: #2B9E8F;
   letter-spacing: 0.02em;
 
   &.nd-tag-highlighted {
-    background: rgba(#3EB489, 1);
-    transform: scale(1.08);
-    box-shadow: 0 0 8px rgba(#3EB489, 0.4);
+    background: rgba(#3EB489, 0.9);
+    transform: scale(1.03);
+    box-shadow: 0 0 4px rgba(#3EB489, 0.2);
   }
 
   &.nd-tag-dimmed {
@@ -125,6 +133,11 @@ $node-work: #2B9E8F;
     &:hover {
       opacity: 0.75;
     }
+
+    &:active {
+      background: rgba($node-edu, 0.6);
+      box-shadow: 0 0 4px rgba($node-edu, 0.25);
+    }
   }
 }
 
@@ -133,30 +146,6 @@ $node-work: #2B9E8F;
   margin-top: 16px;
   padding-top: 14px;
   border-top: 1px solid rgba($faint, 0.5);
-}
-
-.nd-research-highlights {
-  border-top: none;
-  border-left: none;
-  background: none;
-  padding: 14px 0;
-  margin-top: 16px;
-
-  .nd-details-title {
-    display: inline-block;
-    background: #3EB489;
-    color: #fff;
-    font-size: 0.82rem;
-    font-weight: 600;
-    padding: 3px 10px;
-    border-radius: 4px;
-    margin-bottom: 12px;
-    letter-spacing: 0.02em;
-  }
-
-  .nd-research-item {
-    padding: 6px 0;
-  }
 }
 
 .nd-details-title {
@@ -172,6 +161,7 @@ $node-work: #2B9E8F;
   display: flex;
   flex-direction: column;
   gap: 10px;
+  min-width: 0;
 }
 
 .nd-project-card {
@@ -179,10 +169,29 @@ $node-work: #2B9E8F;
   border-radius: 8px;
   padding: 14px 16px;
   border: 1px solid rgba($faint, 0.4);
-  transition: border-color 0.2s ease;
+  min-width: 0;
+  transition: border-color 0.2s ease, transform 0.25s ease, opacity 0.25s ease, box-shadow 0.25s ease;
 
   &:hover {
-    border-color: rgba($node-edu, 0.4);
+    border-color: #3EB489;
+    background: rgba(#3EB489, 0.08);
+    box-shadow:
+      0 0 0 2px rgba(#3EB489, 0.45),
+      0 6px 22px rgba(#3EB489, 0.3);
+  }
+
+  &.nd-project-card-highlighted {
+    border-color: #3EB489;
+    background: rgba(#3EB489, 0.08);
+    // Outer ring + glow combine to give the "bigger / lifted" perception
+    // without using transform (framer-motion's inline transform would override it).
+    box-shadow:
+      0 0 0 2px rgba(#3EB489, 0.45),
+      0 6px 22px rgba(#3EB489, 0.3);
+  }
+
+  &.nd-project-card-dimmed {
+    opacity: 0.4;
   }
 }
 
@@ -193,6 +202,8 @@ $node-work: #2B9E8F;
   color: $deep;
   margin-bottom: 6px;
   line-height: 1.45;
+  word-break: break-word;
+  overflow-wrap: anywhere;
 }
 
 .nd-project-link {
@@ -208,11 +219,12 @@ $node-work: #2B9E8F;
 }
 
 .nd-coming-soon {
+  margin-top: 8px;
   font-size: 0.78rem;
   font-weight: 500;
   color: $mute;
   font-style: italic;
-  white-space: nowrap;
+  text-align: right;
 }
 
 .nd-project-desc {
@@ -220,6 +232,8 @@ $node-work: #2B9E8F;
   font-size: 0.88rem;
   color: $body;
   line-height: 1.7;
+  word-break: break-word;
+  overflow-wrap: anywhere;
 }
 
 .nd-project-skills {

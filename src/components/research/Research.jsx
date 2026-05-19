@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import './Research.scss'
 
 const Research = () => {
   const [showIntro, setShowIntro] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
+  const fromResume = location.state?.from === 'resume';
+  const targetSubtopicId = location.hash ? location.hash.slice(1) : null;
 
   useEffect(() => {
     if (location.hash) {
@@ -88,14 +91,10 @@ const Research = () => {
                 const paragraphs = sub.description
                   ? sub.description.split(/\n{2,}/).map(p => p.trim()).filter(Boolean)
                   : [];
-                const multiPara = paragraphs.length > 1;
                 return (
                 <li key={subIndex} id={sub.id} className="research-subtopic">
                   <span className="subtopic-name">{sub.name}</span>
-                  {sub.description && !multiPara && (
-                    <span className="subtopic-description"> — {sub.description}</span>
-                  )}
-                  {multiPara && (
+                  {paragraphs.length > 0 && (
                     <div className="subtopic-description subtopic-description-block">
                       {paragraphs.map((p, i) => <p key={i}>{p}</p>)}
                     </div>
@@ -117,6 +116,15 @@ const Research = () => {
                         </div>
                       ))}
                     </div>
+                  )}
+                  {fromResume && targetSubtopicId === sub.id && (
+                    <button
+                      type="button"
+                      className="subtopic-back-link"
+                      onClick={() => navigate(-1)}
+                    >
+                      ← Back to Resume
+                    </button>
                   )}
                 </li>
                 );

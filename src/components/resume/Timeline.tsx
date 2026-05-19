@@ -295,6 +295,7 @@ const Timeline: React.FC<TimelineProps> = ({ events, skills }) => {
           <svg
             className="bamboo-svg"
             viewBox={`0 0 70 ${svgHeight}`}
+            preserveAspectRatio="none"
             style={{ height: svgHeight }}
           >
             <defs>

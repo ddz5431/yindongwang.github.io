@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import { FaGithub, FaRegFileAlt } from 'react-icons/fa';
+import { FaGithub, FaRegFileAlt, FaRegClipboard, FaRegCopy, FaCheck, FaTimes, FaAlignLeft } from 'react-icons/fa';
 import { SiHuggingface } from 'react-icons/si';
 import './Publications.scss';
 
@@ -16,7 +16,15 @@ const publications = [
             paper: "https://aclanthology.org/2026.eacl-long.381/",
             github: "https://github.com/ddz5431/ReFACT",
             huggingface: "https://huggingface.co/datasets/ddz5431/refact"
-        }
+        },
+        bibtex: `@inproceedings{wang2026refact,
+  title     = {ReFACT: A Benchmark for Scientific Confabulation Detection with Positional Error Annotations},
+  author    = {Wang, Yindong and Prei{\\ss}, M. and Bugue{\\~n}o, M. and Hoffbauer, J. V. and Ghajar, A. and Buz, T. and de Melo, Gerard},
+  booktitle = {Proceedings of the 2026 Conference of the European Chapter of the Association for Computational Linguistics},
+  year      = {2026},
+  url       = {https://aclanthology.org/2026.eacl-long.381/}
+}`,
+        abstract: "The mechanisms underlying scientific confabulation in Large Language Models (LLMs) remain poorly understood. We introduce ReFACT, a benchmark of 1,001 expert-annotated question-answer pairs with span-level error annotations derived from Reddit's r/AskScience. Evaluating 9 state-of-the-art LLMs reveals two critical limitations. First, models exhibit a dominant salient distractor failure mode: 61% of incorrect span predictions are semantically unrelated to actual errors. Crucially, this pattern persists across all model scales (1B to 70B), indicating a fundamental semantic grounding deficit that scaling alone fails to resolve. Second, we find that comparative judgment is paradoxically harder than independent detection–even GPT-4o's F1 score drops from 0.67 to 0.53 when comparing answers side-by-side. These findings directly challenge the reliability of LLM-as-Judge paradigms for scientific factuality. Code and data are released at https://github.com/ddz5431/ReFACT."
     },
     {
         id: "llm-teacher-classification",
@@ -27,7 +35,15 @@ const publications = [
         tags: [],
         links: {
             paper: "https://bpspsychub.onlinelibrary.wiley.com/doi/full/10.1111/bjep.70013"
-        }
+        },
+        bibtex: `@article{metzner2026llm,
+  title   = {The potential and limitations of large language models for automatic classification of teachers' motivational messages in educational research},
+  author  = {Metzner, O. and Wang, Y. and de Melo, G. and Symes, W. and Huang, Y. and Lazarides, R.},
+  journal = {British Journal of Educational Psychology},
+  year    = {2026},
+  doi     = {10.1111/bjep.70013}
+}`,
+        abstract: "This work investigates how well current large language models can automatically classify teachers' motivational messages in educational settings, comparing model predictions against expert-coded ground truth. The study examines both the practical utility of LLMs for educational research workflows and the limitations that arise when domain-specific psychological constructs are involved."
     },
     {
         id: "llm-teacher-speech",
@@ -38,7 +54,15 @@ const publications = [
         tags: [],
         links: {
             paper: "https://bpspsychub.onlinelibrary.wiley.com/doi/full/10.1111/bjep.12779"
-        }
+        },
+        bibtex: `@article{metzner2025process,
+  title   = {A process-oriented perspective on pre-service teachers' self-efficacy and their motivational messages: Using large language models to classify teachers' speech},
+  author  = {Metzner, O. and Wang, Y. and Symes, W. and Huang, Y. and Keller, L. and de Melo, G. and Lazarides, R.},
+  journal = {British Journal of Educational Psychology},
+  year    = {2025},
+  doi     = {10.1111/bjep.12779}
+}`,
+        abstract: "Taking a process-oriented perspective, this paper examines the relationship between pre-service teachers' self-efficacy beliefs and the motivational messages they produce during teaching. Large language models are used to classify teachers' speech at scale, enabling a finer-grained analysis of how self-efficacy manifests across moments of instruction."
     }
 ];
 
@@ -57,17 +81,39 @@ const highlightAuthor = (author) => {
 
 export default function Publications() {
     const location = useLocation();
+    const [openBibtex, setOpenBibtex] = useState(null);
+    const [openAbstract, setOpenAbstract] = useState(null);
+    const [copiedId, setCopiedId] = useState(null);
 
     useEffect(() => {
         if (location.hash) {
             const el = document.getElementById(location.hash.slice(1));
             if (el) {
-                el.scrollIntoView({ behavior: 'smooth' });
+                el.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 el.classList.add('highlight');
-                setTimeout(() => el.classList.remove('highlight'), 2000);
+                const t = setTimeout(() => el.classList.remove('highlight'), 2200);
+                return () => clearTimeout(t);
             }
         }
     }, [location]);
+
+    const toggleBibtex = (id) => {
+        setOpenBibtex((cur) => (cur === id ? null : id));
+    };
+
+    const toggleAbstract = (id) => {
+        setOpenAbstract((cur) => (cur === id ? null : id));
+    };
+
+    const copyBibtex = async (id, text) => {
+        try {
+            await navigator.clipboard.writeText(text);
+            setCopiedId(id);
+            setTimeout(() => setCopiedId((cur) => (cur === id ? null : cur)), 1500);
+        } catch (e) {
+            // clipboard unavailable — silently ignore
+        }
+    };
 
     return (
         <div className="publications-section">
@@ -103,6 +149,16 @@ export default function Publications() {
                                         <FaRegFileAlt /> Paper
                                     </a>
                                 )}
+                                {pub.abstract && (
+                                    <button
+                                        type="button"
+                                        className={`action-btn btn-abstract${openAbstract === pub.id ? ' is-open' : ''}`}
+                                        onClick={() => toggleAbstract(pub.id)}
+                                        title="Abstract"
+                                    >
+                                        <FaAlignLeft /> Abstract
+                                    </button>
+                                )}
                                 {pub.links.github && (
                                     <a href={pub.links.github} target="_blank" rel="noopener noreferrer" className="action-btn btn-code" title="GitHub">
                                         <FaGithub /> Code
@@ -113,7 +169,57 @@ export default function Publications() {
                                         <SiHuggingface /> Dataset
                                     </a>
                                 )}
+                                {pub.bibtex && (
+                                    <button
+                                        type="button"
+                                        className={`action-btn btn-bibtex${openBibtex === pub.id ? ' is-open' : ''}`}
+                                        onClick={() => toggleBibtex(pub.id)}
+                                        title="BibTeX"
+                                    >
+                                        <FaRegClipboard /> BibTeX
+                                    </button>
+                                )}
                             </div>
+                            {pub.abstract && openAbstract === pub.id && (
+                                <div className="publication-abstract">
+                                    <div className="bibtex-toolbar">
+                                        <button
+                                            type="button"
+                                            className="bibtex-close"
+                                            onClick={() => setOpenAbstract(null)}
+                                            title="Close Abstract"
+                                            aria-label="Close Abstract"
+                                        >
+                                            <FaTimes />
+                                        </button>
+                                    </div>
+                                    <p>{pub.abstract}</p>
+                                </div>
+                            )}
+                            {pub.bibtex && openBibtex === pub.id && (
+                                <div className="publication-bibtex">
+                                    <div className="bibtex-toolbar">
+                                        <button
+                                            type="button"
+                                            className="bibtex-copy"
+                                            onClick={() => copyBibtex(pub.id, pub.bibtex)}
+                                            title="Copy BibTeX"
+                                        >
+                                            {copiedId === pub.id ? <><FaCheck /> Copied</> : <><FaRegCopy /> Copy</>}
+                                        </button>
+                                        <button
+                                            type="button"
+                                            className="bibtex-close"
+                                            onClick={() => setOpenBibtex(null)}
+                                            title="Close BibTeX"
+                                            aria-label="Close BibTeX"
+                                        >
+                                            <FaTimes />
+                                        </button>
+                                    </div>
+                                    <pre><code>{pub.bibtex}</code></pre>
+                                </div>
+                            )}
                         </div>
                     ))}
                     </div>

@@ -1,0 +1,43 @@
+// Van Gogh — Starry Night palette
+$gold: #FFC300;
+$moonlight: #E0E1DD;
+$moonlight-dim: #A8AAAD;
+$moonlight-muted: #6E7275;
+
+.moments-section {
+  max-width: 880px;
+  margin: 2rem auto;
+  padding: 3rem 2rem;
+
+  h2 {
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 2rem;
+    font-weight: 500;
+    color: $gold;
+    letter-spacing: -0.02em;
+    margin: 0 0 0.5rem 0;
+  }
+
+  .moments-intro {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    color: $moonlight-dim;
+    line-height: 1.8;
+    margin: 0 0 2rem 0;
+  }
+
+  .moments-empty {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    color: $moonlight-muted;
+    font-style: italic;
+  }
+
+  @media (max-width: 768px) {
+    padding: 2rem 1.25rem;
+
+    h2 {
+      font-size: 1.6rem;
+    }
+  }
+}

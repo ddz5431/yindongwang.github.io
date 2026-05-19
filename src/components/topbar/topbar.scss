@@ -99,8 +99,8 @@ $transition-speed: 0.3s;
         gap: 4px;
 
         .nav-icon {
-          width: 32px;
-          height: 32px;
+          width: 46px;
+          height: 46px;
           object-fit: contain;
           display: none;
         }
@@ -217,6 +217,24 @@ $transition-speed: 0.3s;
 body {
   //padding-top: calc(#{$topbar-height} + 20px);
   transition: padding-top $transition-speed ease;
+
+  // Focus mode in the blog post hides the topbar for a distraction-free read
+  &.focus-mode-on {
+    background-color: #f4f4f2;
+    transition: background-color 0.3s ease-in-out;
+
+    .topbar {
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-100%);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .routes {
+      background-color: #f4f4f2;
+      transition: background-color 0.3s ease-in-out;
+    }
+  }
 }
 
 section {

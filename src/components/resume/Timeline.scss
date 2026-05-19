@@ -145,20 +145,20 @@ $ink-dark: rgba(30, 55, 25, 0.6);
   }
 
   .tree-timeline {
-    margin-left: 30px;
+    margin-left: 4px;
   }
 
   .bamboo-svg {
-    width: 60px;
-    left: -18px;
+    width: 32px;
+    left: -8px;
   }
 
   .tree-row {
-    padding-left: 30px;
+    padding-left: 24px;
     padding-bottom: 1.8rem;
 
     &::before {
-      left: 18px;
+      left: 10px;
       width: 10px;
     }
   }

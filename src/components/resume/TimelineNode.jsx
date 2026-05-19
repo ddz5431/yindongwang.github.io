@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
+import { GraduationCap, Briefcase } from 'lucide-react';
 import './TimelineNode.scss';
 
 const TimelineNode = ({
@@ -12,7 +13,8 @@ const TimelineNode = ({
   index,
   totalCount,
 }) => {
-  const [highlightedSkills, setHighlightedSkills] = useState([]);
+  const [highlightedSkills, setHighlightedSkills] = useState([]); // set when a PROJECT is hovered — drives tag highlighting
+  const [hoveredTagSkill, setHoveredTagSkill] = useState(null);   // set when a TAG is hovered — drives project highlighting
 
   const isPhD =
     (event.type === 'work' && event.position?.includes('Ph.D')) ||
@@ -30,10 +32,16 @@ const TimelineNode = ({
       <div className="nd-details">
         <h4 className="nd-details-title">Highlights</h4>
         <div className="nd-project-cards">
-          {event.projects.map((project, idx) => (
+          {event.projects.map((project, idx) => {
+            const matches =
+              hoveredTagSkill !== null &&
+              project.highlightSkills?.includes(hoveredTagSkill);
+            const dimmed = hoveredTagSkill !== null && !matches;
+            const cardCls = `nd-project-card${matches ? ' nd-project-card-highlighted' : ''}${dimmed ? ' nd-project-card-dimmed' : ''}`;
+            return (
             <motion.div
               key={idx}
-              className="nd-project-card"
+              className={cardCls}
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3, delay: idx * 0.1 }}
@@ -50,13 +58,14 @@ const TimelineNode = ({
                 ) : (
                   project.name
                 )}
-                {project.comingSoon && (
-                  <span className="nd-coming-soon"> · Paper to appear soon</span>
-                )}
               </div>
               <div className="nd-project-desc">{project.description}</div>
+              {project.comingSoon && (
+                <div className="nd-coming-soon">Paper to appear soon</div>
+              )}
             </motion.div>
-          ))}
+            );
+          })}
         </div>
       </div>
     );
@@ -68,10 +77,16 @@ const TimelineNode = ({
       <div className="nd-details">
         <h4 className="nd-details-title">Projects</h4>
         <div className="nd-project-cards">
-          {event.projects.map((project, idx) => (
+          {event.projects.map((project, idx) => {
+            const matches =
+              hoveredTagSkill !== null &&
+              project.highlightSkills?.includes(hoveredTagSkill);
+            const dimmed = hoveredTagSkill !== null && !matches;
+            const cardCls = `nd-project-card${matches ? ' nd-project-card-highlighted' : ''}${dimmed ? ' nd-project-card-dimmed' : ''}`;
+            return (
             <motion.div
               key={idx}
-              className="nd-project-card"
+              className={cardCls}
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3, delay: idx * 0.1 }}
@@ -95,13 +110,14 @@ const TimelineNode = ({
                     [Paper]
                   </a>
                 )}
-                {project.comingSoon && (
-                  <span className="nd-coming-soon"> · Paper to appear soon</span>
-                )}
               </div>
               <div className="nd-project-desc">{project.description}</div>
+              {project.comingSoon && (
+                <div className="nd-coming-soon">Paper to appear soon</div>
+              )}
             </motion.div>
-          ))}
+            );
+          })}
         </div>
       </div>
     );
@@ -128,6 +144,9 @@ const TimelineNode = ({
   return (
     <div className="nd-entry" onClick={hasExpandableContent ? onClick : undefined}>
       <h3 className="nd-title">
+        {event.type === 'education'
+          ? <GraduationCap className="nd-title-icon nd-title-icon-edu" size={18} />
+          : <Briefcase className="nd-title-icon nd-title-icon-work" size={18} />}
         {title}
         {hasExpandableContent && (
           <span className={`nd-chevron ${isExpanded ? 'open' : ''}`}>›</span>
@@ -166,11 +185,26 @@ const TimelineNode = ({
           const isDimmed = highlightedSkills.length > 0 && !isHighlighted;
           const cls = `nd-tag ${event.type} ${isHighlighted ? 'nd-tag-highlighted' : ''} ${isDimmed ? 'nd-tag-dimmed' : ''}`;
           return href ? (
-            <Link key={skillId} to={href} className={`${cls} nd-tag-link`} onClick={e => e.stopPropagation()}>
+            <Link
+              key={skillId}
+              to={href}
+              state={{ from: 'resume' }}
+              className={`${cls} nd-tag-link`}
+              onClick={e => e.stopPropagation()}
+              onMouseEnter={() => setHoveredTagSkill(skillId)}
+              onMouseLeave={() => setHoveredTagSkill(null)}
+            >
               {skill.name}
             </Link>
           ) : (
-            <span key={skillId} className={cls}>{skill.name}</span>
+            <span
+              key={skillId}
+              className={cls}
+              onMouseEnter={() => setHoveredTagSkill(skillId)}
+              onMouseLeave={() => setHoveredTagSkill(null)}
+            >
+              {skill.name}
+            </span>
           );
         })}
       </div>}

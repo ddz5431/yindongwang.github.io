@@ -184,7 +184,7 @@ export const education: EducationBackground[] = [
       projects: [
         {
           name: "SuffixGuid: Inference-Time Alignment for Large Language Models",
-          description: "Leveraging decoder's causal nature, applying semantic constraints as suffix at each decoding step to detect errors by quantifying the uncertainty for both generation and evaluation position, we steer the model generation towards the direction we expect. Through it, LLMs inference-time alignment is possible.",
+          description: "Leveraging the causal nature of the decoder, we apply semantic constraints as suffixes at each decoding step. By quantifying uncertainty at both the generation and evaluation positions to detect errors, we dynamically steer the model's generation toward desired outcomes. Ultimately, this approach demonstrates the viability of training-free, inference-time alignment for LLMs.",
           skills: [],
           highlightSkills: ['s21', 's18'], // LLM Reasoning, LLM Alignment
           comingSoon: true,
@@ -199,7 +199,7 @@ export const education: EducationBackground[] = [
         },
         {
           name: "ReFACT: A Benchmark for Scientific Confabulation Detection with Positional Error Annotations",
-          description: "A benchmark with positional error annotations for detecting and localizing factual hallucinations in LLM-generated scientific text.",
+          description: "We introduce ReFACT, a benchmark of 1,001 expert-annotated QA pairs to evaluate LLMs on detecting, localizing, and correcting scientific confabulations. Evaluating 9 models reveals a scale-invariant \"salient distractor\" failure mode. Instead of identifying actual semantic errors, models systematically fixate on plausible technical terms, directly challenging the reliability of LLM-as-Judge paradigms.",
           skills: ["Mentoring", "LLM Hallucinations", "AI Safety"],
           highlightSkills: ['s20'], // LLM Hallucinations / Evaluation
           publicationId: 'refact',
