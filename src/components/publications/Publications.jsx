@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { FaGithub, FaRegFileAlt, FaRegClipboard, FaRegCopy, FaCheck, FaTimes, FaAlignLeft } from 'react-icons/fa';
 import { SiHuggingface } from 'react-icons/si';
@@ -84,6 +84,31 @@ export default function Publications() {
     const [openBibtex, setOpenBibtex] = useState(null);
     const [openAbstract, setOpenAbstract] = useState(null);
     const [copiedId, setCopiedId] = useState(null);
+    const [scrollActiveId, setScrollActiveId] = useState(null);
+    const [hoverId, setHoverId] = useState(null);
+    const [focusId, setFocusId] = useState(null);
+    const cardRefs = useRef({});
+
+    // Priority: click/focus > hover > scroll position. Only one card at a time.
+    const activeId = focusId || hoverId || scrollActiveId;
+
+    // Mark the card currently crossing a band near the top of the viewport
+    // as "active" so its timeline segment lights up while the user scrolls.
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                const intersecting = entries.filter((e) => e.isIntersecting);
+                if (intersecting.length === 0) return;
+                intersecting.sort(
+                    (a, b) => a.boundingClientRect.top - b.boundingClientRect.top
+                );
+                setScrollActiveId(intersecting[0].target.id);
+            },
+            { rootMargin: '-25% 0px -65% 0px', threshold: 0 }
+        );
+        Object.values(cardRefs.current).forEach((el) => el && observer.observe(el));
+        return () => observer.disconnect();
+    }, []);
 
     useEffect(() => {
         if (location.hash) {
@@ -128,7 +153,20 @@ export default function Publications() {
                     </div>
                     <div className="year-content">
                     {groupedByYear[year].map((pub) => (
-                        <div key={pub.id} id={pub.id} className="publication-card">
+                        <div
+                            key={pub.id}
+                            id={pub.id}
+                            ref={(el) => { cardRefs.current[pub.id] = el; }}
+                            className={`publication-card${activeId === pub.id ? ' is-active' : ''}`}
+                            onMouseEnter={() => setHoverId(pub.id)}
+                            onMouseLeave={() => setHoverId((cur) => (cur === pub.id ? null : cur))}
+                            onFocus={() => setFocusId(pub.id)}
+                            onBlur={(e) => {
+                                if (!e.currentTarget.contains(e.relatedTarget)) {
+                                    setFocusId((cur) => (cur === pub.id ? null : cur));
+                                }
+                            }}
+                        >
                             <h4 className="publication-title">{pub.title}</h4>
                             <p className="publication-authors">
                                 {pub.authors.map((author, i) => (

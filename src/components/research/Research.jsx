@@ -13,7 +13,7 @@ const Research = () => {
     if (location.hash) {
       const el = document.getElementById(location.hash.slice(1));
       if (el) {
-        el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
         el.classList.add('highlight');
         const t = setTimeout(() => el.classList.remove('highlight'), 2000);
         return () => clearTimeout(t);

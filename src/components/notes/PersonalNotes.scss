@@ -133,7 +133,7 @@
 
       &.blog-back-link-bottom {
         position: fixed;
-        left: 1.2rem;
+        right: 1.2rem;
         bottom: 1.2rem;
         z-index: 900;
         padding: 0.45rem 0.9rem;
@@ -161,19 +161,11 @@
         }
 
         @media (max-width: 768px) {
-          left: 50%;
-          transform: translate(-50%, 10px);
+          display: none;
 
-          &.is-visible {
-            transform: translate(-50%, 0);
+          body.focus-mode-on & {
+            display: inline-flex;
           }
-
-          &:hover {
-            transform: translate(-50%, -2px);
-          }
-
-          font-size: 0.82rem;
-          padding: 0.4rem 0.8rem;
         }
       }
     }
@@ -229,11 +221,6 @@
         opacity: 0;
         pointer-events: none;
         transition: opacity 0.3s ease-in-out;
-      }
-
-      .blog-back-link-bottom {
-        opacity: 0 !important;
-        pointer-events: none;
       }
 
       .focus-toggle {

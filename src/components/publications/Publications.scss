@@ -99,7 +99,7 @@ $content-indent: 28px;
       transition: opacity 0.2s ease;
     }
 
-    &:hover::before {
+    &.is-active::before {
       opacity: 1;
     }
 
@@ -211,7 +211,7 @@ $content-indent: 28px;
     }
   }
 
-  .publication-card:hover .tag.badge-highlight {
+  .publication-card.is-active .tag.badge-highlight {
     color: $main-orange;
 
     &::before {
@@ -258,7 +258,7 @@ $content-indent: 28px;
     }
   }
 
-  .publication-card:hover .action-btn {
+  .publication-card.is-active .action-btn {
     color: $link-blue;
 
     &:hover {

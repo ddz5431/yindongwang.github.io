@@ -45,7 +45,7 @@ export default function Intro() {
                     </p>
                     <div className="social-links">
                         <a href="https://github.com/ddz5431" target="_blank" rel="noopener noreferrer"><GitHubIcon /></a>
-                        <a href="https://scholar.google.com/citations?user=Yindong+Wang" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar"><ScholarIcon /></a>
+                        <a href="https://scholar.google.com/citations?user=ifDo8wgAAAAJ" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar"><ScholarIcon /></a>
                         <a href="mailto:hi@yindong.me"><MailIcon /></a>
                     </div>
                 </div>

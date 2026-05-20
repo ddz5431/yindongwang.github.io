@@ -47,12 +47,12 @@ const BlogPost = () => {
   const items = Array.isArray(note?.content) ? note.content : note ? [note.content] : [];
   const sections = useMemo(() => groupIntoSections(items), [items]);
   const [focusMode, setFocusMode] = useState(false);
-  const [showBack, setShowBack] = useState(false);
+  const [showBack, setShowBack] = useState(true);
   const blockRefs = useRef([]);
   const [revealed, setRevealed] = useState(() => new Set());
 
   useEffect(() => {
-    const update = () => setShowBack(window.scrollY > 200);
+    const update = () => setShowBack(window.scrollY < 40);
     update();
     window.addEventListener('scroll', update, { passive: true });
     return () => window.removeEventListener('scroll', update);

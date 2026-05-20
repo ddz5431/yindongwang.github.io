@@ -14,59 +14,81 @@ const NAV_LINKS = [
 export default function Topbar() {
   const location = useLocation();
   const [hidden, setHidden] = useState(false);
+  const [bottomVisible, setBottomVisible] = useState(true);
   const lastY = useRef(0);
 
   const isActive = (to) => location.pathname === `/${to}`;
 
-  // Mobile-only: hide the topbar when scrolling down, reveal when scrolling up
+  // Mobile-only: hide the topbar when scrolling down, reveal when scrolling up.
+  // Bottom nav is only visible when the page is scrolled to the very top.
   useEffect(() => {
+    const TOP_THRESHOLD = 10;
+
     const handleScroll = () => {
       const isMobile = window.innerWidth <= 1024;
       if (!isMobile) {
         if (hidden) setHidden(false);
+        if (!bottomVisible) setBottomVisible(true);
         return;
       }
       const y = window.scrollY;
       if (y > lastY.current && y > 80) setHidden(true);
       else if (y < lastY.current) setHidden(false);
       lastY.current = y;
+
+      setBottomVisible(y <= TOP_THRESHOLD);
     };
+
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [hidden]);
+  }, [hidden, bottomVisible]);
 
   return (
-    <header className={`topbar${hidden ? ' is-hidden' : ''}`}>
-      <div className="wrapper">
-        <Link to="" className="MyName">
-          <span className="full-name">Ddz</span>
-        </Link>
-        {!isActive('') && <img src="/line.svg" alt="" className="name-line" />}
-        <nav className="navLinks">
-          {NAV_LINKS.map(({to, label, icon}) => (
-            <Link
-              key={to}
-              to={to}
-              className={`nav-link ${isActive(to) ? 'active' : ''} ${icon ? 'has-icon' : ''}`}
-            >
-              {icon && <img src={icon} alt={label} className="nav-icon" />}
-              <span className="nav-label">{label}</span>
-            </Link>
-          ))}
-        </nav>
-        <div className="right">
-          <div className="itemContainer">
-            <Person className="icon" />
-            <span>AI Researcher</span>
-          </div>
-          <div className="itemContainer">
-            <a href="mailto:hi@yindong.me">
-              <Mail className="icon"/>
-              <span>hi@yindong.me</span>
-            </a>
+    <>
+      <header className={`topbar${hidden ? ' is-hidden' : ''}`}>
+        <div className="wrapper">
+          <Link to="" className="MyName">
+            <span className="full-name">Ddz</span>
+          </Link>
+          {!isActive('') && <img src="/line.svg" alt="" className="name-line" />}
+          <nav className="navLinks">
+            {NAV_LINKS.map(({to, label, icon}) => (
+              <Link
+                key={to}
+                to={to}
+                className={`nav-link ${isActive(to) ? 'active' : ''} ${icon ? 'has-icon' : ''}`}
+              >
+                {icon && <img src={icon} alt={label} className="nav-icon" />}
+                <span className="nav-label">{label}</span>
+              </Link>
+            ))}
+          </nav>
+          <div className="right">
+            <div className="itemContainer">
+              <Person className="icon" />
+              <span>AI Researcher</span>
+            </div>
+            <div className="itemContainer">
+              <a href="mailto:hi@yindong.me">
+                <Mail className="icon"/>
+                <span>hi@yindong.me</span>
+              </a>
+            </div>
           </div>
         </div>
-      </div>
-    </header>
+      </header>
+      <nav className={`mobile-bottom-nav${bottomVisible ? ' is-visible' : ''}`} aria-label="Primary navigation">
+        {NAV_LINKS.map(({to, label, icon}) => (
+          <Link
+            key={to}
+            to={to}
+            className={`mbn-link ${isActive(to) ? 'active' : ''}`}
+          >
+            {icon && <img src={icon} alt="" className="mbn-icon" />}
+            <span className="mbn-label">{label}</span>
+          </Link>
+        ))}
+      </nav>
+    </>
   );
 }

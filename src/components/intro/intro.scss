@@ -80,11 +80,13 @@ $accentFontColor: #0056b3;
 
       a {
         margin: 0 0.5rem;
-        color: #2B6CB0;
+        color: rgba(#2B6CB0, 0.8);
         transition: color 0.3s ease;
 
-        &:hover {
-          color: darken(#2B6CB0, 30%);
+        &:hover,
+        &:active,
+        &:focus {
+          color: #e17055;
         }
       }
     }
@@ -154,7 +156,7 @@ $accentFontColor: #0056b3;
 
       .tagline {
         font-style: italic;
-        color: #e53e3e;
+        color: #9b2c2c;
         font-size: 1.1rem;
         margin-top: 1rem;
 

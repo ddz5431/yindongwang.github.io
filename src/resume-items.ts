@@ -180,7 +180,7 @@ export const education: EducationBackground[] = [
       university: 'Hasso Plattner Institute',
       location: 'Potsdam, Germany',
       link: 'https://hpi.de',
-      skillIds: ['s20', 's18', 's21'],
+      skillIds: ['s18', 's21', 's20'],
       projects: [
         {
           name: "SuffixGuid: Inference-Time Alignment for Large Language Models",

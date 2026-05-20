@@ -173,6 +173,7 @@ $main-orange: #e17055;
     padding: 1.2rem 0 1.2rem 1.4rem;
     border-left: 2px solid rgba($timeline-teal, 0.18);
     transition: border-color 0.2s ease, background-color 0.2s ease;
+    scroll-margin-top: 5rem;
 
     &:hover {
       border-left-color: $timeline-teal;

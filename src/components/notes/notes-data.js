@@ -77,7 +77,7 @@ const rawNotes = [
       <hr className="footnotes-divider" />,
       <ol className="footnotes-list">
         <li id="fn-ralf">
-          <a href="https://herbrich.me/" target="_blank" rel="noopener noreferrer">Ralf</a> is my second PhD supervisor. <a href="#fnref-ralf" className="footnote-back" aria-label="back to text">↩</a>
+          <a href="https://herbrich.me/" target="_blank" rel="noopener noreferrer">Ralf</a> is my second PhD supervisor. <a href="#fnref-ralf" className="footnote-back" aria-label="back to text">↩{'\uFE0E'}</a>
         </li>
       </ol>,
     ],
