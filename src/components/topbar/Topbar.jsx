@@ -20,10 +20,8 @@ export default function Topbar() {
   const isActive = (to) => location.pathname === `/${to}`;
 
   // Mobile-only: hide the topbar when scrolling down, reveal when scrolling up.
-  // Bottom nav is only visible when the page is scrolled to the very top.
+  // Bottom nav mirrors that direction — visible while scrolling toward the top.
   useEffect(() => {
-    const TOP_THRESHOLD = 10;
-
     const handleScroll = () => {
       const isMobile = window.innerWidth <= 1024;
       if (!isMobile) {
@@ -32,11 +30,14 @@ export default function Topbar() {
         return;
       }
       const y = window.scrollY;
-      if (y > lastY.current && y > 80) setHidden(true);
-      else if (y < lastY.current) setHidden(false);
+      if (y > lastY.current && y > 80) {
+        setHidden(true);
+        setBottomVisible(false);
+      } else if (y < lastY.current) {
+        setHidden(false);
+        setBottomVisible(true);
+      }
       lastY.current = y;
-
-      setBottomVisible(y <= TOP_THRESHOLD);
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
