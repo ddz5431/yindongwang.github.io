@@ -58,7 +58,7 @@ $ink-dark: rgba(30, 55, 25, 0.6);
   display: flex;
   align-items: flex-start;
   position: relative;
-  padding-left: 80px;
+  padding-left: 48px;
   padding-bottom: 2.2rem;
 
   // Scroll ink-reveal — mimics ink seeping into paper
@@ -136,12 +136,12 @@ $ink-dark: rgba(30, 55, 25, 0.6);
 // ── Responsive ──
 @media (max-width: 768px) {
   .tree-page {
-    padding: 2rem 1rem 3rem;
+    padding: 0.8rem 1rem 3rem;
   }
 
   .tree-heading {
     font-size: 1.4rem;
-    margin-bottom: 2.5rem;
+    margin: 0 0 1.5rem;
   }
 
   .tree-timeline {
@@ -154,6 +154,7 @@ $ink-dark: rgba(30, 55, 25, 0.6);
   }
 
   .tree-row {
+    flex-direction: column;
     padding-left: 24px;
     padding-bottom: 1.8rem;
 
@@ -164,14 +165,25 @@ $ink-dark: rgba(30, 55, 25, 0.6);
   }
 
   .tree-node-col {
-    width: 100px;
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.5rem;
+    padding-top: 0;
+  }
+
+  .tree-content-col {
+    width: 100%;
+    padding-left: 0;
   }
 
   .tree-date-range {
-    font-size: 0.7rem;
+    font-size: 0.78rem;
   }
 
   .tree-location {
-    font-size: 0.65rem;
+    font-size: 0.72rem;
   }
 }

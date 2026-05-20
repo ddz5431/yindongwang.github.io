@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Person, Mail } from '@mui/icons-material';
 import './topbar.scss';
@@ -13,17 +13,32 @@ const NAV_LINKS = [
 
 export default function Topbar() {
   const location = useLocation();
+  const [hidden, setHidden] = useState(false);
+  const lastY = useRef(0);
 
   const isActive = (to) => location.pathname === `/${to}`;
 
-  const handleClick = (to) => {
-    console.log('Link clicked:', to);
-  };
+  // Mobile-only: hide the topbar when scrolling down, reveal when scrolling up
+  useEffect(() => {
+    const handleScroll = () => {
+      const isMobile = window.innerWidth <= 1024;
+      if (!isMobile) {
+        if (hidden) setHidden(false);
+        return;
+      }
+      const y = window.scrollY;
+      if (y > lastY.current && y > 80) setHidden(true);
+      else if (y < lastY.current) setHidden(false);
+      lastY.current = y;
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [hidden]);
 
   return (
-    <header className="topbar">
+    <header className={`topbar${hidden ? ' is-hidden' : ''}`}>
       <div className="wrapper">
-        <Link to="" className="MyName" onClick={() => handleClick('')}>
+        <Link to="" className="MyName">
           <span className="full-name">Ddz</span>
         </Link>
         {!isActive('') && <img src="/line.svg" alt="" className="name-line" />}
@@ -33,7 +48,6 @@ export default function Topbar() {
               key={to}
               to={to}
               className={`nav-link ${isActive(to) ? 'active' : ''} ${icon ? 'has-icon' : ''}`}
-              onClick={() => handleClick(to)}
             >
               {icon && <img src={icon} alt={label} className="nav-icon" />}
               <span className="nav-label">{label}</span>

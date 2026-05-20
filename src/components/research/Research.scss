@@ -13,8 +13,8 @@ $main-orange: #e17055;
 
 .researchTopic {
   max-width: 880px;
-  margin: 2rem auto;
-  padding: 3rem 2rem;
+  margin: 0 auto;
+  padding: 1.2rem 2rem 3rem;
 
   .subtopic-back-link {
     display: flex;
@@ -76,10 +76,10 @@ $main-orange: #e17055;
   // Section divider — clean line instead of gradient
   .research-entry {
     position: relative;
-    padding: 2rem 0;
+    padding: 1.2rem 0;
 
     &:not(:last-child) {
-      border-bottom: 1px solid rgba($light, 0.4);
+      border-bottom: 1px solid rgba($light, 0.2);
     }
 
     &:first-child {
@@ -299,10 +299,16 @@ $main-orange: #e17055;
   }
 
   @media (max-width: 768px) {
-    padding: 2rem 1.25rem;
+    margin-top: 0;
+    padding: 0.8rem 1.25rem 2rem;
 
-    .research-header h2 {
-      font-size: 1.3rem;
+    .research-header {
+      margin-top: 0;
+
+      h2 {
+        font-size: 1.3rem;
+        margin-top: 0;
+      }
     }
 
     .research-topic {

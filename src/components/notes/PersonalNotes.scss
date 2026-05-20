@@ -1,7 +1,7 @@
 .personal-notes {
-  padding: 60px;
+  padding: 1.2rem 60px 60px;
   max-width: 880px;
-  margin: 2rem auto;
+  margin: 0 auto;
 
   // Article (post detail) gets its own card background; the index does not.
   &.blog-post {
@@ -299,6 +299,66 @@
       }
     }
 
+    // Footnotes
+    .footnote-ref {
+      text-decoration: none;
+      color: #e17055;
+      font-weight: 600;
+
+      sup {
+        font-size: 0.7em;
+        margin-left: 1px;
+      }
+    }
+
+    .footnotes-divider {
+      border: none;
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+      margin: 2rem 0 1rem;
+    }
+
+    .footnotes-list {
+      margin: 0;
+      padding-left: 1.2rem;
+      font-size: 0.85rem;
+      color: #6c757d;
+      line-height: 1.6;
+
+      li {
+        margin-bottom: 0.3rem;
+
+        &:target {
+          animation: footnote-flash 1.6s ease;
+        }
+
+        // Links inside the footnote (e.g. Ralf → herbrich.me)
+        a:not(.footnote-back) {
+          color: inherit;
+          text-decoration: none;
+          transition: color 0.2s ease;
+
+          &:hover {
+            color: #e17055;
+          }
+        }
+      }
+
+      @keyframes footnote-flash {
+        0%   { background-color: rgba(225, 112, 85, 0.18); }
+        100% { background-color: transparent; }
+      }
+
+      .footnote-back {
+        color: #e17055;
+        text-decoration: none;
+        margin-left: 0.3rem;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+
     // Focus-mode opt-in toggle (sits at the right of the meta row)
     .focus-toggle {
       display: inline-flex;
@@ -369,11 +429,12 @@
 
   @media (max-width: 768px) {
     max-width: 100%;
-    padding: 10px;
-    //margin-top: 2rem;
+    padding: 0.6rem 0.8rem 1.2rem;
+    margin: 0 auto;
 
     h3 {
       font-size: 1.1rem;
+      margin-top: 0;
     }
 
     .note-content {

@@ -117,6 +117,7 @@ export default function Publications() {
 
     return (
         <div className="publications-section">
+            <h2 className="publications-heading">Published Work</h2>
             {sortedYears.map((year) => (
                 <div key={year} className="year-group">
                     <div className="year-sidebar">

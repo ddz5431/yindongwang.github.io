@@ -14,12 +14,18 @@ const MailIcon = () => (
   </svg>
 );
 
+const ScholarIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M5.242 13.769L0.5 9.5 12 1l11.5 8.5-4.742 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 100 14 7 7 0 000-14z"/>
+  </svg>
+);
+
 const TypewriterContent = () => (
   <div className="subtle-typewriter">
     <WindupChildren>
       <Pace ms={100}>
         <span>
-          "Instead of writing papers, writing a book fascinates and challenges me more. A shy confession: my dream is to become a director! If you are curious about me, don't hesitate to reach out—I will be just as curious about you!"
+          Instead of writing papers, writing a book fascinates and challenges me more. A shy confession: my dream is to become a director! If you are curious about me, don't hesitate to reach out. I will be just as curious about you!
         </span>
       </Pace>
     </WindupChildren>
@@ -35,10 +41,11 @@ export default function Intro() {
                         <img src="/image_me.jpg" alt="Yindong Wang" />
                     </div>
                     <p className="photo-credit">
-                        photo taken by Hanh, March 2026, in Laoyuhe Wetland Park, Kunming
+                        Photo taken by Hanh in March 2026, at Laoyuhe Wetland Park, Kunming.
                     </p>
                     <div className="social-links">
                         <a href="https://github.com/ddz5431" target="_blank" rel="noopener noreferrer"><GitHubIcon /></a>
+                        <a href="https://scholar.google.com/citations?user=Yindong+Wang" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar"><ScholarIcon /></a>
                         <a href="mailto:hi@yindong.me"><MailIcon /></a>
                     </div>
                 </div>
@@ -52,8 +59,8 @@ export default function Intro() {
                         <p>
                             As an AI researcher with a multilingual background in Chinese, English and German,
                             I'm dedicated to developing safe and trustworthy AI systems that respect and embrace human
-                            diversity. I strive to ensure that AI technologies are not only intelligent but also ethical,
-                            unbiased, and beneficial to all of humanity.
+                            diversity. I strive to ensure that AI technologies are not only computationally intelligent,
+                            but also culturally nuanced, equitable, and universally beneficial.
                         </p>
                         <p className="tagline">My mission: Exploring the frontiers of AI research to shape a better AGI for humanity.</p>
                     </div>

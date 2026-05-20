@@ -20,7 +20,12 @@ $transition-speed: 0.3s;
   z-index: 1000;
   box-shadow: none;
   height: $topbar-height;
-  transition: height $transition-speed ease;
+  transition: height $transition-speed ease, transform 0.3s ease, opacity 0.3s ease;
+
+  // Mobile auto-hide: slides up when scrolling down
+  &.is-hidden {
+    transform: translateY(-100%);
+  }
 
 
   .wrapper {
@@ -189,26 +194,53 @@ $transition-speed: 0.3s;
   }
 
   @media (max-width: 1024px) {
-    height: auto;
-    padding: 10px 0;
+    height: $topbar-height-mobile;
+    padding: 0;
 
     .wrapper {
-      flex-direction: column;
-      gap: 8px;
+      flex-direction: row;
+      gap: 0;
+      padding: 0 8px;
+
+      .MyName {
+        font-size: 14px;
+
+        .full-name {
+          font-size: 18px;
+        }
+      }
 
       .navLinks {
-        margin-bottom: 10px;
-        flex-wrap: wrap;
-        justify-content: center;
+        margin-bottom: 0;
+        flex-wrap: nowrap;
+        justify-content: flex-end;
 
         a {
-          font-size: 14px;
-          margin: 5px 8px;
+          font-size: 12px;
+          margin: 0 4px;
+
+          .nav-icon {
+            width: 22px;
+            height: 22px;
+          }
         }
       }
 
       .right {
         display: none;
+      }
+    }
+  }
+
+  @media (max-width: 420px) {
+    .wrapper {
+      .MyName .full-name {
+        font-size: 16px;
+      }
+
+      .navLinks a {
+        font-size: 11px;
+        margin: 0 3px;
       }
     }
   }
@@ -223,11 +255,14 @@ body {
     background-color: #f4f4f2;
     transition: background-color 0.3s ease-in-out;
 
-    .topbar {
-      opacity: 0;
-      pointer-events: none;
-      transform: translateY(-100%);
-      transition: opacity 0.3s ease, transform 0.3s ease;
+    .topbar,
+    .topbar.is-hidden {
+      opacity: 0 !important;
+      pointer-events: none !important;
+      transform: translateY(-100%) !important;
+      height: 0 !important;
+      overflow: hidden;
+      transition: opacity 0.3s ease, transform 0.3s ease, height 0.3s ease;
     }
 
     .routes {

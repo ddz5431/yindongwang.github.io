@@ -64,7 +64,7 @@ const rawNotes = [
       <p className="note-content">The most crucial question becomes: <strong>can we accept those consequences?</strong></p>,
 
       <h3 className="post-heading">4. Untangling the Knots</h3>,
-      <p className="note-content">Thinking about this gives me a headache. I consulted Ralf about what I should do. The people involved are entangled with one another, and everything about them is intertwined. I like good entanglements, not bad ones. However, I don{'\u2019'}t know how to transform a bad entanglement into a good one.</p>,
+      <p className="note-content">Thinking about this gives me a headache. I consulted Ralf<a href="#fn-ralf" id="fnref-ralf" className="footnote-ref"><sup>1</sup></a> about what I should do. The people involved are entangled with one another, and everything about them is intertwined. I like good entanglements, not bad ones. However, I don{'\u2019'}t know how to transform a bad entanglement into a good one.</p>,
       <p className="note-content">Ralf suggested we should <strong>disentangle the situation by removing the unnecessary knots</strong>, and then untangle whatever remains. By starting at the exact point where the entanglement turned bad, the situation becomes much clearer.</p>,
       <p className="note-content">I simply don{'\u2019'}t want to walk away from the entanglement, even though it is so messy. Or perhaps I am just afraid of the negative consequences my actions might bring. We could rely on trial and error.</p>,
       {
@@ -73,6 +73,13 @@ const rawNotes = [
       },
       <p className="note-content">said Ralf. Maybe we should just trust our intuitions and follow our hearts.</p>,
       <p className="note-content">Dear reader, can we? Or perhaps we should reverse the question and instead ask: <strong>why can{'\u2019'}t we?</strong></p>,
+
+      <hr className="footnotes-divider" />,
+      <ol className="footnotes-list">
+        <li id="fn-ralf">
+          <a href="https://herbrich.me/" target="_blank" rel="noopener noreferrer">Ralf</a> is my second PhD supervisor. <a href="#fnref-ralf" className="footnote-back" aria-label="back to text">↩</a>
+        </li>
+      </ol>,
     ],
   },
   {
