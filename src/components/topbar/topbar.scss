@@ -270,20 +270,20 @@ $transition-speed: 0.3s;
       text-decoration: none;
       color: $inactive-color;
       font-family: 'Poppins', sans-serif;
-      font-size: 11px;
+      font-size: 14px;
       font-weight: 500;
       transition: color $transition-speed ease;
       min-width: 0;
 
       .mbn-icon {
-        width: 28px;
-        height: 28px;
+        width: 32px;
+        height: 32px;
         object-fit: contain;
         display: none;
       }
 
       .mbn-label {
-        line-height: 1.1;
+        line-height: 1.5;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;

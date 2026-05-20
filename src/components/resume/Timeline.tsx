@@ -237,13 +237,21 @@ const Timeline: React.FC<TimelineProps> = ({ events, skills }) => {
     // Initial measurement
     measure();
 
-    // Re-measure whenever the container or any row resizes (expand/collapse)
-    const ro = new ResizeObserver(measure);
+    // Re-measure whenever the container or any row resizes (expand/collapse).
+    // Defer to the next frame so setState from the observer doesn't fire
+    // before the current layout pass finishes (avoids the "ResizeObserver
+    // loop completed with undelivered notifications" warning).
+    let rafId = 0;
+    const ro = new ResizeObserver(() => {
+      cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(measure);
+    });
     ro.observe(container);
     rowRefs.current.forEach((el) => { if (el) ro.observe(el); });
 
     window.addEventListener('resize', measure);
     return () => {
+      cancelAnimationFrame(rafId);
       ro.disconnect();
       window.removeEventListener('resize', measure);
     };

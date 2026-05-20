@@ -6,7 +6,7 @@ import './topbar.scss';
 const NAV_LINKS = [
   { to: '', label: 'Home', icon: '/home.svg' },
   { to: 'resume', label: 'Resume', icon: '/resume.svg' },
-  { to: 'publications', label: 'Publications', icon: '/publication.svg' },
+  { to: 'publications', label: 'Publications', shortLabel: 'Pubs', icon: '/publication.svg' },
   { to: 'research', label: 'Research', icon: '/research.svg' },
   { to: 'blog', label: 'Blog', icon: '/blog.svg' },
 ];
@@ -78,14 +78,14 @@ export default function Topbar() {
         </div>
       </header>
       <nav className={`mobile-bottom-nav${bottomVisible ? ' is-visible' : ''}`} aria-label="Primary navigation">
-        {NAV_LINKS.map(({to, label, icon}) => (
+        {NAV_LINKS.map(({to, label, shortLabel, icon}) => (
           <Link
             key={to}
             to={to}
             className={`mbn-link ${isActive(to) ? 'active' : ''}`}
           >
             {icon && <img src={icon} alt="" className="mbn-icon" />}
-            <span className="mbn-label">{label}</span>
+            <span className="mbn-label">{shortLabel || label}</span>
           </Link>
         ))}
       </nav>
