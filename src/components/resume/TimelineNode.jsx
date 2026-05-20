@@ -216,12 +216,10 @@ const TimelineNode = ({
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.25 }}
-            style={{ overflowY: 'clip', overflowX: 'visible' }}
+            style={{ overflow: 'clip', overflowClipMargin: '30px' }}
             onClick={e => e.stopPropagation()}
           >
-            <div style={{ paddingBottom: 30 }}>
-              {renderDetails()}
-            </div>
+            {renderDetails()}
           </motion.div>
         )}
       </AnimatePresence>

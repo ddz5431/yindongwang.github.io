@@ -170,7 +170,7 @@ $node-work: #2B9E8F;
   padding: 14px 16px;
   border: 1px solid rgba($faint, 0.4);
   min-width: 0;
-  transition: border-color 0.2s ease, transform 0.25s ease, opacity 0.25s ease, box-shadow 0.25s ease;
+  transition: border-color 0.2s ease, opacity 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
 
   &:hover {
     border-color: #3EB489;
