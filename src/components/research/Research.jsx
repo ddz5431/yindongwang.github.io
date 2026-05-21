@@ -21,33 +21,64 @@ const Research = () => {
     }
   }, [location]);
 
-  // Per-subtopic reading-progress: each .research-subtopic gets a CSS variable
-  // --subtopic-progress (0..1) reflecting how far the user has read through it,
-  // measured by how much of its height has scrolled past the viewport midline.
-  // Used by the .research-subtopic border-left to tint based on reading depth
-  // instead of a hardcoded color.
+  // Subtopic reading-progress + scrollspy.
+  //
+  // Each .research-subtopic gets a CSS variable --subtopic-progress (0..1)
+  // tracking how far the reader has scrolled through that block, measured
+  // against a "focus line" set at 30% from the viewport top (the natural
+  // reading anchor on most screens).
+  //
+  // The subtopic whose bounds straddle the focus line is also marked with
+  // .is-active so the SCSS can spotlight its left bar (full saturation +
+  // progress fill) and leave the others as faded inactive lines.
   useEffect(() => {
     const update = () => {
-      const nodes = document.querySelectorAll('.research-subtopic');
-      const mid = window.innerHeight * 0.5;
-      nodes.forEach((el) => {
+      const nodes = Array.from(document.querySelectorAll('.research-subtopic'));
+      const focusY = window.innerHeight * 0.3;
+      let activeIdx = -1;
+      let activeTop = -Infinity;
+
+      nodes.forEach((el, i) => {
         const rect = el.getBoundingClientRect();
         const span = rect.height;
-        if (span <= 0) {
+        if (span > 0) {
+          const passed = focusY - rect.top;
+          const p = Math.min(1, Math.max(0, passed / span));
+          el.style.setProperty('--subtopic-progress', p.toFixed(3));
+        } else {
           el.style.setProperty('--subtopic-progress', '0');
-          return;
         }
-        const passed = mid - rect.top;
-        const p = Math.min(1, Math.max(0, passed / span));
-        el.style.setProperty('--subtopic-progress', p.toFixed(3));
+        // Active = the bottom-most subtopic whose top has crossed the focus
+        // line (so as you scroll, the spotlight moves down to the next one).
+        if (rect.top <= focusY && rect.top > activeTop) {
+          activeTop = rect.top;
+          activeIdx = i;
+        }
+      });
+
+      nodes.forEach((el, i) => {
+        el.classList.toggle('is-active', i === activeIdx);
+      });
+    };
+
+    // rAF-throttle the scroll handler so getBoundingClientRect() inside
+    // update() only runs once per paint frame, even when scroll fires
+    // dozens of times per second on a high-rate trackpad or mobile flick.
+    let ticking = false;
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(() => {
+        update();
+        ticking = false;
       });
     };
 
     update();
-    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', update);
     return () => {
-      window.removeEventListener('scroll', update);
+      window.removeEventListener('scroll', onScroll);
       window.removeEventListener('resize', update);
     };
   }, []);

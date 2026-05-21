@@ -186,14 +186,15 @@ $main-orange: #e17055;
   .research-subtopic {
     --subtopic-progress: 0;
     position: relative;
-    padding: 1.2rem 0 1.2rem 1.4rem;
+    // Extra lateral whitespace so dense text doesn't crowd the anchor bar.
+    padding: 1.2rem 0 1.2rem 2.4rem;
     transition: background-color 0.2s ease;
     scroll-margin-top: 5rem;
 
-    // Left "scrollbar": each subtopic's bar fills from top to solid teal-green
-    // as the reader scrolls past it, and stays faded below. Because the fill
-    // ratio is the same calc(progress * 100%) for every subtopic, the visual
-    // pattern is consistent across topics regardless of their length.
+    // Left anchor bar. Idle (inactive) subtopics show a faded line.
+    // The active subtopic (scrollspy-marked .is-active) gets a dynamic
+    // progress fill: solid teal-green from the top down to
+    // --subtopic-progress, fading below.
     &::before {
       content: '';
       position: absolute;
@@ -201,20 +202,25 @@ $main-orange: #e17055;
       top: 0;
       bottom: 0;
       width: 2px;
+      border-radius: 4px;
+      background-color: rgba($timeline-teal, 0.18);
+      transition: background 0.35s ease, opacity 0.35s ease;
+    }
+
+    &.is-active::before {
       background: linear-gradient(
         to bottom,
         $timeline-teal 0%,
         $timeline-teal calc(var(--subtopic-progress) * 100%),
-        rgba($timeline-teal, 0.18) calc(var(--subtopic-progress) * 100%),
-        rgba($timeline-teal, 0.18) 100%
+        rgba($timeline-teal, 0.22) calc(var(--subtopic-progress) * 100%),
+        rgba($timeline-teal, 0.22) 100%
       );
-      transition: background 0.1s linear;
     }
 
     &:hover::before,
     &.highlight::before {
-      // Hover / click highlights the entire bar at full opacity, regardless
-      // of how far the reader has scrolled through this subtopic.
+      // Hover / click highlights the entire bar at full opacity, ignoring
+      // both scroll progress and scrollspy state.
       background: $timeline-teal;
     }
 
@@ -356,7 +362,7 @@ $main-orange: #e17055;
     }
 
     .research-subtopic {
-      padding: 1rem 0 1rem 1.1rem;
+      padding: 1rem 0 1rem 1.9rem;
     }
   }
 }
