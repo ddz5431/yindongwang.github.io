@@ -19,23 +19,19 @@ export default function Topbar() {
 
   const isActive = (to) => location.pathname === `/${to}`;
 
-  // Mobile-only: hide the topbar when scrolling down, reveal when scrolling up.
-  // Bottom nav mirrors that direction — visible while scrolling toward the top.
+  // Hide the topbar when scrolling down, reveal when scrolling up.
+  // On mobile the bottom nav mirrors the same direction so both bars
+  // appear/disappear together.
   useEffect(() => {
     const handleScroll = () => {
       const isMobile = window.innerWidth <= 1024;
-      if (!isMobile) {
-        if (hidden) setHidden(false);
-        if (!bottomVisible) setBottomVisible(true);
-        return;
-      }
       const y = window.scrollY;
       if (y > lastY.current && y > 80) {
         setHidden(true);
-        setBottomVisible(false);
+        if (isMobile) setBottomVisible(false);
       } else if (y < lastY.current) {
         setHidden(false);
-        setBottomVisible(true);
+        if (isMobile) setBottomVisible(true);
       }
       lastY.current = y;
     };
@@ -51,7 +47,7 @@ export default function Topbar() {
           <Link to="" className="MyName">
             <span className="full-name">Ddz</span>
           </Link>
-          {!isActive('') && <img src="/line.svg" alt="" className="name-line" />}
+          <img src="/line.svg" alt="" className="name-line" />
           <nav className="navLinks">
             {NAV_LINKS.map(({to, label, icon}) => (
               <Link

@@ -408,7 +408,9 @@ const Timeline: React.FC<TimelineProps> = ({ events, skills }) => {
           .filter((_, i) => i % 3 === 1)
           .map((seg, i) => {
             const midY = (seg.y1 + seg.y2) / 2;
-            const size = 350;
+            const size = isMobile ? 180 : 350;
+            const leftOffset = isMobile ? -75 : -150;
+            const topOffset = isMobile ? 40 : 80;
             return (
               <img
                 key={`panda-${i}`}
@@ -417,8 +419,8 @@ const Timeline: React.FC<TimelineProps> = ({ events, skills }) => {
                 className="bamboo-panda"
                 style={{
                   position: 'absolute',
-                  left: -150,
-                  top: midY - size / 2 - 80,
+                  left: leftOffset,
+                  top: midY - size / 2 - topOffset,
                   width: size,
                   height: size,
                   zIndex: 1,
@@ -433,7 +435,8 @@ const Timeline: React.FC<TimelineProps> = ({ events, skills }) => {
           .filter((_, i) => i % 3 === 2)
           .map((seg, i) => {
             const midY = (seg.y1 + seg.y2) / 2;
-            const size = 80;
+            const ladySize = isMobile ? 10 : 25;
+            const ladyLeft = isMobile ? -2 : -10;
             return (
               <img
                 key={`ladybird-${i}`}
@@ -442,10 +445,10 @@ const Timeline: React.FC<TimelineProps> = ({ events, skills }) => {
                 className="bamboo-ladybird"
                 style={{
                   position: 'absolute',
-                  left: -10,
-                  top: midY - 20,
-                  width: 25,
-                  height: 25,
+                  left: ladyLeft,
+                  top: midY - ladySize / 2,
+                  width: ladySize,
+                  height: ladySize,
                   zIndex: 1,
                   pointerEvents: 'none',
                 }}

@@ -44,6 +44,7 @@ const TimelineNode = ({
               className={cardCls}
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
+              whileHover={{ y: -2 }}
               transition={{ duration: 0.3, delay: idx * 0.1 }}
             >
               <div className="nd-project-name">
@@ -89,6 +90,7 @@ const TimelineNode = ({
               className={cardCls}
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
+              whileHover={{ y: -2 }}
               transition={{ duration: 0.3, delay: idx * 0.1 }}
               onMouseEnter={() => project.highlightSkills && setHighlightedSkills(project.highlightSkills)}
               onMouseLeave={() => setHighlightedSkills([])}

@@ -41,7 +41,7 @@ export default function Intro() {
                         <img src="/image_me.jpg" alt="Yindong Wang" />
                     </div>
                     <p className="photo-credit">
-                        Photo taken by Hanh in March 2026, at Laoyuhe Wetland Park, Kunming.
+                        Photo taken by Hanh in March 2026, at Laoyuhe Wetland Park, Kunming, China.
                     </p>
                     <div className="social-links">
                         <a href="https://github.com/ddz5431" target="_blank" rel="noopener noreferrer"><GitHubIcon /></a>

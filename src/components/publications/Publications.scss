@@ -405,5 +405,29 @@ $content-indent: 28px;
     .publication-title {
       font-size: 1.05rem;
     }
+
+    // Keep action buttons (Paper / Abstract / Code / Dataset / BibTeX) on a
+    // single horizontal-scroll row, same pattern as resume tag row.
+    .publication-actions {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      white-space: nowrap;
+      gap: 0.8rem;
+      padding-bottom: 4px;
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+
+    .action-btn {
+      flex-shrink: 0;
+    }
+
+    .tag {
+      flex-shrink: 0;
+    }
   }
 }
