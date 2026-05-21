@@ -77,7 +77,12 @@ const rawNotes = [
       <hr className="footnotes-divider" />,
       <ol className="footnotes-list">
         <li id="fn-ralf">
-          <a href="https://herbrich.me/" target="_blank" rel="noopener noreferrer">Ralf</a> is my second PhD supervisor. <a href="#fnref-ralf" className="footnote-back" aria-label="back to text">↩{'\uFE0E'}</a>
+          <a href="https://herbrich.me/" target="_blank" rel="noopener noreferrer">Ralf</a> is my second PhD supervisor. <a href="#fnref-ralf" className="footnote-back" aria-label="back to text">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <polyline points="9,4 4,8 9,12" />
+              <path d="M4 8h7a3 3 0 0 1 3 3v1" />
+            </svg>
+          </a>
         </li>
       </ol>,
     ],

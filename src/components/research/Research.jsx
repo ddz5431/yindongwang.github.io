@@ -20,6 +20,37 @@ const Research = () => {
       }
     }
   }, [location]);
+
+  // Per-subtopic reading-progress: each .research-subtopic gets a CSS variable
+  // --subtopic-progress (0..1) reflecting how far the user has read through it,
+  // measured by how much of its height has scrolled past the viewport midline.
+  // Used by the .research-subtopic border-left to tint based on reading depth
+  // instead of a hardcoded color.
+  useEffect(() => {
+    const update = () => {
+      const nodes = document.querySelectorAll('.research-subtopic');
+      const mid = window.innerHeight * 0.5;
+      nodes.forEach((el) => {
+        const rect = el.getBoundingClientRect();
+        const span = rect.height;
+        if (span <= 0) {
+          el.style.setProperty('--subtopic-progress', '0');
+          return;
+        }
+        const passed = mid - rect.top;
+        const p = Math.min(1, Math.max(0, passed / span));
+        el.style.setProperty('--subtopic-progress', p.toFixed(3));
+      });
+    };
+
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    return () => {
+      window.removeEventListener('scroll', update);
+      window.removeEventListener('resize', update);
+    };
+  }, []);
   const researchTopics = [
     {
       topic: "Artificial Intelligence",

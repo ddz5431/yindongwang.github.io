@@ -11,17 +11,15 @@ $main-orange: #e17055;
   100% { background-color: transparent; }
 }
 
+
 .researchTopic {
   max-width: 880px;
   margin: 1.2rem auto 3rem;
   padding: 1.6rem 2rem 2.5rem;
-  // Soft frosted reading-card so scrolling content visibly sits on its own
-  // layer beneath the sticky topbar — same depth idea as the bottom nav.
-  background-color: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(12px) saturate(160%);
-  -webkit-backdrop-filter: blur(12px) saturate(160%);
-  border-radius: 14px;
-  box-shadow: 0 2px 18px rgba(0, 0, 0, 0.04);
+  // Match the blog-post reading card: warm flat background, soft rounded
+  // corners. No frosted glass or shadow — keeps the same calm reading feel.
+  background-color: #f4f4f2;
+  border-radius: 8px;
 
   .subtopic-back-link {
     display: flex;
@@ -186,18 +184,41 @@ $main-orange: #e17055;
   }
 
   .research-subtopic {
+    --subtopic-progress: 0;
     position: relative;
     padding: 1.2rem 0 1.2rem 1.4rem;
-    border-left: 2px solid rgba($timeline-teal, 0.18);
-    transition: border-color 0.2s ease, background-color 0.2s ease;
+    transition: background-color 0.2s ease;
     scroll-margin-top: 5rem;
 
-    &:hover {
-      border-left-color: $timeline-teal;
+    // Left "scrollbar": each subtopic's bar fills from top to solid teal-green
+    // as the reader scrolls past it, and stays faded below. Because the fill
+    // ratio is the same calc(progress * 100%) for every subtopic, the visual
+    // pattern is consistent across topics regardless of their length.
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(
+        to bottom,
+        $timeline-teal 0%,
+        $timeline-teal calc(var(--subtopic-progress) * 100%),
+        rgba($timeline-teal, 0.18) calc(var(--subtopic-progress) * 100%),
+        rgba($timeline-teal, 0.18) 100%
+      );
+      transition: background 0.1s linear;
+    }
+
+    &:hover::before,
+    &.highlight::before {
+      // Hover / click highlights the entire bar at full opacity, regardless
+      // of how far the reader has scrolled through this subtopic.
+      background: $timeline-teal;
     }
 
     &.highlight {
-      border-left-color: $timeline-teal;
       animation: research-highlight 2s ease;
     }
 
@@ -319,12 +340,7 @@ $main-orange: #e17055;
   @media (max-width: 768px) {
     margin: 0.8rem 0.8rem 2rem;
     padding: 1rem 1.1rem 1.6rem;
-    // Tighter card radius + lighter blur on mobile so the frosted reading
-    // surface still reads well at narrow widths.
-    border-radius: 12px;
-    backdrop-filter: blur(10px) saturate(150%);
-    -webkit-backdrop-filter: blur(10px) saturate(150%);
-    box-shadow: 0 2px 14px rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
 
     .research-header {
       margin-top: 0;

@@ -296,31 +296,6 @@
         font-size: 0.7em;
         margin-left: 1px;
       }
-
-      // Mobile: replace tiny superscript with a tappable inline pill badge.
-      // sup is too small to read or tap on phones, so we render the same
-      // number inside a rounded background and bump up the hit area.
-      @media (max-width: 768px) {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        min-width: 1.4em;
-        height: 1.4em;
-        padding: 0 0.4em;
-        margin: 0 0.15em;
-        vertical-align: middle;
-        background-color: rgba(225, 112, 85, 0.12);
-        border-radius: 999px;
-        line-height: 1;
-
-        sup {
-          font-size: 0.78rem;
-          margin-left: 0;
-          vertical-align: baseline;
-          top: 0;
-          line-height: 1;
-        }
-      }
     }
 
     .footnotes-divider {
