@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { FaRegCalendar, FaRegCalendarCheck } from 'react-icons/fa';
 import { findNote, formatDate } from './notes-data';
+import { parseMarkdown, replaceNames } from './markdown';
 import './PersonalNotes.scss';
 
 const renderItem = (item) => {
@@ -44,7 +45,26 @@ const BlogPost = () => {
   const { slug } = useParams();
   const note = findNote(slug);
 
-  const items = Array.isArray(note?.content) ? note.content : note ? [note.content] : [];
+  const [mdItems, setMdItems] = useState(null);
+
+  useEffect(() => {
+    if (!note?.markdownUrl) { setMdItems(null); return; }
+    let cancelled = false;
+    fetch(note.markdownUrl)
+      .then((r) => r.text())
+      .then((text) => {
+        if (cancelled) return;
+        setMdItems(parseMarkdown(replaceNames(text, note.nameMap)));
+      })
+      .catch(() => { if (!cancelled) setMdItems([]); });
+    return () => { cancelled = true; };
+  }, [note?.markdownUrl, note?.nameMap]);
+
+  const items = useMemo(() => {
+    if (note?.markdownUrl) return mdItems || [];
+    if (Array.isArray(note?.content)) return note.content;
+    return note ? [note.content] : [];
+  }, [note, mdItems]);
   const sections = useMemo(() => groupIntoSections(items), [items]);
   const [focusMode, setFocusMode] = useState(false);
   const [showBack, setShowBack] = useState(false);
