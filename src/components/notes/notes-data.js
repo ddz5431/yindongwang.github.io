@@ -29,7 +29,7 @@ export const formatDate = (iso) => {
 
 const rawNotes = [
   {
-    id: 'parfum',
+    id: 'yuichliebedichduschlampe',
     date: '2026-06-01',
     title: '[Memory Snapshot #02] yuichliebedichduschlampe',
     excerpt: '“你能不能别转笔了！好吵！还有抖腿，不要抖了！”隔着墙我都能听到他转笔笔掉的声音，我疾步冲到他面前，愤怒的对他吼道。',
