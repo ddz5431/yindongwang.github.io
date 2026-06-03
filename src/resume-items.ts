@@ -183,19 +183,19 @@ export const education: EducationBackground[] = [
       skillIds: ['s18', 's21', 's20'],
       projects: [
         {
-          name: "SuffixGuid: Inference-Time Alignment for Large Language Models",
-          description: "Leveraging the causal nature of the decoder, we apply semantic constraints as suffixes at each decoding step. By quantifying uncertainty at both the generation and evaluation positions to detect errors, we dynamically steer the model's generation toward desired outcomes. Ultimately, this approach demonstrates the viability of training-free, inference-time alignment for LLMs.",
+          name: "SuffixGuard: Inference-Time Alignment via Self-Causal Contrast",
+          description: "Leveraging the causal nature of the decoder, we express alignment constraints as natural-language suffixes and read the steering signal off the model's own decoding behavior rather than an external reward model or classifier. By quantifying uncertainty at both the generation and evaluation positions to detect errors, we dynamically steer generation toward desired outcomes—a simple and effective training-free paradigm for LLM inference-time alignment.",
           skills: [],
           highlightSkills: ['s21', 's18'], // LLM Reasoning, LLM Alignment
           comingSoon: true,
         },
         {
-          name: "Entailment Few-shot Learning with Large Language Models",
+          name: "Atomic Reasoning Quantification in Large Language Models",
           description:
-            "Exploring few-shot learning with pretrained language models using a textual entailment-based framework, achieving performance improvements across model architectures without relying on external NLI data.",
+            "While decoder-only LLMs show strong performance on NLI tasks, their failure on isomorphic math problems reveals a critical vulnerability: they often rely on superficial pattern matching rather than genuine logic. Because frameworks like CoT (Chain-of-Thought) and PoT (Program-of-Thought) depend entirely on accurate single-step textual entailment, this research investigates these atomic reasoning steps. We systematically compare decoders against standard and discriminative encoders (like DeBERTa) to establish new, precise metrics for genuine LLM reasoning.",
           skills: ["Large Language Models", "Few-shot Learning", "Text Classification"],
           highlightSkills: ['s21'], // LLM Reasoning
-          comingSoon: true,
+          workInProgress: true,
         },
         {
           name: "ReFACT: A Benchmark for Scientific Confabulation Detection with Positional Error Annotations",

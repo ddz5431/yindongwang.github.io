@@ -64,6 +64,9 @@ const TimelineNode = ({
               {project.comingSoon && (
                 <div className="nd-coming-soon">Paper to appear soon</div>
               )}
+              {project.workInProgress && (
+                <div className="nd-coming-soon">Work in progress</div>
+              )}
             </motion.div>
             );
           })}
@@ -116,6 +119,9 @@ const TimelineNode = ({
               <div className="nd-project-desc">{project.description}</div>
               {project.comingSoon && (
                 <div className="nd-coming-soon">Paper to appear soon</div>
+              )}
+              {project.workInProgress && (
+                <div className="nd-coming-soon">Work in progress</div>
               )}
             </motion.div>
             );
