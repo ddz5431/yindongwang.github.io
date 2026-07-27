@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.c09e4362.css",
-    "main.js": "/static/js/main.e3dcc902.js",
+    "main.js": "/static/js/main.f027680c.js",
     "static/media/kunming.jpg": "/static/media/kunming.c83f278be2d9aae69e8b.jpg",
     "static/media/rabat_cat.jpg": "/static/media/rabat_cat.4dbd4455bb05bb783fd3.jpg",
     "static/media/pregenant.jpg": "/static/media/pregenant.79f298df2d67fde6ca81.jpg",
@@ -19,10 +19,10 @@
     "static/media/lucy_with_my_finger.JPG": "/static/media/lucy_with_my_finger.b8e3c379c60830f0df81.JPG",
     "index.html": "/index.html",
     "main.c09e4362.css.map": "/static/css/main.c09e4362.css.map",
-    "main.e3dcc902.js.map": "/static/js/main.e3dcc902.js.map"
+    "main.f027680c.js.map": "/static/js/main.f027680c.js.map"
   },
   "entrypoints": [
     "static/css/main.c09e4362.css",
-    "static/js/main.e3dcc902.js"
+    "static/js/main.f027680c.js"
   ]
 }
