@@ -1,13 +1,28 @@
 {
   "files": {
-    "main.css": "/static/css/main.88662669.css",
-    "main.js": "/static/js/main.32e21e0e.js",
+    "main.css": "/static/css/main.c09e4362.css",
+    "main.js": "/static/js/main.e3dcc902.js",
+    "static/media/kunming.jpg": "/static/media/kunming.c83f278be2d9aae69e8b.jpg",
+    "static/media/rabat_cat.jpg": "/static/media/rabat_cat.4dbd4455bb05bb783fd3.jpg",
+    "static/media/pregenant.jpg": "/static/media/pregenant.79f298df2d67fde6ca81.jpg",
+    "static/media/lucy.jpg": "/static/media/lucy.e6415477f1aa3fa7209e.jpg",
+    "static/media/vega.jpg": "/static/media/vega.232c9ecf36ca6ee3a492.jpg",
+    "static/media/munich.jpg": "/static/media/munich.2a9e4dea80e527bec486.jpg",
+    "static/media/disney.jpg": "/static/media/disney.d6b49f4e97f3ddf791d4.jpg",
+    "static/media/moni.jpg": "/static/media/moni.82ef0360fb28ec7e908d.jpg",
+    "static/media/schroedinger_cat.jpg": "/static/media/schroedinger_cat.200125aed297630b242b.jpg",
+    "static/media/xiaomaomi.jpg": "/static/media/xiaomaomi.ef839981b7a61121c07c.jpg",
+    "static/media/guilin.jpg": "/static/media/guilin.012b18d17a2ddb956b63.jpg",
+    "static/media/dana_point.JPG": "/static/media/dana_point.4547304961781cd56d6e.JPG",
+    "static/media/chengdu.jpg": "/static/media/chengdu.05c36a8fc49386fc7b0c.jpg",
+    "static/media/laoyuhu.jpg": "/static/media/laoyuhu.84cae49a04ca4a81bed6.jpg",
+    "static/media/lucy_with_my_finger.JPG": "/static/media/lucy_with_my_finger.b8e3c379c60830f0df81.JPG",
     "index.html": "/index.html",
-    "main.88662669.css.map": "/static/css/main.88662669.css.map",
-    "main.32e21e0e.js.map": "/static/js/main.32e21e0e.js.map"
+    "main.c09e4362.css.map": "/static/css/main.c09e4362.css.map",
+    "main.e3dcc902.js.map": "/static/js/main.e3dcc902.js.map"
   },
   "entrypoints": [
-    "static/css/main.88662669.css",
-    "static/js/main.32e21e0e.js"
+    "static/css/main.c09e4362.css",
+    "static/js/main.e3dcc902.js"
   ]
 }
